@@ -9,9 +9,9 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "LionEnergy - Solar & Renewable Energy Solutions",
+  title: "VICON - AI-Powered Fire Protection System",
   description:
-    "Leading renewable energy company providing solar systems, battery storage, and portable power solutions for homes and businesses.",
+    "Advanced AI-powered fire detection and suppression system. Detect threats, suppress precisely, and protect your home with cutting-edge technology.",
   generator: "v0.app",
 }
 
