@@ -124,12 +124,18 @@ export function Chatbot() {
     }
   }
 
+  const quickSuggestions = [
+    "How does VICON work?",
+    "What's the pricing?",
+    "Installation process?",
+  ]
+
   return (
     <>
-      {/* Floating Chat Button */}
+      {/* Floating Chat Button - Glowing Orb */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full p-4 shadow-lg transition-all duration-300"
+        className="fixed bottom-6 right-6 z-40 bg-gradient-to-br from-primary via-primary to-accent text-primary-foreground rounded-full p-4 shadow-[0_0_30px_rgba(146,8,24,0.5)] hover:shadow-[0_0_50px_rgba(146,8,24,0.8)] transition-all duration-300 hover:scale-110 animate-pulse"
         aria-label="Open chat"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}
@@ -137,11 +143,11 @@ export function Chatbot() {
 
       {/* Chat Modal */}
       {isOpen && (
-        <div className="fixed bottom-24 right-6 z-40 w-96 max-w-[calc(100vw-2rem)] bg-card border border-border rounded-lg shadow-xl flex flex-col max-h-[600px]">
+        <div className="fixed bottom-24 right-6 z-40 w-96 max-w-[calc(100vw-2rem)] bg-card border border-border rounded-lg shadow-2xl flex flex-col max-h-[600px] animate-fade-up">
           {/* Header */}
-          <div className="bg-primary text-primary-foreground p-4 rounded-t-lg flex items-center justify-between">
+          <div className="bg-gradient-to-r from-primary to-primary/90 text-primary-foreground p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse shadow-[0_0_10px_rgba(74,222,128,0.8)]"></div>
               <div>
                 <h3 className="font-semibold">VICON Assistant</h3>
                 <p className="text-xs opacity-90">Always here to help</p>
@@ -151,13 +157,17 @@ export function Chatbot() {
 
           {/* Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-background">
-            {messages.map((msg) => (
-              <div key={msg.id} className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}>
+            {messages.map((msg, idx) => (
+              <div
+                key={msg.id}
+                className={`flex ${msg.sender === "user" ? "justify-end" : "justify-start"} animate-fade-up`}
+                style={{ animationDelay: `${idx * 50}ms` }}
+              >
                 <div
-                  className={`max-w-xs px-4 py-2 rounded-lg ${
+                  className={`max-w-xs px-4 py-2 rounded-lg transition-all hover:scale-105 ${
                     msg.sender === "user"
-                      ? "bg-primary text-primary-foreground rounded-br-none"
-                      : "bg-muted text-foreground rounded-bl-none"
+                      ? "bg-primary text-primary-foreground rounded-br-none shadow-md"
+                      : "bg-muted text-foreground rounded-bl-none shadow-sm"
                   }`}
                 >
                   <p className="text-sm">{msg.text}</p>
@@ -165,16 +175,42 @@ export function Chatbot() {
               </div>
             ))}
             {isLoading && (
-              <div className="flex justify-start">
+              <div className="flex justify-start animate-fade-up">
                 <div className="bg-muted text-foreground px-4 py-2 rounded-lg rounded-bl-none">
                   <div className="flex gap-2">
                     <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
-                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce delay-100"></div>
-                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce delay-200"></div>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: "100ms" }}></div>
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce" style={{ animationDelay: "200ms" }}></div>
                   </div>
                 </div>
               </div>
             )}
+
+            {/* Quick Suggestions */}
+            {messages.length === 1 && !isLoading && (
+              <div className="space-y-2 animate-fade-up" style={{ animationDelay: "300ms" }}>
+                <p className="text-xs text-muted-foreground text-center mb-2">Quick questions:</p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  {quickSuggestions.map((suggestion, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        setInputValue(suggestion)
+                        // Auto-submit after a brief delay
+                        setTimeout(() => {
+                          const form = document.querySelector('form') as HTMLFormElement
+                          form?.requestSubmit()
+                        }, 100)
+                      }}
+                      className="px-3 py-1.5 text-xs bg-accent/10 hover:bg-accent/20 text-accent border border-accent/30 rounded-full transition-all hover:scale-105"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div ref={messagesEndRef} />
           </div>
 
@@ -227,13 +263,13 @@ export function Chatbot() {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 placeholder="Ask about VICON..."
-                className="flex-1 px-3 py-2 text-sm bg-input border border-border rounded text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-1 px-3 py-2 text-sm bg-input border border-border rounded text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary transition-all"
                 disabled={isLoading}
               />
               <button
                 type="submit"
                 disabled={isLoading || !inputValue.trim()}
-                className="bg-primary hover:bg-primary/90 disabled:opacity-50 text-primary-foreground p-2 rounded transition-colors"
+                className="bg-primary hover:bg-primary/90 disabled:opacity-50 text-primary-foreground p-2 rounded transition-all hover:scale-110 hover:shadow-lg disabled:hover:scale-100"
                 aria-label="Send message"
               >
                 <Send size={20} />

@@ -1,5 +1,8 @@
+"use client"
+
+import { useState } from "react"
 import type { Product } from "@/lib/products"
-import { ShoppingCart } from "lucide-react"
+import { ShoppingCart, ChevronDown } from "lucide-react"
 
 interface ProductCardProps {
   product: Product
@@ -8,35 +11,66 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product, price, isAgent = false }: ProductCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
   return (
-    <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-      <div className="relative overflow-hidden bg-muted h-64">
+    <div className="group bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-2 border border-border/60 hover:border-accent/60 perspective-1000">
+      <div className="relative overflow-hidden bg-muted h-64 group-hover:h-72 transition-all duration-500">
         <img
           src={product.image || "/placeholder.svg"}
           alt={product.name}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
         {isAgent && (
-          <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+          <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg animate-pulse">
             Agent Pricing
           </div>
         )}
       </div>
 
       <div className="p-6">
-        <h3 className="text-xl font-bold text-foreground mb-2">{product.name}</h3>
+        <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
+          {product.name}
+        </h3>
         <p className="text-muted-foreground text-sm mb-4">{product.description}</p>
 
-        <ul className="space-y-2 mb-6">
+        <ul className="space-y-2 mb-4">
           {product.features.slice(0, 3).map((feature, idx) => (
-            <li key={idx} className="flex items-start gap-2">
+            <li key={idx} className="flex items-start gap-2 animate-fade-in" style={{ animationDelay: `${idx * 100}ms` }}>
               <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
               <span className="text-sm text-foreground">{feature}</span>
             </li>
           ))}
         </ul>
 
-        <div className="bg-muted p-3 rounded mb-6">
+        {/* Expandable section for additional features */}
+        {product.features.length > 3 && (
+          <div className="mb-4">
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors"
+            >
+              <span>{isExpanded ? "Show less" : `+${product.features.length - 3} more features`}</span>
+              <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
+            </button>
+
+            <div className={`overflow-hidden transition-all duration-500 ${isExpanded ? "max-h-96 opacity-100 mt-2" : "max-h-0 opacity-0"}`}>
+              <ul className="space-y-2">
+                {product.features.slice(3).map((feature, idx) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
+                    <span className="text-sm text-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
+
+        <div className="bg-muted/50 p-3 rounded mb-6 border border-border/50 group-hover:border-accent/30 transition-colors">
           <p className="text-xs text-muted-foreground mb-1">Specifications</p>
           <p className="text-xs text-foreground">{product.specs}</p>
         </div>
@@ -44,19 +78,21 @@ export default function ProductCard({ product, price, isAgent = false }: Product
         <div className="flex items-center justify-between mb-4">
           <div>
             <p className="text-xs text-muted-foreground mb-1">Price</p>
-            <p className="text-3xl font-bold text-primary">${(price / 100).toFixed(2)}</p>
+            <p className="text-3xl font-bold text-primary group-hover:scale-110 transition-transform inline-block">
+              ${(price / 100).toFixed(2)}
+            </p>
           </div>
           {isAgent && product.agentPrice < product.price && (
             <div className="text-right">
               <p className="text-xs text-muted-foreground line-through">${(product.price / 100).toFixed(2)}</p>
-              <p className="text-sm font-semibold text-green-600">Save 20%</p>
+              <p className="text-sm font-semibold text-green-600 animate-pulse">Save 20%</p>
             </div>
           )}
         </div>
 
-        <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-colors flex items-center justify-center gap-2">
-          <ShoppingCart size={20} />
-          Add to Cart
+        <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 group/btn">
+          <ShoppingCart size={20} className="group-hover/btn:animate-bounce" />
+          <span className="group-hover/btn:translate-x-1 transition-transform inline-block">Add to Cart</span>
         </button>
       </div>
     </div>

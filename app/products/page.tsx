@@ -1,6 +1,6 @@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
-import ProductCard from "@/components/product-card"
+import ProductShowcase from "@/components/product-showcase"
 import { products } from "@/lib/products"
 
 export const metadata = {
@@ -15,7 +15,7 @@ export default function ProductsPage() {
 
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 animate-fade-up">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">VICON Products</h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Professional fire protection systems engineered for Southern California homes and businesses. All products
@@ -24,11 +24,8 @@ export default function ProductsPage() {
             <div className="w-24 h-1 bg-accent mx-auto mt-6" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            {products.map((product) => (
-              <ProductCard key={product.id} product={product} price={product.price} />
-            ))}
-          </div>
+          {/* Horizontal scrolling carousel on mobile, grid on desktop */}
+          <ProductShowcase products={products} />
 
           <div className="bg-primary text-primary-foreground p-12 rounded-lg text-center">
             <h2 className="text-3xl font-bold mb-4">Need Help Choosing?</h2>
