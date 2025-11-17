@@ -18,15 +18,15 @@ export default function WhyVicon() {
   ]
 
   return (
-    <section className="relative py-20 px-4 overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section className="relative py-20 px-4 overflow-hidden bg-black">
+      {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="/AdobeStock_1731470527.jpeg"
           alt="Fire Prevention Background"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-background/90" />
+        <div className="absolute inset-0 bg-black/70" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -36,7 +36,7 @@ export default function WhyVicon() {
             titleInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Intelligent Fire Prevention for Modern Living
           </h2>
           <div className="w-24 h-1 bg-accent mx-auto" />
@@ -74,7 +74,7 @@ export default function WhyVicon() {
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent/20 group-hover:scale-110 transition-all">
                   <Icon className="text-accent" size={32} />
                 </div>
-                <p className="font-semibold text-foreground group-hover:text-accent transition-colors">{item.text}</p>
+                <p className="font-semibold text-white group-hover:text-accent transition-colors">{item.text}</p>
               </Link>
             )
           })}
