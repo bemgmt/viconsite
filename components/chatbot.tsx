@@ -132,10 +132,10 @@ export function Chatbot() {
 
   return (
     <>
-      {/* Floating Chat Button - Glowing Orb */}
+      {/* Floating Chat Button - Glowing Red Orb */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-40 bg-gradient-to-br from-primary via-primary to-accent text-primary-foreground rounded-full p-4 shadow-[0_0_30px_rgba(146,8,24,0.5)] hover:shadow-[0_0_50px_rgba(146,8,24,0.8)] transition-all duration-300 hover:scale-110 animate-pulse"
+        className="fixed bottom-6 right-6 z-40 bg-accent text-accent-foreground rounded-full p-4 shadow-[0_0_30px_rgba(227,30,36,0.6)] hover:shadow-[0_0_50px_rgba(227,30,36,0.9)] transition-all duration-300 hover:scale-110 animate-pulse"
         aria-label="Open chat"
       >
         {isOpen ? <X size={24} /> : <MessageCircle size={24} />}

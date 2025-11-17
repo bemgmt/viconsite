@@ -60,7 +60,7 @@ export default function PricingSection() {
             ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+          <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-[0_0_20px_rgba(227,30,36,0.4)] hover:shadow-[0_0_40px_rgba(227,30,36,0.7)]">
             Get Your Free Quote Today
           </button>
         </div>

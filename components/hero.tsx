@@ -88,7 +88,7 @@ export default function Hero() {
         <p className="text-lg md:text-xl mb-8 max-w-2xl animate-fade-up animate-delay-400">
           {slides[current].subtitle}
         </p>
-        <button className="group bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] animate-fade-up animate-delay-600">
+        <button className="group bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(227,30,36,0.4)] hover:shadow-[0_0_40px_rgba(227,30,36,0.7)] animate-fade-up animate-delay-600">
           <span className="inline-block group-hover:translate-x-1 transition-transform">
             {slides[current].cta}
           </span>

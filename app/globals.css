@@ -4,35 +4,35 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* VICON Brand Colors: Vibrant Red (#E31E24) primary with crisp white accents */
+  /* VICON Brand Colors: Black, White, and Red - Bold and Balanced */
   --background: oklch(0.99 0 0); /* Pure white background */
-  --foreground: oklch(0.2 0.05 20); /* Dark gray for text */
+  --foreground: oklch(0.15 0 0); /* Rich black for text */
   --card: oklch(1 0 0); /* White cards */
-  --card-foreground: oklch(0.2 0.05 20);
+  --card-foreground: oklch(0.15 0 0); /* Black text on cards */
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.05 20);
-  --primary: oklch(0.55 0.22 25); /* Vibrant VICON Red (#E31E24) */
-  --primary-foreground: oklch(1 0 0); /* White text on red */
-  --secondary: oklch(0.35 0.18 25); /* Darker red for depth */
+  --popover-foreground: oklch(0.15 0 0);
+  --primary: oklch(0.15 0 0); /* Rich black for primary elements */
+  --primary-foreground: oklch(1 0 0); /* White text on black */
+  --secondary: oklch(0.25 0 0); /* Dark gray for secondary */
   --secondary-foreground: oklch(1 0 0);
   --muted: oklch(0.95 0.01 20); /* Light gray */
-  --muted-foreground: oklch(0.5 0.02 20);
-  --accent: oklch(0.55 0.22 25); /* VICON Red for accents */
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.55 0.22 25); /* Vibrant VICON Red for accents only */
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.9 0.01 20); /* Light gray borders */
   --input: oklch(0.95 0.01 20);
-  --ring: oklch(0.55 0.22 25); /* Red focus rings */
+  --ring: oklch(0.55 0.22 25); /* Red focus rings - keep the glow! */
   --chart-1: oklch(0.55 0.22 25); /* Red */
-  --chart-2: oklch(0.35 0.18 25); /* Dark red */
+  --chart-2: oklch(0.15 0 0); /* Black */
   --chart-3: oklch(0.7 0.15 25); /* Light red */
   --chart-4: oklch(0.5 0.02 20); /* Gray */
   --chart-5: oklch(0.3 0.05 20); /* Dark gray */
   --radius: 0.625rem;
   --sidebar: oklch(0.99 0 0);
-  --sidebar-foreground: oklch(0.2 0.05 20);
-  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-foreground: oklch(0.15 0 0);
+  --sidebar-primary: oklch(0.15 0 0);
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.55 0.22 25);
   --sidebar-accent-foreground: oklch(1 0 0);
@@ -41,38 +41,38 @@
 }
 
 .dark {
-  /* Dark mode: Dark background with red accents */
-  --background: oklch(0.15 0.02 20); /* Very dark gray */
+  /* Dark mode: Pure black with white text and red accents */
+  --background: oklch(0.1 0 0); /* Deep black */
   --foreground: oklch(0.98 0 0); /* White text */
-  --card: oklch(0.2 0.02 20); /* Dark gray cards */
+  --card: oklch(0.15 0 0); /* Rich black cards */
   --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.15 0.02 20);
+  --popover: oklch(0.1 0 0);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.55 0.22 25); /* VICON Red stays vibrant */
+  --primary: oklch(0.15 0 0); /* Black for primary */
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.35 0.18 25); /* Darker red */
+  --secondary: oklch(0.25 0 0); /* Dark gray */
   --secondary-foreground: oklch(1 0 0);
-  --muted: oklch(0.25 0.02 20);
-  --muted-foreground: oklch(0.7 0.02 20);
-  --accent: oklch(0.55 0.22 25); /* VICON Red */
+  --muted: oklch(0.25 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.55 0.22 25); /* Vibrant red accents */
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.3 0.02 20);
-  --input: oklch(0.3 0.02 20);
-  --ring: oklch(0.55 0.22 25); /* Red focus rings */
+  --border: oklch(0.25 0 0);
+  --input: oklch(0.25 0 0);
+  --ring: oklch(0.55 0.22 25); /* Red focus rings - keep the glow! */
   --chart-1: oklch(0.55 0.22 25); /* Red */
-  --chart-2: oklch(0.35 0.18 25); /* Dark red */
+  --chart-2: oklch(0.15 0 0); /* Black */
   --chart-3: oklch(0.7 0.15 25); /* Light red */
-  --chart-4: oklch(0.5 0.02 20); /* Gray */
-  --chart-5: oklch(0.3 0.05 20); /* Dark gray */
-  --sidebar: oklch(0.15 0.02 20);
+  --chart-4: oklch(0.5 0 0); /* Gray */
+  --chart-5: oklch(0.3 0 0); /* Dark gray */
+  --sidebar: oklch(0.1 0 0);
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.55 0.22 25);
+  --sidebar-primary: oklch(0.15 0 0);
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.55 0.22 25);
   --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.3 0.02 20);
+  --sidebar-border: oklch(0.25 0 0);
   --sidebar-ring: oklch(0.55 0.22 25);
 }
 
