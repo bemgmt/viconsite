@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
+import FireWaterAnimation from "./fire-water-animation"
 
 export default function HowItWorks() {
   const [expandedIndex, setExpandedIndex] = useState(0)
@@ -38,8 +39,11 @@ export default function HowItWorks() {
   }
 
   return (
-    <section className="py-20 bg-primary text-primary-foreground px-4">
-      <div className="max-w-4xl mx-auto">
+    <section className="relative py-20 bg-primary text-primary-foreground px-4 overflow-hidden">
+      {/* Animated Fire -> Water -> Smoke Background */}
+      <FireWaterAnimation />
+
+      <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">When Every Second Counts, Intelligence Wins</h2>
           <div className="w-24 h-1 bg-accent mx-auto" />
