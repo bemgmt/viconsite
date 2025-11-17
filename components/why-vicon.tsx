@@ -18,8 +18,18 @@ export default function WhyVicon() {
   ]
 
   return (
-    <section className="py-20 bg-background px-4">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-20 px-4 overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/AdobeStock_1731470527.jpeg"
+          alt="Fire Prevention Background"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-background/90" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div
           ref={titleRef as React.RefObject<HTMLDivElement>}
           className={`text-center mb-16 transition-all duration-700 ${
