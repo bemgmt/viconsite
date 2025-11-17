@@ -48,8 +48,8 @@ export default function WhyVicon() {
             descInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <p className="text-lg text-foreground leading-relaxed">
-            <span className="font-bold text-primary">Fires move fast — but VICON moves faster.</span> Our intelligent
+          <p className="text-lg text-white leading-relaxed">
+            <span className="font-bold text-white">Fires move fast — but VICON moves faster.</span> Our intelligent
             sprinkler system detects smoke and heat within seconds, pinpoints the source, and activates a high-pressure
             water cannon with surgical precision. It's always alert, always learning, and always protecting what matters
             most.
