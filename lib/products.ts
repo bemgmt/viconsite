@@ -13,20 +13,54 @@ export interface Product {
 export const products: Product[] = [
   {
     id: "vk-240",
-    name: "VK-240-25-3000 Intelligent Fire Sprinkler",
-    description: "AI-enhanced precision fire-suppression system for residential and commercial use",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WechatIMG413-1NbuHEISX3ViaiAMFKZoYtvleeg2AX.png",
+    name: "VK-240-25-3000 Single-Column Jet Rod Kit",
+    description: "Wireless remote-controlled fire suppression system with stainless steel construction",
+    image: "/mmexport1763001236323.jpg",
     price: 4299,
     agentPrice: 3439.2, // 20% discount
     features: [
-      "AI-driven real-time threat detection",
-      "Precision water release - minimizes damage",
-      "12 L/s high flow rate suppression",
-      "Automatic activation on threat detection",
-      "UL & FCC Certified",
+      "Wireless remote controller (500m range)",
+      "Stainless steel material",
+      "Pressure: 1.2 MPA",
+      "24V voltage operation",
+      "DN50-DN80 flange compatibility",
+      "Size: 3000×100mm",
+    ],
+    specs: "Voltage: 24V | Control: Wireless (500m) | Material: Stainless Steel | Pressure: 1.2 MPA | Interface: DN50 (2 inch)",
+  },
+  {
+    id: "vk-product-2",
+    name: "VICON Fire Protection System - Model 2",
+    description: "Advanced fire suppression system with intelligent monitoring",
+    image: "/mmexport1763001233812.jpg",
+    price: 3799,
+    agentPrice: 3039.2, // 20% discount
+    features: [
+      "Intelligent fire detection",
+      "Automatic suppression activation",
+      "Real-time monitoring",
+      "Remote control capability",
+      "Weather-resistant design",
       "Professional installation included",
     ],
-    specs: "Flow Rate: 12 L/s | Max Head Pressure: 110 m | Power: 3 kW | Voltage: 220V | AI Detection: Real-time",
+    specs: "Advanced monitoring | Automatic activation | Weather-resistant | Remote control enabled",
+  },
+  {
+    id: "vk-product-3",
+    name: "VICON Fire Protection System - Model 3",
+    description: "Compact fire suppression solution for residential and commercial use",
+    image: "/mmexport1763001229545.jpg",
+    price: 3299,
+    agentPrice: 2639.2, // 20% discount
+    features: [
+      "Compact design",
+      "Easy installation",
+      "Smart detection technology",
+      "Rapid response system",
+      "Low maintenance",
+      "Energy efficient",
+    ],
+    specs: "Compact design | Smart detection | Rapid response | Energy efficient operation",
   },
   {
     id: "backup-battery",

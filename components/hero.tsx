@@ -13,20 +13,20 @@ export default function Hero() {
       subtitle:
         "AI-powered detection, precision targeting, and instant response — protecting your home before flames can spread.",
       cta: "Protect Your Home for $200/month",
-      image: "/smart-fire-detection-system-with-ai-monitoring.jpg",
+      image: "/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=1469509501869408920&skey=@crypt_7d72f99b_825157939b6d97f492346c55821f42a0&mmweb_appid=wx_webfilehelper.jpeg",
     },
     {
       title: "Intelligent Fire Prevention for Modern Living",
       subtitle:
         "Our AI catches threats in seconds and responds with surgical precision — always alert, always learning.",
       cta: "Schedule a Free Consultation",
-      image: "/advanced-fire-suppression-system-protecting-home.jpg",
+      image: "/intelligent-fire-sprinkler-system-with-ai-detectio.jpg",
     },
     {
       title: "Safer. Greener. Smarter.",
       subtitle: "Solar-powered, water-efficient protection engineered for every home in Southern California.",
       cta: "Learn How VICON Works",
-      image: "/modern-fire-safety-system-in-residential-building.jpg",
+      image: "/AdobeStock_1015607126.jpeg",
     },
   ]
 

@@ -39,11 +39,12 @@ export default function SustainableDesign() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-accent/10 to-accent/5 rounded-lg p-12 flex items-center justify-center">
-            <div className="text-center">
-              <Leaf size={80} className="text-accent mx-auto mb-4" />
-              <p className="text-xl font-bold text-foreground">Sustainable Protection</p>
-            </div>
+          <div className="rounded-lg overflow-hidden">
+            <img
+              src="/自定义模板(5).png"
+              alt="Sustainable Protection"
+              className="w-full h-auto object-cover"
+            />
           </div>
         </div>
       </div>

@@ -12,15 +12,14 @@ export default function ViconSystem() {
       description: "The system's AI-powered brain coordinating sensors, cameras, and pumps.",
       details:
         "The central processing unit manages all VICON components in real-time, running advanced AI algorithms that analyze sensor data, make split-second decisions, and coordinate the entire suppression sequence. UL & FCC certified for safety and reliability.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WechatIMG413-1NbuHEISX3ViaiAMFKZoYtvleeg2AX.png",
+      image: "/ChatGPT Image 2025年6月1日 16_09_33.png",
     },
     {
       title: "AI Water Cannon",
       description: "Automatically targets and suppresses fires with adaptive precision.",
       details:
         "Delivers 12 L/s of high-pressure water with unprecedented accuracy. The intelligent nozzle system rotates and adjusts spray patterns based on real-time fire location data, ensuring maximum suppression efficiency while minimizing water waste and property damage.",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%E6%88%AA%E5%B1%8F2025-06-13-18.16.37-Qoo2vaGfIkOj8ODsDYcAVekpBlXeeu.png",
+      image: "/webwxgetmsgimg.jpg",
     },
     {
       title: "Localization Module",
@@ -42,7 +41,7 @@ export default function ViconSystem() {
       description: "Monitor and control your system anywhere, anytime.",
       details:
         "Real-time dashboard shows system status, sensor readings, and live camera feeds. Receive instant alerts for any detected threats, manually control the system if needed, and access historical logs for insurance records and system optimization.",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WechatIMG413-1NbuHEISX3ViaiAMFKZoYtvleeg2AX.png",
+      image: "/23131.PNG",
     },
   ]
 
