@@ -15,7 +15,7 @@ export const products: Product[] = [
     id: "vk-240",
     name: "VK-240-25-3000 Single-Column Jet Rod Kit",
     description: "Wireless remote-controlled fire suppression system with stainless steel construction",
-    image: "/mmexport1763001236323.jpg",
+    image: "/nozzle2.jpg",
     price: 4299,
     agentPrice: 3439.2, // 20% discount
     features: [
@@ -32,7 +32,7 @@ export const products: Product[] = [
     id: "vk-product-2",
     name: "VICON Fire Protection System - Model 2",
     description: "Advanced fire suppression system with intelligent monitoring",
-    image: "/mmexport1763001233812.jpg",
+    image: "/inground3.jpg",
     price: 3799,
     agentPrice: 3039.2, // 20% discount
     features: [
@@ -49,7 +49,7 @@ export const products: Product[] = [
     id: "vk-product-3",
     name: "VICON Fire Protection System - Model 3",
     description: "Compact fire suppression solution for residential and commercial use",
-    image: "/mmexport1763001229545.jpg",
+    image: "/dualconsole1.jpg",
     price: 3299,
     agentPrice: 2639.2, // 20% discount
     features: [
@@ -66,8 +66,7 @@ export const products: Product[] = [
     id: "backup-battery",
     name: "Backup Home Battery System",
     description: "Power continuity for safety systems and essential equipment during outages",
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%E6%88%AA%E5%B1%8F2025-06-13-18.16.37-Qoo2vaGfIkOj8ODsDYcAVekpBlXeeu.png",
+    image: "/batteryblack1.jpg",
     price: 5999,
     agentPrice: 4799.2, // 20% discount
     features: [
