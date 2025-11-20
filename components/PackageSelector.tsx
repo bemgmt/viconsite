@@ -180,7 +180,7 @@ export default function PackageSelector() {
         {step === 3 && (
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold text-gray-800">
-              Do you want backup energy storage (2 kW inverter + 14.3 kWh battery)?
+              Do you want backup energy storage (12 kW inverter + 16 kWh Sanctuary Battery)?
             </h2>
             <div className="flex gap-4 flex-wrap">
               <button className="btn btn-primary" onClick={() => handleEnergyAnswer(true)}>

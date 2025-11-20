@@ -23,6 +23,7 @@ export default function Navigation() {
     { label: "The System", href: "/the-system" },
     { label: "Learn More", href: "/learn-more" },
     { label: "Products", href: "/products" },
+    { label: "Battery", href: "/battery" },
     { label: "Agent Pricing", href: "/agent-pricing" },
   ]
 

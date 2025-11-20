@@ -8,10 +8,10 @@ export default function Footer() {
 
   const footerLinks = {
     Products: [
-      { label: "VK-240-25-3000 Fire Sprinkler", href: "#" },
-      { label: "Residential Fire Protection", href: "#" },
-      { label: "Commercial Fire Systems", href: "#" },
-      { label: "Backup Battery Systems", href: "#" },
+      { label: "VK-240-25-3000 Fire Sprinkler", href: "/products" },
+      { label: "Residential Fire Protection", href: "/products" },
+      { label: "Commercial Fire Systems", href: "/products" },
+      { label: "Sanctuary Battery System", href: "/battery" },
     ],
     Company: [
       { label: "About VICON", href: "#" },

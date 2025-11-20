@@ -64,19 +64,21 @@ export const products: Product[] = [
   },
   {
     id: "backup-battery",
-    name: "Backup Home Battery System",
-    description: "Power continuity for safety systems and essential equipment during outages",
+    name: "Sanctuary Battery System - 16kWh",
+    description: "Scalable lithium iron phosphate battery system with integrated 12kW inverter for whole-home backup power",
     image: "/batteryblack1.jpg",
-    price: 5999,
-    agentPrice: 4799.2, // 20% discount
+    price: 12800,
+    agentPrice: 10240, // 20% discount
     features: [
-      "Keeps fire systems operational during outages",
-      "Powers essential home equipment",
-      "Long-duration backup capacity",
-      "Seamless integration with VICON",
-      "UPS-grade reliability",
-      "10-year warranty",
+      "16kWh capacity (expandable to 60kWh)",
+      "Integrated 12kW inverter with grid-interactive capability",
+      "Lithium Iron Phosphate (LiFePO4) battery technology",
+      "Wide operating temperature: -4°F to 131°F",
+      "Flood and dust resistant design",
+      "System expansion available anytime",
+      "Meets North American safety and EMI standards",
+      "96.5% max efficiency",
     ],
-    specs: "Capacity: 13.5 kWh | Continuous power support | UPS-grade reliability | Silent operation",
+    specs: "Capacity: 16kWh (expandable to 60kWh) | Inverter: 12kW continuous, 13.2kW peak | Battery: LiFePO4 51.2V | Dimensions: 45\" x 18.5\" x 10.45\" | Weight: 290 lbs | Temp Range: -4°F to 131°F",
   },
 ]
