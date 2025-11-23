@@ -20,7 +20,7 @@ export default function Hero() {
       subtitle:
         "Our AI catches threats in seconds and responds with surgical precision — always alert, always learning.",
       cta: "Schedule a Free Consultation",
-      image: "/battery2.jpg",
+      image: "/batteryblack1.jpg",
     },
     {
       title: "Safer. Greener. Smarter.",

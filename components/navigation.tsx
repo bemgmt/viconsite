@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Search, User, ShoppingCart, ChevronDown } from "lucide-react"
+import { Menu, X, User, ShoppingCart, ChevronDown } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -123,12 +123,9 @@ export default function Navigation() {
             </div>
 
             <div className="flex items-center gap-4">
-              <button className="hidden sm:flex hover:text-accent transition-all hover:scale-110">
-                <Search size={20} />
-              </button>
-              <button className="hidden sm:flex hover:text-accent transition-all hover:scale-110">
+              <Link href="/login" className="hidden sm:flex hover:text-accent transition-all hover:scale-110">
                 <User size={20} />
-              </button>
+              </Link>
               <button
                 onClick={() => setIsCartOpen(true)}
                 className="relative hover:text-accent transition-all hover:scale-110 group"

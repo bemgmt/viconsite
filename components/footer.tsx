@@ -14,7 +14,7 @@ export default function Footer() {
       { label: "Sanctuary Battery System", href: "/battery" },
     ],
     Company: [
-      { label: "About VICON", href: "#" },
+      { label: "About VICON", href: "/about" },
       { label: "Blog", href: "#" },
       { label: "Careers", href: "/careers" },
       { label: "Press", href: "#" },

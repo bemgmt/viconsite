@@ -63,7 +63,7 @@ export default function BatteryPage() {
             </div>
             <div className="relative">
               <img
-                src="/batteryblack1.jpg"
+                src="/batterysystem.jpg"
                 alt="Sanctuary Battery System"
                 className="w-full h-auto rounded-lg shadow-2xl"
               />

@@ -5,8 +5,8 @@ export default function Testimonials() {
       author: "Homeowner, Pasadena",
     },
     {
-      quote: "Installation was fast, and it blended perfectly with my smart home setup.",
-      author: "Builder, Los Angeles",
+      quote: "Our family lives in Burbank, where wildfire season brings significant concern every year. After installing the VICON Smart Sprinkler Fire Protection System, we truly feel much more at ease. The system has been stable and requires almost no maintenance. When we need to activate it, we simply use the remote control to spray the roofline and yard for cooling and fire-prevention. As the demo home for Burbank, we're glad that more residents can see the system up close and learn how it works. We hope it can benefit many other families as well. This reflects our family's actual experience with the system.",
+      author: "Duke Wang, Burbank Demo Home",
     },
   ]
 

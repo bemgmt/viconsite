@@ -81,4 +81,38 @@ export const products: Product[] = [
     ],
     specs: "Capacity: 16kWh (expandable to 60kWh) | Inverter: 12kW continuous, 13.2kW peak | Battery: LiFePO4 51.2V | Dimensions: 45\" x 18.5\" x 10.45\" | Weight: 290 lbs | Temp Range: -4°F to 131°F",
   },
+  {
+    id: "water-tank-4386",
+    name: "Water Storage Tank - 4,386 Gallons",
+    description: "Large capacity water storage tank for fire suppression systems",
+    image: "/watertank1.jpg",
+    price: 4232,
+    agentPrice: 3385.6, // 20% discount
+    features: [
+      "4,386 gallon capacity",
+      "Durable construction",
+      "Weather-resistant design",
+      "Compatible with VICON fire protection systems",
+      "Easy installation",
+      "Low maintenance",
+    ],
+    specs: "Capacity: 4,386 gallons | Material: Durable polymer | Weather-resistant | Fire suppression compatible",
+  },
+  {
+    id: "water-tank-1453",
+    name: "Water Storage Tank - 1,453 Gallons",
+    description: "Medium capacity water storage tank for fire suppression systems",
+    image: "/watertank2.jpg",
+    price: 6350,
+    agentPrice: 5080, // 20% discount
+    features: [
+      "1,453 gallon capacity",
+      "Compact design",
+      "Weather-resistant construction",
+      "Compatible with VICON fire protection systems",
+      "Space-efficient installation",
+      "Minimal maintenance required",
+    ],
+    specs: "Capacity: 1,453 gallons | Material: Durable polymer | Compact design | Fire suppression compatible",
+  },
 ]
