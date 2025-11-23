@@ -16,7 +16,7 @@ export default function Footer() {
     Company: [
       { label: "About VICON", href: "#" },
       { label: "Blog", href: "#" },
-      { label: "Careers", href: "#" },
+      { label: "Careers", href: "/careers" },
       { label: "Press", href: "#" },
     ],
     Support: [

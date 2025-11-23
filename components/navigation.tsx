@@ -3,12 +3,21 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Search, User, ShoppingCart } from "lucide-react"
+import { Menu, X, Search, User, ShoppingCart, ChevronDown } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { useCart } from "@/contexts/cart-context"
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false)
   const pathname = usePathname()
+  const { totalItems, setIsCartOpen } = useCart()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,9 +31,15 @@ export default function Navigation() {
     { label: "How It Works", href: "/how-it-works" },
     { label: "The System", href: "/the-system" },
     { label: "Learn More", href: "/learn-more" },
-    { label: "Products", href: "/products" },
-    { label: "Battery", href: "/battery" },
     { label: "Agent Pricing", href: "/agent-pricing" },
+  ]
+
+  const productItems = [
+    { label: "All Products", href: "/products" },
+    { label: "VK-240 Jet Rod Kit", href: "/products/vk-240" },
+    { label: "Model 2", href: "/products/model-2" },
+    { label: "Model 3", href: "/products/model-3" },
+    { label: "Sanctuary Battery", href: "/battery" },
   ]
 
   return (
@@ -73,6 +88,38 @@ export default function Navigation() {
                   </Link>
                 )
               })}
+
+              {/* Products Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Link
+                    href="/products"
+                    className={`relative text-sm font-medium transition-colors group flex items-center gap-1 ${
+                      pathname.startsWith("/products") || pathname === "/battery" ? "text-accent" : "hover:text-accent"
+                    }`}
+                  >
+                    Products
+                    <ChevronDown size={16} className="transition-transform group-data-[state=open]:rotate-180" />
+                    <span
+                      className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ${
+                        pathname.startsWith("/products") || pathname === "/battery" ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                    />
+                  </Link>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-primary text-primary-foreground border-primary-foreground/20">
+                  {productItems.map((product) => (
+                    <DropdownMenuItem key={product.href} asChild>
+                      <Link
+                        href={product.href}
+                        className="cursor-pointer hover:bg-primary-foreground/10 focus:bg-primary-foreground/10"
+                      >
+                        {product.label}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
 
             <div className="flex items-center gap-4">
@@ -82,11 +129,16 @@ export default function Navigation() {
               <button className="hidden sm:flex hover:text-accent transition-all hover:scale-110">
                 <User size={20} />
               </button>
-              <button className="relative hover:text-accent transition-all hover:scale-110 group">
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative hover:text-accent transition-all hover:scale-110 group"
+              >
                 <ShoppingCart size={20} />
-                <span className="absolute -top-2 -right-2 bg-accent text-primary w-5 h-5 rounded-full text-xs flex items-center justify-center font-bold group-hover:animate-bounce">
-                  0
-                </span>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-accent text-primary w-5 h-5 rounded-full text-xs flex items-center justify-center font-bold group-hover:animate-bounce">
+                    {totalItems}
+                  </span>
+                )}
               </button>
 
               <button
@@ -110,6 +162,37 @@ export default function Navigation() {
                   {item.label}
                 </Link>
               ))}
+
+              {/* Mobile Products Menu */}
+              <div>
+                <button
+                  onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                  className="w-full flex items-center justify-between py-2 px-2 rounded hover:bg-primary-foreground/10 transition-colors"
+                >
+                  <span>Products</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform ${isMobileProductsOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+                {isMobileProductsOpen && (
+                  <div className="ml-4 mt-2 space-y-2">
+                    {productItems.map((product) => (
+                      <Link
+                        key={product.href}
+                        href={product.href}
+                        className="block py-2 px-2 rounded hover:bg-primary-foreground/10 transition-colors text-sm"
+                        onClick={() => {
+                          setIsOpen(false)
+                          setIsMobileProductsOpen(false)
+                        }}
+                      >
+                        {product.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           )}
         </div>

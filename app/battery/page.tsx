@@ -1,13 +1,24 @@
+"use client"
+
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import BatterySpecs from "@/components/battery-specs"
-
-export const metadata = {
-  title: "Sanctuary Battery System - VICON",
-  description: "Scalable 16kWh lithium iron phosphate battery system with integrated 12kW inverter for whole-home backup power",
-}
+import { useCart } from "@/contexts/cart-context"
+import { ShoppingCart } from "lucide-react"
 
 export default function BatteryPage() {
+  const { addToCart } = useCart()
+
+  const product = {
+    id: "backup-battery",
+    name: "Sanctuary Battery System - 16kWh",
+    price: 12800,
+    image: "/batteryblack1.jpg",
+  }
+
+  const handleAddToCart = () => {
+    addToCart(product)
+  }
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
@@ -37,9 +48,18 @@ export default function BatteryPage() {
                   <p className="text-3xl font-bold text-primary">$12,800</p>
                 </div>
               </div>
-              <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
-                Schedule Free Consultation
-              </button>
+              <div className="flex flex-wrap gap-4">
+                <button
+                  onClick={handleAddToCart}
+                  className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg flex items-center gap-2"
+                >
+                  <ShoppingCart size={20} />
+                  Add to Cart
+                </button>
+                <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
+                  Schedule Free Consultation
+                </button>
+              </div>
             </div>
             <div className="relative">
               <img
