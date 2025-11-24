@@ -1,6 +1,7 @@
 "use client"
 
 import { useInView } from "@/hooks/use-in-view"
+import Link from "next/link"
 
 export default function PricingSection() {
   const { ref: titleRef, isInView: titleInView } = useInView()
@@ -60,9 +61,9 @@ export default function PricingSection() {
             ctaInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-          <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-[0_0_20px_rgba(227,30,36,0.4)] hover:shadow-[0_0_40px_rgba(227,30,36,0.7)]">
+          <Link href="/contact" className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-[0_0_20px_rgba(227,30,36,0.4)] hover:shadow-[0_0_40px_rgba(227,30,36,0.7)]">
             Get Your Free Quote Today
-          </button>
+          </Link>
         </div>
       </div>
     </section>

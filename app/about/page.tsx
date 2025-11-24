@@ -1,6 +1,7 @@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Shield, Zap, Users, Award } from "lucide-react"
+import Link from "next/link"
 
 export default function AboutPage() {
   return (
@@ -118,12 +119,12 @@ export default function AboutPage() {
             Join thousands of homeowners who trust VICON to keep their families safe
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
+            <Link href="/contact" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
               Schedule Free Consultation
-            </button>
-            <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
+            </Link>
+            <Link href="/products" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
               View Products
-            </button>
+            </Link>
           </div>
         </div>
       </section>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Link from "next/link"
 
 export default function Hero() {
   const [current, setCurrent] = useState(0)
@@ -13,6 +14,7 @@ export default function Hero() {
       subtitle:
         "AI-powered detection, precision targeting, and instant response — protecting your home before flames can spread.",
       cta: "Protect Your Home for $200/month",
+      ctaLink: "/contact",
       image: "/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=1469509501869408920&skey=@crypt_7d72f99b_825157939b6d97f492346c55821f42a0&mmweb_appid=wx_webfilehelper.jpeg",
     },
     {
@@ -20,12 +22,14 @@ export default function Hero() {
       subtitle:
         "Our AI catches threats in seconds and responds with surgical precision — always alert, always learning.",
       cta: "Schedule a Free Consultation",
+      ctaLink: "/contact",
       image: "/batteryblack1.jpg",
     },
     {
       title: "Safer. Greener. Smarter.",
       subtitle: "Solar-powered, water-efficient protection engineered for every home in Southern California.",
       cta: "Learn How VICON Works",
+      ctaLink: "/the-system",
       image: "/AdobeStock_1015607126.jpeg",
     },
   ]
@@ -88,11 +92,11 @@ export default function Hero() {
         <p className="text-lg md:text-xl mb-8 max-w-2xl animate-fade-up animate-delay-400">
           {slides[current].subtitle}
         </p>
-        <button className="group bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(227,30,36,0.4)] hover:shadow-[0_0_40px_rgba(227,30,36,0.7)] animate-fade-up animate-delay-600">
+        <Link href={slides[current].ctaLink} className="group bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-bold transition-all hover:scale-105 shadow-[0_0_20px_rgba(227,30,36,0.4)] hover:shadow-[0_0_40px_rgba(227,30,36,0.7)] animate-fade-up animate-delay-600 inline-block">
           <span className="inline-block group-hover:translate-x-1 transition-transform">
             {slides[current].cta}
           </span>
-        </button>
+        </Link>
       </div>
 
       <button

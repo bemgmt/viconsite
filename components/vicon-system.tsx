@@ -90,11 +90,11 @@ export default function ViconSystem() {
                     <div>
                       <p className="text-foreground leading-relaxed mb-4">{component.details}</p>
                     </div>
-                    <div>
+                    <div className="overflow-hidden rounded-lg cursor-pointer group/img">
                       <img
                         src={component.image || "/placeholder.svg"}
                         alt={component.title}
-                        className="w-full h-48 object-cover rounded-lg"
+                        className="w-full h-48 object-cover rounded-lg transition-transform duration-500 group-hover/img:scale-150"
                       />
                     </div>
                   </div>

@@ -4,6 +4,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { useCart } from "@/contexts/cart-context"
 import { ShoppingCart } from "lucide-react"
+import Link from "next/link"
 
 export default function VK240Page() {
   const { addToCart } = useCart()
@@ -55,16 +56,16 @@ export default function VK240Page() {
                   <ShoppingCart size={20} />
                   Add to Cart
                 </button>
-                <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
+                <Link href="/contact" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
                   Schedule Free Consultation
-                </button>
+                </Link>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative overflow-hidden rounded-lg cursor-pointer group/img">
               <img
                 src="/nozzle2.jpg"
                 alt="VK-240-25-3000 Single-Column Jet Rod Kit"
-                className="rounded-lg shadow-2xl w-full"
+                className="rounded-lg shadow-2xl w-full transition-transform duration-500 group-hover/img:scale-150"
               />
             </div>
           </div>
@@ -150,12 +151,12 @@ export default function VK240Page() {
             Get a custom quote for your VK-240 installation. Our experts will help you determine the perfect setup for your needs.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105">
+            <Link href="/contact" className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105">
               Get a Quote
-            </button>
-            <button className="bg-primary-foreground hover:bg-primary-foreground/90 text-primary px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105">
+            </Link>
+            <Link href="/contact" className="bg-primary-foreground hover:bg-primary-foreground/90 text-primary px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105">
               Contact Sales
-            </button>
+            </Link>
           </div>
         </div>
       </section>

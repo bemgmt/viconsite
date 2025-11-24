@@ -4,6 +4,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { useCart } from "@/contexts/cart-context"
 import { ShoppingCart } from "lucide-react"
+import Link from "next/link"
 
 export default function Model3Page() {
   const { addToCart } = useCart()
@@ -55,16 +56,16 @@ export default function Model3Page() {
                   <ShoppingCart size={20} />
                   Add to Cart
                 </button>
-                <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
+                <Link href="/contact" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
                   Schedule Free Consultation
-                </button>
+                </Link>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative overflow-hidden rounded-lg cursor-pointer group/img">
               <img
                 src="/dualconsole1.jpg"
                 alt="VICON Fire Protection System - Model 3"
-                className="rounded-lg shadow-2xl w-full"
+                className="rounded-lg shadow-2xl w-full transition-transform duration-500 group-hover/img:scale-150"
               />
             </div>
           </div>

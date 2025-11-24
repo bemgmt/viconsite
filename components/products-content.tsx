@@ -4,6 +4,7 @@ import { useState } from "react"
 import ProductShowcase from "@/components/product-showcase"
 import PackageSelector from "@/components/PackageSelector"
 import { products } from "@/lib/products"
+import Link from "next/link"
 
 export default function ProductsContent() {
   const [showSelector, setShowSelector] = useState(false)
@@ -46,9 +47,9 @@ export default function ProductsContent() {
             Schedule a free consultation with our VICON experts to determine the perfect fire protection system for
             your property.
           </p>
-          <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-3 rounded-lg font-bold transition-colors">
+          <Link href="/contact" className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-3 rounded-lg font-bold transition-colors">
             Schedule Free Consultation
-          </button>
+          </Link>
         </div>
       </div>
     </section>

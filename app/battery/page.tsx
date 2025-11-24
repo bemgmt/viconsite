@@ -5,6 +5,7 @@ import Footer from "@/components/footer"
 import BatterySpecs from "@/components/battery-specs"
 import { useCart } from "@/contexts/cart-context"
 import { ShoppingCart } from "lucide-react"
+import Link from "next/link"
 
 export default function BatteryPage() {
   const { addToCart } = useCart()
@@ -56,16 +57,16 @@ export default function BatteryPage() {
                   <ShoppingCart size={20} />
                   Add to Cart
                 </button>
-                <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
+                <Link href="/contact" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
                   Schedule Free Consultation
-                </button>
+                </Link>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative overflow-hidden rounded-lg cursor-pointer group/img">
               <img
                 src="/batterysystem.jpg"
                 alt="Sanctuary Battery System"
-                className="w-full h-auto rounded-lg shadow-2xl"
+                className="w-full h-auto rounded-lg shadow-2xl transition-transform duration-500 group-hover/img:scale-150"
               />
             </div>
           </div>

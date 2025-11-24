@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 export default function About() {
   const values = [
     {
@@ -50,9 +52,9 @@ export default function About() {
             Schedule a free fire-safety consultation with our VICON experts to discover the perfect protection system
             for your home or business in Southern California.
           </p>
-          <button className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 rounded-lg font-bold text-lg transition-colors">
+          <Link href="/contact" className="inline-block bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 rounded-lg font-bold text-lg transition-colors">
             Schedule Free Consultation
-          </button>
+          </Link>
         </div>
       </div>
     </section>
