@@ -67,8 +67,8 @@ export const products: Product[] = [
     name: "VICON Intelligent Sprinkler Swimming Pool System",
     description: "High-performance pump system for pool-integrated fire suppression",
     image: "/inground3.jpg",
-    price: 8500,
-    agentPrice: 6800, // 20% discount
+    price: 4200,
+    agentPrice: 3360, // 20% discount
     features: [
       "Dimensions: 59.1 in × 25.2 in × 50.6 in (4.9 ft × 2.1 ft × 4.2 ft)",
       "10 HP stainless steel pump",

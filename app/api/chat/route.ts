@@ -24,7 +24,7 @@ FIRE PROTECTION SYSTEMS:
   * Dimensions: 14 ft × 8 ft × 5 ft
   * Continuous spray time: ~3 hours
 
-- VICON Intelligent Sprinkler Swimming Pool System: $8,500 (Agent: $6,800)
+- VICON Intelligent Sprinkler Swimming Pool System: $4,200 (Agent: $3,360)
   * Dimensions: 59.1 in × 25.2 in × 50.6 in (4.9 ft × 2.1 ft × 4.2 ft)
   * 10 HP stainless steel pump
   * Max flow: 35.2 gpm, Head: 361 ft, Pressure: 174 psi
