@@ -66,7 +66,7 @@ export default function CartSidebar() {
                         </button>
                       </div>
                       <p className="text-lg font-bold text-primary mb-3">
-                        ${(item.price / 100).toFixed(2)}
+                        ${item.price.toLocaleString()}
                       </p>
                       <div className="flex items-center gap-2">
                         <button
@@ -98,7 +98,7 @@ export default function CartSidebar() {
             <div className="space-y-3 mb-4">
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Subtotal ({totalItems} items)</span>
-                <span className="font-semibold text-foreground">${(totalPrice / 100).toFixed(2)}</span>
+                <span className="font-semibold text-foreground">${totalPrice.toLocaleString()}</span>
               </div>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-muted-foreground">Shipping</span>
@@ -107,7 +107,7 @@ export default function CartSidebar() {
               <div className="border-t border-border pt-3">
                 <div className="flex items-center justify-between">
                   <span className="text-lg font-bold text-foreground">Total</span>
-                  <span className="text-2xl font-bold text-primary">${(totalPrice / 100).toFixed(2)}</span>
+                  <span className="text-2xl font-bold text-primary">${totalPrice.toLocaleString()}</span>
                 </div>
               </div>
             </div>

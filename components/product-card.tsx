@@ -79,12 +79,12 @@ export default function ProductCard({ product, price, isAgent = false }: Product
           <div>
             <p className="text-xs text-muted-foreground mb-1">Price</p>
             <p className="text-3xl font-bold text-primary group-hover:scale-110 transition-transform inline-block">
-              ${(price / 100).toFixed(2)}
+              ${price.toLocaleString()}
             </p>
           </div>
           {isAgent && product.agentPrice < product.price && (
             <div className="text-right">
-              <p className="text-xs text-muted-foreground line-through">${(product.price / 100).toFixed(2)}</p>
+              <p className="text-xs text-muted-foreground line-through">${product.price.toLocaleString()}</p>
               <p className="text-sm font-semibold text-green-600 animate-pulse">Save 20%</p>
             </div>
           )}
