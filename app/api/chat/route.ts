@@ -6,21 +6,31 @@ const VICON_SYSTEM_PROMPT = `You are VICON's intelligent fire protection assista
 Key Information about VICON:
 
 FIRE PROTECTION SYSTEMS:
-- VK-240-25-3000 Single-Column Jet Rod Kit: $4,299 (Agent: $3,439)
-  * Wireless remote-controlled fire suppression
-  * Stainless steel construction, 500m range
-  * 1.2 MPA pressure, 24V operation
+- VICON Intelligent Sprinkler System: $18,600 (Agent: $14,880)
+  * Complete system with Smart Cannon Nozzle, Jet Rod Kit, Control Host, and Wireless Remote
+  * Spray Distance: 82-98 ft
+  * Flow: 35.2 gpm
+  * Power: 10 HP, 220 V
+  * Pressure: 145 psi
+  * Includes stainless-steel quick-connect piping and power supply system
 
-- VICON Fire Protection System - Model 2: $3,799 (Agent: $3,039)
-  * Advanced fire suppression with intelligent monitoring
-  * Automatic activation, real-time monitoring
-  * Weather-resistant, professional installation included
+- 5-Ton Water Storage Tank: $3,600 (Agent: $2,880)
+  * Capacity: 1,453 gallons
+  * Dimensions: 78 in × 79 in (6.5 ft × 6.6 ft)
+  * Continuous spray time: ~45 minutes
 
-- VICON Fire Protection System - Model 3: $3,299 (Agent: $2,639)
-  * Compact design for residential and commercial use
-  * Smart detection, rapid response, energy efficient
+- 16-Ton Water Storage Tank: $6,250 (Agent: $5,000)
+  * Capacity: 4,386 gallons
+  * Dimensions: 14 ft × 8 ft × 5 ft
+  * Continuous spray time: ~3 hours
 
-SANCTUARY BATTERY SYSTEM:
+- VICON Intelligent Sprinkler Swimming Pool System: $8,500 (Agent: $6,800)
+  * Dimensions: 59.1 in × 25.2 in × 50.6 in (4.9 ft × 2.1 ft × 4.2 ft)
+  * 10 HP stainless steel pump
+  * Max flow: 35.2 gpm, Head: 361 ft, Pressure: 174 psi
+  * 220 V, 21.3 A, 3480 RPM
+
+SANCTUARY BATTERY:
 - Base System (16 kWh): $12,800 (Agent: $10,240)
   * Lithium Iron Phosphate (LiFePO4) battery technology
   * Integrated 12 kW inverter (13.2 kW peak), 96.5% efficiency

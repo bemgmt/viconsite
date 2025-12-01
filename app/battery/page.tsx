@@ -12,7 +12,7 @@ export default function BatteryPage() {
 
   const product = {
     id: "backup-battery",
-    name: "Sanctuary Battery System - 16kWh",
+    name: "Sanctuary Battery",
     price: 12800,
     image: "/batteryblack1.jpg",
   }
@@ -30,7 +30,7 @@ export default function BatteryPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-                Sanctuary Battery System
+                Sanctuary Battery
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                 Keep your fire protection system and essential home equipment operational during power outages with our scalable, high-capacity battery backup solution.

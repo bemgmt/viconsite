@@ -36,9 +36,7 @@ export default function Navigation() {
 
   const productItems = [
     { label: "All Products", href: "/products" },
-    { label: "VK-240 Jet Rod Kit", href: "/products/vk-240" },
-    { label: "Model 2", href: "/products/model-2" },
-    { label: "Model 3", href: "/products/model-3" },
+    { label: "VICON Intelligent Sprinkler System", href: "/products/intelligent-sprinkler-system" },
     { label: "Sanctuary Battery", href: "/battery" },
   ]
 
