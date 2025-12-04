@@ -9,20 +9,20 @@ import Link from "next/link"
 
 export default function IntelligentSprinklerSystemPage() {
   const { addToCart } = useCart()
-  const [selectedImage, setSelectedImage] = useState("/nozzle2.jpg")
+  const [selectedImage, setSelectedImage] = useState("/nozzle2 (2).jpg")
 
   const product = {
     id: "intelligent-sprinkler-system",
     name: "VICON Intelligent Sprinkler System",
     price: 18600,
-    image: "/nozzle2.jpg",
+    image: "/nozzle2 (2).jpg",
   }
 
   const galleryImages = [
-    { src: "/nozzle2.jpg", alt: "VICON Smart Cannon Nozzle" },
-    { src: "/cannon1.jpg", alt: "AI Water Cannon" },
-    { src: "/nozzle1.jpg", alt: "Nozzle Detail View" },
-    { src: "/cannontall.jpg", alt: "Jet Rod Kit Installation" },
+    { src: "/nozzle2 (2).jpg", alt: "VICON Smart Cannon Nozzle" },
+    { src: "/cannontall (2).jpg", alt: "AI Water Cannon" },
+    { src: "/cannon1.jpg", alt: "Nozzle Detail View" },
+    { src: "/nozzle1 (2).jpg", alt: "Jet Rod Kit Installation" },
   ]
 
   const handleAddToCart = () => {

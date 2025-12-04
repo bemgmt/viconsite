@@ -12,36 +12,35 @@ export default function ViconSystem() {
       description: "The system's AI-powered brain coordinating sensors, cameras, and pumps.",
       details:
         "The central processing unit manages all VICON components in real-time, running advanced AI algorithms that analyze sensor data, make split-second decisions, and coordinate the entire suppression sequence. UL & FCC certified for safety and reliability.",
-      image: "/ChatGPT Image 2025年6月1日 16_09_33.png",
+      image: "/smartcontrolunit.jpg",
     },
     {
       title: "AI Water Cannon",
       description: "Automatically targets and suppresses fires with adaptive precision.",
       details:
         "Delivers 12 L/s of high-pressure water with unprecedented accuracy. The intelligent nozzle system rotates and adjusts spray patterns based on real-time fire location data, ensuring maximum suppression efficiency while minimizing water waste and property damage.",
-      image: "/cannon1.jpg",
+      image: "/aiwatercannon.jpg",
     },
     {
       title: "Localization Module",
       description: "Determines exact coordinates for targeted spraying.",
       details:
         "Using thermal imaging and multi-spectrum sensors, this module calculates the precise location of the fire threat in 3D space. This data is continuously transmitted to the water cannon to ensure every drop of water goes exactly where it's needed.",
-      image: "/mmexport1763001341433.jpg",
+      image: "/localization.jpg",
     },
     {
       title: "Water Tank",
       description: "Provides immediate water access — no external supply delay.",
       details:
         "The integrated 13.5 kWh backup battery system ensures your water pumps stay operational even during power outages. Independent water supply means suppression happens instantly without relying on municipal water pressure.",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%E6%88%AA%E5%B1%8F2025-06-13-18.16.37-Qoo2vaGfIkOj8ODsDYcAVekpBlXeeu.png",
+      image: "/watertank.jpg",
     },
     {
       title: "VICON App",
       description: "Monitor and control your system anywhere, anytime.",
       details:
         "Real-time dashboard shows system status, sensor readings, and live camera feeds. Receive instant alerts for any detected threats, manually control the system if needed, and access historical logs for insurance records and system optimization.",
-      image: "/screenshot2.jpg",
+      image: "/viconapp.jpg",
     },
   ]
 

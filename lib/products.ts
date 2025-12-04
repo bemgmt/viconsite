@@ -15,7 +15,7 @@ export const products: Product[] = [
     id: "intelligent-sprinkler-system",
     name: "VICON Intelligent Sprinkler System",
     description: "Complete intelligent fire suppression system with smart cannon nozzle, jet rod kit, control host, and wireless remote",
-    image: "/nozzle2.jpg",
+    image: "/mmexport1764830820597.jpg",
     price: 18600,
     agentPrice: 14880, // 20% discount
     features: [
@@ -32,7 +32,7 @@ export const products: Product[] = [
     id: "water-tank-5ton",
     name: "5-Ton Water Storage Tank",
     description: "Compact water storage tank providing ~45 minutes of continuous spray time",
-    image: "/watertank2.jpg",
+    image: "/igpool1.jpg",
     price: 3600,
     agentPrice: 2880, // 20% discount
     features: [
@@ -49,7 +49,7 @@ export const products: Product[] = [
     id: "water-tank-16ton",
     name: "16-Ton Water Storage Tank",
     description: "Large capacity water storage tank providing ~3 hours of continuous spray time",
-    image: "/watertank1.jpg",
+    image: "/watertank.jpg",
     price: 6250,
     agentPrice: 5000, // 20% discount
     features: [
@@ -66,7 +66,7 @@ export const products: Product[] = [
     id: "swimming-pool-system",
     name: "VICON Intelligent Sprinkler Swimming Pool System",
     description: "High-performance pump system for pool-integrated fire suppression",
-    image: "/inground3.jpg",
+    image: "/dualconsole1.jpg",
     price: 4200,
     agentPrice: 3360, // 20% discount
     features: [
