@@ -75,13 +75,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return token
     },
     session: async ({ session, token }) => {
-      if (session.user) {
+      if (token && session.user) {
         session.user.id = token.id as string
         session.user.role = token.role as UserRole
       }
       return session
     },
   },
+  trustHost: true,
   session: {
     strategy: "jwt",
   },

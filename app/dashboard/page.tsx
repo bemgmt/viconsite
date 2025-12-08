@@ -2,10 +2,9 @@ import { auth } from "@/lib/auth"
 import { redirect } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import { UserRole } from "@prisma/client"
-import { User, Mail, Phone, DollarSign, Share2, LogOut } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { User, Mail, Phone, DollarSign, Share2 } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import Link from "next/link"
+import { SignOutButton } from "@/components/sign-out-button"
 
 export default async function DashboardPage() {
   const session = await auth()
@@ -44,12 +43,7 @@ export default async function DashboardPage() {
               </p>
             </div>
           </div>
-          <form action="/api/auth/signout" method="POST">
-            <Button variant="outline" size="sm">
-              <LogOut className="h-4 w-4 mr-2" />
-              Sign Out
-            </Button>
-          </form>
+          <SignOutButton />
         </div>
       </header>
 
