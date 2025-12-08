@@ -33,11 +33,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           return null
         }
 
-        // Only allow ADMIN users to sign in
-        if (user.role !== UserRole.ADMIN) {
-          return null
-        }
-
         return {
           id: user.id,
           email: user.email,

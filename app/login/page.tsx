@@ -1,9 +1,11 @@
 "use client"
 
 import { useState } from "react"
+import { signIn } from "next-auth/react"
+import { useRouter } from "next/navigation"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
-import { User, Lock, Mail } from "lucide-react"
+import { User, Lock, Mail, AlertCircle } from "lucide-react"
 
 export default function LoginPage() {
   const [userType, setUserType] = useState<"agent" | "distributor" | "influencer">("agent")
@@ -11,11 +13,34 @@ export default function LoginPage() {
     email: "",
     password: "",
   })
+  const [error, setError] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle login logic here
-    console.log("Login attempt:", { userType, ...formData })
+    setError("")
+    setIsLoading(true)
+
+    try {
+      const result = await signIn("credentials", {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
+      })
+
+      if (result?.error) {
+        setError("Invalid email or password. Please try again.")
+      } else if (result?.ok) {
+        // Redirect based on user type or to a dashboard
+        router.push("/dashboard")
+        router.refresh()
+      }
+    } catch (err) {
+      setError("An error occurred. Please try again.")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -70,6 +95,14 @@ export default function LoginPage() {
           {/* Login Form */}
           <div className="bg-card border border-border rounded-lg p-8 shadow-lg">
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Error Message */}
+              {error && (
+                <div className="bg-destructive/10 border border-destructive/20 text-destructive px-4 py-3 rounded-lg flex items-start gap-3">
+                  <AlertCircle className="h-5 w-5 mt-0.5 flex-shrink-0" />
+                  <p className="text-sm">{error}</p>
+                </div>
+              )}
+
               {/* Email */}
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2 text-foreground">
@@ -83,7 +116,8 @@ export default function LoginPage() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent"
+                    disabled={isLoading}
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -102,7 +136,8 @@ export default function LoginPage() {
                     required
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent"
+                    disabled={isLoading}
+                    className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent disabled:opacity-50 disabled:cursor-not-allowed"
                     placeholder="••••••••"
                   />
                 </div>
@@ -122,9 +157,10 @@ export default function LoginPage() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg"
+                disabled={isLoading}
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                Sign In
+                {isLoading ? "Signing in..." : "Sign In"}
               </button>
             </form>
 

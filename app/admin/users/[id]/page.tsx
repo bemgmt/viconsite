@@ -8,15 +8,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { SignOutButton } from "@/components/admin/sign-out-button"
 import { EditUserForm } from "@/components/admin/edit-user-form"
 
-export default async function EditUserPage({ params }: { params: { id: string } }) {
+export default async function EditUserPage({ params }: { params: Promise<{ id: string }> }) {
   const session = await auth()
 
   if (!session?.user || session.user.role !== "ADMIN") {
     redirect("/admin/login")
   }
 
+  const { id } = await params
+
   const user = await prisma.user.findUnique({
-    where: { id: params.id },
+    where: { id },
   })
 
   if (!user || user.role === "ADMIN") {
