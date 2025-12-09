@@ -1,8 +1,19 @@
 import Stripe from "stripe"
-import { loadStripe, Stripe as StripeClient } from "@stripe/stripe-js"
+// Dynamically import loadStripe to prevent module evaluation errors
+let loadStripeFn: typeof import("@stripe/stripe-js").loadStripe | null = null
+type StripeClient = import("@stripe/stripe-js").Stripe
 
 // Server-side Stripe instance
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY
+
+if (!stripeSecretKey) {
+  throw new Error(
+    "STRIPE_SECRET_KEY is not defined in environment variables. " +
+    "Please check your .env.local file and restart the development server."
+  )
+}
+
+export const stripe = new Stripe(stripeSecretKey, {
   apiVersion: "2024-12-18.acacia",
   typescript: true,
 })
@@ -76,10 +87,20 @@ export const getStripe = async (): Promise<StripeClient | null> => {
     return stripePromise
   }
   
-  // Only call loadStripe if we have a valid key
+  // Dynamically import and call loadStripe if we have a valid key
   console.log('[Stripe] Step 4 - Initializing Stripe with key:', publishableKey.substring(0, 15) + '...')
   try {
-    stripePromise = loadStripe(publishableKey)
+    // Dynamically import loadStripe to avoid module evaluation errors
+    if (!loadStripeFn) {
+      const stripeModule = await import("@stripe/stripe-js")
+      loadStripeFn = stripeModule.loadStripe
+    }
+    
+    if (!loadStripeFn) {
+      throw new Error("Failed to load Stripe library")
+    }
+    
+    stripePromise = loadStripeFn(publishableKey)
     console.log('[Stripe] Step 5 - Stripe promise created successfully')
   } catch (err) {
     console.error('[Stripe] Error calling loadStripe:', err)
