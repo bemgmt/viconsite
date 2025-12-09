@@ -3,6 +3,7 @@
 import { useCart } from "@/contexts/cart-context"
 import { X, Plus, Minus, Trash2, ShoppingBag } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function CartSidebar() {
   const { items, removeFromCart, updateQuantity, totalItems, totalPrice, isCartOpen, setIsCartOpen } = useCart()
@@ -111,9 +112,11 @@ export default function CartSidebar() {
                 </div>
               </div>
             </div>
-            <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
-              Proceed to Checkout
-            </button>
+            <Link href="/checkout">
+              <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
+                Proceed to Checkout
+              </button>
+            </Link>
             <button
               onClick={() => setIsCartOpen(false)}
               className="w-full mt-2 bg-muted hover:bg-muted/80 text-foreground py-2 rounded-lg font-medium transition-colors"

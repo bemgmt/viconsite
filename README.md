@@ -46,6 +46,11 @@ cp .env.example .env.local
 ```env
 OPENAI_API_KEY=sk-your-openai-key
 RESEND_API_KEY=re-your-resend-key
+
+# Stripe API Keys (for payment processing)
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your-publishable-key
+STRIPE_SECRET_KEY=sk_test_your-secret-key
+STRIPE_WEBHOOK_SECRET=whsec_your-webhook-secret
 ```
 
 5. Run the development server:
@@ -65,6 +70,9 @@ npm run dev
 4. Configure environment variables:
    - `OPENAI_API_KEY`: Your OpenAI API key
    - `RESEND_API_KEY`: Your Resend API key
+   - `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`: Your Stripe publishable key
+   - `STRIPE_SECRET_KEY`: Your Stripe secret key
+   - `STRIPE_WEBHOOK_SECRET`: Your Stripe webhook secret
 5. Click "Deploy"
 
 ### Option 2: Deploy via Vercel CLI
@@ -83,6 +91,9 @@ vercel
 ```bash
 vercel env add OPENAI_API_KEY
 vercel env add RESEND_API_KEY
+vercel env add NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+vercel env add STRIPE_SECRET_KEY
+vercel env add STRIPE_WEBHOOK_SECRET
 ```
 
 4. Redeploy:
@@ -96,6 +107,9 @@ vercel --prod
 |----------|-------------|--------------|
 | `OPENAI_API_KEY` | OpenAI API key for chatbot | [OpenAI Platform](https://platform.openai.com/api-keys) |
 | `RESEND_API_KEY` | Resend API key for emails | [Resend Dashboard](https://resend.com/api-keys) |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Stripe publishable key for client-side | [Stripe Dashboard](https://dashboard.stripe.com/apikeys) |
+| `STRIPE_SECRET_KEY` | Stripe secret key for server-side | [Stripe Dashboard](https://dashboard.stripe.com/apikeys) |
+| `STRIPE_WEBHOOK_SECRET` | Stripe webhook secret for verification | [Stripe Webhooks](https://dashboard.stripe.com/webhooks) |
 
 ## 📁 Project Structure
 
