@@ -22,6 +22,16 @@ export default function CheckoutPage() {
   useEffect(() => {
     const checkStripe = async () => {
       try {
+        // Debug: Check if publishable key is available (only log in development)
+        if (process.env.NODE_ENV === 'development') {
+          const keyExists = typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+          console.log('Stripe Debug:', {
+            keyExists: !!keyExists,
+            keyLength: keyExists?.length || 0,
+            keyPrefix: keyExists?.substring(0, 7) || 'N/A'
+          })
+        }
+        
         const stripePromise = getStripe()
         await stripePromise
         setStripeInitialized(true)
