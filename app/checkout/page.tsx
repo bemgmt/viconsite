@@ -16,11 +16,37 @@ export default function CheckoutPage() {
   const [clientSecret, setClientSecret] = useState("")
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
+  const [stripeInitialized, setStripeInitialized] = useState(false)
+
+  // Check Stripe initialization
+  useEffect(() => {
+    const checkStripe = async () => {
+      try {
+        const stripePromise = getStripe()
+        await stripePromise
+        setStripeInitialized(true)
+      } catch (err) {
+        console.error("Stripe initialization error:", err)
+        setError(
+          err instanceof Error 
+            ? err.message 
+            : "Stripe payment system is not properly configured. Please contact support."
+        )
+        setLoading(false)
+      }
+    }
+    checkStripe()
+  }, [])
 
   useEffect(() => {
     // Redirect if cart is empty
     if (items.length === 0) {
       router.push("/")
+      return
+    }
+
+    // Only create payment intent if Stripe is initialized
+    if (!stripeInitialized) {
       return
     }
 
@@ -58,9 +84,9 @@ export default function CheckoutPage() {
     }
 
     createPaymentIntent()
-  }, [items, router])
+  }, [items, router, stripeInitialized])
 
-  const stripePromise = getStripe()
+  const stripePromise = stripeInitialized ? getStripe() : null
 
   if (loading) {
     return (
@@ -156,7 +182,7 @@ export default function CheckoutPage() {
 
             {/* Checkout Form */}
             <div className="lg:col-span-2">
-              {clientSecret && stripePromise && (
+              {clientSecret && stripePromise ? (
                 <Elements
                   stripe={stripePromise}
                   options={{
@@ -171,6 +197,14 @@ export default function CheckoutPage() {
                 >
                   <CheckoutForm />
                 </Elements>
+              ) : (
+                !loading && (
+                  <div className="bg-card border border-border rounded-lg p-6">
+                    <p className="text-destructive">
+                      Unable to load payment form. Please refresh the page or contact support if the problem persists.
+                    </p>
+                  </div>
+                )
               )}
             </div>
           </div>
