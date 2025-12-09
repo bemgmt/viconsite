@@ -14,12 +14,15 @@ export const getStripe = () => {
   if (!stripePromise) {
     const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
     
-    // Debug logging (only in development)
-    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-      console.log('Stripe Publishable Key check:', {
+    // Debug logging for both development and production
+    if (typeof window !== 'undefined') {
+      console.log('[Stripe Debug] Publishable Key Status:', {
         exists: !!publishableKey,
         length: publishableKey?.length || 0,
-        startsWith: publishableKey?.substring(0, 7) || 'N/A'
+        startsWith: publishableKey?.substring(0, 7) || 'N/A',
+        isUndefined: publishableKey === undefined,
+        isEmpty: publishableKey === '',
+        trimmedEmpty: publishableKey?.trim() === ''
       })
     }
     
@@ -28,6 +31,11 @@ export const getStripe = () => {
       const errorMessage = process.env.NODE_ENV === 'production'
         ? "Stripe payment system is not configured. Please contact support."
         : "Stripe publishable key is not configured. Please set NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY in your environment variables and redeploy."
+      
+      console.error('[Stripe Error]', errorMessage, {
+        keyExists: !!publishableKey,
+        keyValue: publishableKey
+      })
       
       stripePromise = Promise.reject(
         new Error(errorMessage)
