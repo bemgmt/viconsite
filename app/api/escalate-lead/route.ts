@@ -1,7 +1,3 @@
-import { Resend } from "resend"
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 interface LeadData {
   name: string
   email: string
@@ -15,6 +11,15 @@ export async function POST(request: Request) {
     if (!name || !email || !phone) {
       return Response.json({ error: "Missing required fields" }, { status: 400 })
     }
+
+    // Only import and use Resend on the server side
+    if (!process.env.RESEND_API_KEY) {
+      console.warn("RESEND_API_KEY not configured, skipping email")
+      return Response.json({ success: true })
+    }
+
+    const { Resend } = await import("resend")
+    const resend = new Resend(process.env.RESEND_API_KEY)
 
     // Send email to VICON team
     await resend.emails.send({

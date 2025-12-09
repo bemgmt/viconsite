@@ -1,11 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { writeFile, mkdir } from "fs/promises"
 import path from "path"
-import { Resend } from "resend"
-import { render } from "@react-email/render"
-import CareerConfirmationEmail from "@/emails/career-confirmation"
-
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
@@ -94,6 +89,18 @@ export async function POST(request: NextRequest) {
 
 async function sendConfirmationEmail(email: string, name: string, role: string) {
   try {
+    // Only import and use Resend on the server side
+    if (!process.env.RESEND_API_KEY) {
+      console.warn("RESEND_API_KEY not configured, skipping email")
+      return null
+    }
+
+    const { Resend } = await import("resend")
+    const { render } = await import("@react-email/render")
+    const CareerConfirmationEmail = (await import("@/emails/career-confirmation")).default
+
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
     // Render the email template
     const emailHtml = render(CareerConfirmationEmail({ name, role }))
 
