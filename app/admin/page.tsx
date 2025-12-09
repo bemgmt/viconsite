@@ -93,7 +93,7 @@ export default async function AdminDashboard() {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
               <CardTitle>User Management</CardTitle>
@@ -102,6 +102,18 @@ export default async function AdminDashboard() {
             <CardContent>
               <Button asChild className="w-full">
                 <Link href="/admin/users">Manage Users</Link>
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Analytics</CardTitle>
+              <CardDescription>View insights and performance metrics</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild className="w-full" variant="outline">
+                <Link href="/admin/analytics">View Analytics</Link>
               </Button>
             </CardContent>
           </Card>

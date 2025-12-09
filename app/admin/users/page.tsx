@@ -6,15 +6,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { SignOutButton } from "@/components/admin/sign-out-button"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
+import { UsersTableWithBulk } from "@/components/admin/users-table-with-bulk"
 
 export default async function UsersPage() {
   const session = await auth()
@@ -45,6 +37,9 @@ export default async function UsersPage() {
             <Button variant="outline" asChild>
               <Link href="/admin">Dashboard</Link>
             </Button>
+            <Button variant="outline" asChild>
+              <Link href="/admin/analytics">Analytics</Link>
+            </Button>
             <span className="text-sm text-muted-foreground">Welcome, {session.user.name}</span>
             <SignOutButton />
           </div>
@@ -71,52 +66,7 @@ export default async function UsersPage() {
             <CardDescription>Sales people and influencers in the system</CardDescription>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Name</TableHead>
-                  <TableHead>Email</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead>Phone</TableHead>
-                  <TableHead>Status</TableHead>
-                  <TableHead>Created</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {users.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={7} className="text-center text-muted-foreground py-8">
-                      No users found. Add your first user to get started.
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  users.map((user) => (
-                    <TableRow key={user.id}>
-                      <TableCell className="font-medium">{user.name}</TableCell>
-                      <TableCell>{user.email}</TableCell>
-                      <TableCell>
-                        <Badge variant={user.userType === "SALES_PERSON" ? "default" : "secondary"}>
-                          {user.userType === "SALES_PERSON" ? "Sales Person" : "Influencer"}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{user.phone || "-"}</TableCell>
-                      <TableCell>
-                        <Badge variant={user.isActive ? "default" : "outline"}>
-                          {user.isActive ? "Active" : "Inactive"}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>{new Date(user.createdAt).toLocaleDateString()}</TableCell>
-                      <TableCell className="text-right">
-                        <Button variant="ghost" size="sm" asChild>
-                          <Link href={`/admin/users/${user.id}`}>Edit</Link>
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  ))
-                )}
-              </TableBody>
-            </Table>
+            <UsersTableWithBulk users={users} />
           </CardContent>
         </Card>
       </div>
