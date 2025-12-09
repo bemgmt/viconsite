@@ -10,31 +10,40 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 // Client-side Stripe instance
 let stripePromise: Promise<StripeClient | null>
 
-export const getStripe = () => {
+export const getStripe = async (): Promise<StripeClient | null> => {
   if (!stripePromise) {
-    const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+    // Try to get key from environment variable first (build-time)
+    let publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
     
-    // Debug logging for both development and production
+    // If not available, fetch from API (runtime fallback)
+    if (!publishableKey || publishableKey.trim() === '') {
+      try {
+        const response = await fetch('/api/stripe-config')
+        if (response.ok) {
+          const data = await response.json()
+          publishableKey = data.publishableKey
+        }
+      } catch (err) {
+        console.error('[Stripe] Failed to fetch publishable key from API:', err)
+      }
+    }
+    
+    // Debug logging
     if (typeof window !== 'undefined') {
       console.log('[Stripe Debug] Publishable Key Status:', {
         exists: !!publishableKey,
         length: publishableKey?.length || 0,
         startsWith: publishableKey?.substring(0, 7) || 'N/A',
-        isUndefined: publishableKey === undefined,
-        isEmpty: publishableKey === '',
-        trimmedEmpty: publishableKey?.trim() === ''
+        source: process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ? 'env' : 'api'
       })
     }
     
     if (!publishableKey || publishableKey.trim() === '') {
       // Return a rejected promise with a descriptive error
-      const errorMessage = process.env.NODE_ENV === 'production'
-        ? "Stripe payment system is not configured. Please contact support."
-        : "Stripe publishable key is not configured. Please set NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY in your environment variables and redeploy."
+      const errorMessage = "Stripe payment system is not configured. Please contact support."
       
       console.error('[Stripe Error]', errorMessage, {
-        keyExists: !!publishableKey,
-        keyValue: publishableKey
+        keyExists: !!publishableKey
       })
       
       stripePromise = Promise.reject(

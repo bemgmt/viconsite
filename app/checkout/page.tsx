@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { Elements } from "@stripe/react-stripe-js"
+import type { Stripe as StripeClient } from "@stripe/stripe-js"
 import { getStripe } from "@/lib/stripe"
 import { useCart } from "@/contexts/cart-context"
 import Navigation from "@/components/navigation"
@@ -22,17 +23,7 @@ export default function CheckoutPage() {
   useEffect(() => {
     const checkStripe = async () => {
       try {
-        // Debug: Check if publishable key is available (only log in development)
-        if (process.env.NODE_ENV === 'development') {
-          const keyExists = typeof process !== 'undefined' && process.env?.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-          console.log('Stripe Debug:', {
-            keyExists: !!keyExists,
-            keyLength: keyExists?.length || 0,
-            keyPrefix: keyExists?.substring(0, 7) || 'N/A'
-          })
-        }
-        
-        const stripePromise = getStripe()
+        const stripePromise = await getStripe()
         await stripePromise
         setStripeInitialized(true)
       } catch (err) {
@@ -96,7 +87,13 @@ export default function CheckoutPage() {
     createPaymentIntent()
   }, [items, router, stripeInitialized])
 
-  const stripePromise = stripeInitialized ? getStripe() : null
+  const [stripePromise, setStripePromise] = useState<Promise<StripeClient | null> | null>(null)
+
+  useEffect(() => {
+    if (stripeInitialized) {
+      getStripe().then(setStripePromise)
+    }
+  }, [stripeInitialized])
 
   if (loading) {
     return (
