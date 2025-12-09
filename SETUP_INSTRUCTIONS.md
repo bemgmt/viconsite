@@ -28,17 +28,21 @@ Add these to your `.env.local` file:
 
 ```env
 # Database
-DATABASE_URL="postgresql://user:password@host:5432/database_name"
+DATABASE_URL="postgresql://user:password@host:5432/database_name?sslmode=require&connect_timeout=10&pool_timeout=10&pgbouncer=true"
 
-# NextAuth
+# NextAuth (v5 uses AUTH_* variables)
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="your-secret-key-here"
+AUTH_URL="http://localhost:3000"
+AUTH_SECRET="your-secret-key-here"
 ```
 
-**Generate NEXTAUTH_SECRET:**
+**Generate AUTH_SECRET / NEXTAUTH_SECRET:**
 ```bash
 openssl rand -base64 32
 ```
+
+**Note**: Use the same secret for both `NEXTAUTH_SECRET` and `AUTH_SECRET`.
 
 ### 3. Set Up Database
 
@@ -100,9 +104,10 @@ npm run dev
 ## 🔒 Security Notes
 
 1. **Change Default Password**: The seed script creates an admin with a default password. Change it immediately!
-2. **NEXTAUTH_SECRET**: Use a strong, random secret in production
+2. **AUTH_SECRET**: Use a strong, random secret in production (same value for both AUTH_SECRET and NEXTAUTH_SECRET)
 3. **Database URL**: Never commit your database URL to version control
 4. **HTTPS**: Always use HTTPS in production
+5. **Vercel Environment Variables**: Make sure to set AUTH_URL and AUTH_SECRET in Vercel dashboard for production
 
 ## 🧪 Testing
 
