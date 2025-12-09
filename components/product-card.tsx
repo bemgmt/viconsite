@@ -3,6 +3,7 @@
 import { useState } from "react"
 import type { Product } from "@/lib/products"
 import { ShoppingCart, ChevronDown } from "lucide-react"
+import { useCart } from "@/contexts/cart-context"
 
 interface ProductCardProps {
   product: Product
@@ -12,6 +13,16 @@ interface ProductCardProps {
 
 export default function ProductCard({ product, price, isAgent = false }: ProductCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
+  const { addToCart } = useCart()
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: price,
+      image: product.image,
+    })
+  }
 
   return (
     <div className="group bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-2 border border-border/60 hover:border-accent/60 perspective-1000">
@@ -90,7 +101,10 @@ export default function ProductCard({ product, price, isAgent = false }: Product
           )}
         </div>
 
-        <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 group/btn">
+        <button
+          onClick={handleAddToCart}
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 group/btn"
+        >
           <ShoppingCart size={20} className="group-hover/btn:animate-bounce" />
           <span className="group-hover/btn:translate-x-1 transition-transform inline-block">Add to Cart</span>
         </button>

@@ -112,7 +112,7 @@ export default function CartSidebar() {
                 </div>
               </div>
             </div>
-            <Link href="/checkout">
+            <Link href="/checkout" onClick={() => setIsCartOpen(false)}>
               <button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg">
                 Proceed to Checkout
               </button>
