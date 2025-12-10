@@ -1,4 +1,14 @@
+// This must be the first import to prevent client-side bundling
 import "server-only"
+
+// Additional runtime check as a safety measure - this runs at module evaluation
+if (typeof window !== "undefined") {
+  throw new Error(
+    "stripe-server.ts cannot be imported in client components. " +
+    "This module is server-only and should only be used in API routes."
+  )
+}
+
 import Stripe from "stripe"
 
 // Lazy initialization singleton pattern
@@ -26,8 +36,8 @@ function getStripeInstance(): Stripe {
   return stripeInstance
 }
 
-// Export stripe instance with lazy initialization using a getter
-// This ensures initialization only happens when the stripe object is actually accessed
+// Export stripe instance - initialization happens lazily via Proxy
+// The Proxy ensures getStripeInstance() is only called when properties are accessed
 export const stripe = new Proxy({} as Stripe, {
   get(_target, prop) {
     const instance = getStripeInstance()
