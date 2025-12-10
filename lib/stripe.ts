@@ -1,22 +1,7 @@
-import Stripe from "stripe"
+// Client-side Stripe module - server-side code is in stripe-server.ts
 // Dynamically import loadStripe to prevent module evaluation errors
 let loadStripeFn: typeof import("@stripe/stripe-js").loadStripe | null = null
 type StripeClient = import("@stripe/stripe-js").Stripe
-
-// Server-side Stripe instance
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY
-
-if (!stripeSecretKey) {
-  throw new Error(
-    "STRIPE_SECRET_KEY is not defined in environment variables. " +
-    "Please check your .env.local file and restart the development server."
-  )
-}
-
-export const stripe = new Stripe(stripeSecretKey, {
-  apiVersion: "2024-12-18.acacia",
-  typescript: true,
-})
 
 // Client-side Stripe instance
 let stripePromise: Promise<StripeClient | null> | null = null
@@ -108,15 +93,5 @@ export const getStripe = async (): Promise<StripeClient | null> => {
   }
   
   return stripePromise
-}
-
-// Helper function to format amount for Stripe (convert to cents)
-export const formatAmountForStripe = (amount: number): number => {
-  return Math.round(amount * 100)
-}
-
-// Helper function to format amount for display
-export const formatAmountForDisplay = (amount: number): string => {
-  return (amount / 100).toFixed(2)
 }
 

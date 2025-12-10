@@ -40,3 +40,4 @@ model User {
   @@index([userType])
   @@map("users")
 }
+

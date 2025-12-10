@@ -71,7 +71,7 @@ export default function Footer() {
               <h3 className="font-bold text-lg mb-4">{title}</h3>
               <ul className="space-y-2">
                 {links.map((link) => (
-                  <li key={link.href}>
+                  <li key={link.label}>
                     <Link
                       href={link.href}
                       className="text-primary-foreground/70 hover:text-accent transition-colors text-sm"
