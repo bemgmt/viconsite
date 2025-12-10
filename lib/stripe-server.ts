@@ -1,9 +1,9 @@
 import Stripe from "stripe"
 
-// Lazy initialization to avoid build-time evaluation issues in Vercel
+// Lazy initialization singleton pattern
 let stripeInstance: Stripe | null = null
 
-function initializeStripe(): Stripe {
+function getStripeInstance(): Stripe {
   if (stripeInstance) {
     return stripeInstance
   }
@@ -26,8 +26,8 @@ function initializeStripe(): Stripe {
 }
 
 // Export stripe instance with lazy initialization
-// This ensures the environment variable is only checked at runtime, not at build time
-export const stripe = initializeStripe()
+// The instance is only created when first accessed, not at module load time
+export const stripe = getStripeInstance()
 
 // Helper function to format amount for Stripe (convert to cents)
 export const formatAmountForStripe = (amount: number): number => {
