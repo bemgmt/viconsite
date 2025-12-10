@@ -1,3 +1,4 @@
+import "server-only"
 import Stripe from "stripe"
 
 // Lazy initialization singleton pattern
@@ -25,9 +26,18 @@ function getStripeInstance(): Stripe {
   return stripeInstance
 }
 
-// Export stripe instance with lazy initialization
-// The instance is only created when first accessed, not at module load time
-export const stripe = getStripeInstance()
+// Export stripe instance with lazy initialization using a getter
+// This ensures initialization only happens when the stripe object is actually accessed
+export const stripe = new Proxy({} as Stripe, {
+  get(_target, prop) {
+    const instance = getStripeInstance()
+    const value = instance[prop as keyof Stripe]
+    if (typeof value === "function") {
+      return value.bind(instance)
+    }
+    return value
+  },
+})
 
 // Helper function to format amount for Stripe (convert to cents)
 export const formatAmountForStripe = (amount: number): number => {
