@@ -2,6 +2,12 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Shield, Zap, Users, Award } from "lucide-react"
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "About VICON - Pioneering AI Fire Protection Technology",
+  description: "Learn about VICON Technologies, pioneering AI-powered fire protection systems for homes and businesses across Southern California. Advanced technology, UL certified, solar-powered.",
+}
 
 export default function AboutPage() {
   return (
