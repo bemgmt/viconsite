@@ -1,4 +1,5 @@
 import { Leaf, Droplet } from "lucide-react"
+import Image from "next/image"
 
 export default function SustainableDesign() {
   return (
@@ -39,11 +40,15 @@ export default function SustainableDesign() {
             </div>
           </div>
 
-          <div className="rounded-lg overflow-hidden">
-            <img
+          <div className="relative rounded-lg overflow-hidden aspect-video">
+            <Image
               src="/自定义模板(5).png"
               alt="Sustainable Protection"
-              className="w-full h-auto object-cover"
+              fill
+              quality={80}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover"
+              loading="lazy"
             />
           </div>
         </div>

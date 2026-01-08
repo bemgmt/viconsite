@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Mail, Phone, MapPin } from "lucide-react"
+import Image from "next/image"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -39,11 +40,17 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           <div>
             <Link href="/" className="flex items-center gap-2 font-bold text-xl mb-6">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cgi-bin_mmwebwx-bin_webwxgetmsgimg__MsgID5202958901379986031skey%40crypt_7d72f99b_bc487fcb6d9402a8598d026bb42e3fdemmweb_appidwx_webfilehelper-e1747815718414-100x100-noihZZciHXU6DZ0iqg6u7Prmw5Vgvz.jpeg"
-                alt="VICON"
-                className="w-8 h-8"
-              />
+              <div className="relative w-8 h-8">
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cgi-bin_mmwebwx-bin_webwxgetmsgimg__MsgID5202958901379986031skey%40crypt_7d72f99b_bc487fcb6d9402a8598d026bb42e3fdemmweb_appidwx_webfilehelper-e1747815718414-100x100-noihZZciHXU6DZ0iqg6u7Prmw5Vgvz.jpeg"
+                  alt="VICON"
+                  fill
+                  quality={90}
+                  sizes="32px"
+                  className="object-contain"
+                  loading="lazy"
+                />
+              </div>
               <span>VICON</span>
             </Link>
             <p className="text-primary-foreground/80 mb-6">

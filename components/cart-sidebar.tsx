@@ -47,11 +47,15 @@ export default function CartSidebar() {
               {items.map((item) => (
                 <div key={item.id} className="bg-card border border-border rounded-lg p-4">
                   <div className="flex gap-4">
-                    <div className="w-20 h-20 bg-muted rounded-md overflow-hidden flex-shrink-0">
-                      <img
+                    <div className="relative w-20 h-20 bg-muted rounded-md overflow-hidden flex-shrink-0">
+                      <Image
                         src={item.image}
                         alt={item.name}
-                        className="w-full h-full object-cover"
+                        fill
+                        quality={75}
+                        sizes="80px"
+                        className="object-cover"
+                        loading="lazy"
                       />
                     </div>
                     <div className="flex-1 min-w-0">

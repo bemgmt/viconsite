@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Zap, Crosshair, Droplets, Smartphone, Sun } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
+import Image from "next/image"
 
 export default function WhyVicon() {
   const { ref: titleRef, isInView: titleInView } = useInView()
@@ -21,10 +22,15 @@ export default function WhyVicon() {
     <section className="relative py-20 px-4 overflow-hidden bg-black">
       {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
+        <Image
           src="/AdobeStock_1731470527.jpeg"
           alt="Fire Prevention Background"
-          className="w-full h-full object-cover"
+          fill
+          quality={75}
+          sizes="100vw"
+          className="object-cover"
+          priority={false}
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-black/70" />
       </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
+import Image from "next/image"
 
 export default function ViconSystem() {
   const [expandedIndex, setExpandedIndex] = useState(0)
@@ -89,11 +90,15 @@ export default function ViconSystem() {
                     <div>
                       <p className="text-foreground leading-relaxed mb-4">{component.details}</p>
                     </div>
-                    <div className="overflow-hidden rounded-lg cursor-pointer group/img">
-                      <img
+                    <div className="relative overflow-hidden rounded-lg cursor-pointer group/img h-48">
+                      <Image
                         src={component.image || "/placeholder.svg"}
                         alt={component.title}
-                        className="w-full h-48 object-cover rounded-lg transition-transform duration-500 group-hover/img:scale-150"
+                        fill
+                        quality={80}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover rounded-lg transition-transform duration-500 group-hover/img:scale-150"
+                        loading="lazy"
                       />
                     </div>
                   </div>

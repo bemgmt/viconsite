@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X, User, ShoppingCart, ChevronDown } from "lucide-react"
+import Image from "next/image"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -56,11 +57,15 @@ export default function Navigation() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex items-center gap-2 font-bold text-2xl group">
-              <div className="w-10 h-10 group-hover:scale-110 transition-transform">
-                <img
+              <div className="relative w-10 h-10 group-hover:scale-110 transition-transform">
+                <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cgi-bin_mmwebwx-bin_webwxgetmsgimg__MsgID5202958901379986031skey%40crypt_7d72f99b_bc487fcb6d9402a8598d026bb42e3fdemmweb_appidwx_webfilehelper-e1747815718414-100x100-noihZZciHXU6DZ0iqg6u7Prmw5Vgvz.jpeg"
                   alt="VICON Logo"
-                  className="w-full h-full object-contain"
+                  fill
+                  quality={90}
+                  sizes="40px"
+                  className="object-contain"
+                  priority
                 />
               </div>
               <span className="group-hover:text-accent transition-colors">VICON</span>

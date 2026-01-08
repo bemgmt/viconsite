@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useMemo } from "react"
 import { useRouter } from "next/navigation"
 import { Elements } from "@stripe/react-stripe-js"
 import type { Stripe as StripeClient } from "@stripe/stripe-js"
@@ -10,6 +10,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import CheckoutForm from "@/components/checkout-form"
 import { ShoppingBag, Lock } from "lucide-react"
+import Image from "next/image"
 
 export default function CheckoutPage() {
   const router = useRouter()
@@ -19,41 +20,31 @@ export default function CheckoutPage() {
   const [error, setError] = useState("")
   const [stripeInitialized, setStripeInitialized] = useState(false)
 
-  // Check Stripe initialization
-  useEffect(() => {
-    const checkStripe = async () => {
-      try {
-        const stripePromise = await getStripe()
-        await stripePromise
-        setStripeInitialized(true)
-      } catch (err) {
-        console.error("Stripe initialization error:", err)
-        setError(
-          err instanceof Error 
-            ? err.message 
-            : "Stripe payment system is not properly configured. Please contact support."
-        )
-        setLoading(false)
-      }
+  // Memoize stripe promise to avoid recreating it
+  const stripePromise = useMemo(() => {
+    if (stripeInitialized) {
+      return getStripe()
     }
-    checkStripe()
-  }, [])
+    return null
+  }, [stripeInitialized])
 
+  // Optimize: Combine and optimize useEffect hooks to reduce blocking time
   useEffect(() => {
-    // Redirect if cart is empty
+    // Redirect if cart is empty (non-blocking check)
     if (items.length === 0) {
       router.push("/")
       return
     }
 
-    // Only create payment intent if Stripe is initialized
-    if (!stripeInitialized) {
-      return
-    }
-
-    // Create payment intent
-    const createPaymentIntent = async () => {
+    // Initialize Stripe and create payment intent in parallel where possible
+    const initializeCheckout = async () => {
       try {
+        // Initialize Stripe first
+        const stripe = await getStripe()
+        await stripe
+        setStripeInitialized(true)
+
+        // Create payment intent after Stripe is ready
         const response = await fetch("/api/create-payment-intent", {
           method: "POST",
           headers: {
@@ -62,7 +53,6 @@ export default function CheckoutPage() {
           body: JSON.stringify({
             items,
             customerInfo: {
-              // These will be collected in the checkout form
               name: "",
               email: "",
               phone: "",
@@ -78,22 +68,18 @@ export default function CheckoutPage() {
         setClientSecret(data.clientSecret)
       } catch (err) {
         console.error("Error:", err)
-        setError("Failed to initialize checkout. Please try again.")
+        setError(
+          err instanceof Error 
+            ? err.message 
+            : "Failed to initialize checkout. Please try again."
+        )
       } finally {
         setLoading(false)
       }
     }
 
-    createPaymentIntent()
-  }, [items, router, stripeInitialized])
-
-  const [stripePromise, setStripePromise] = useState<Promise<StripeClient | null> | null>(null)
-
-  useEffect(() => {
-    if (stripeInitialized) {
-      getStripe().then(setStripePromise)
-    }
-  }, [stripeInitialized])
+    initializeCheckout()
+  }, [items, router])
 
   if (loading) {
     return (
@@ -157,11 +143,17 @@ export default function CheckoutPage() {
                 <div className="space-y-4 mb-6">
                   {items.map((item) => (
                     <div key={item.id} className="flex gap-3">
-                      <img
-                        src={item.image}
-                        alt={item.name}
-                        className="w-16 h-16 object-cover rounded-md"
-                      />
+                      <div className="relative w-16 h-16 flex-shrink-0">
+                        <Image
+                          src={item.image}
+                          alt={item.name}
+                          fill
+                          quality={75}
+                          sizes="64px"
+                          className="object-cover rounded-md"
+                          loading="lazy"
+                        />
+                      </div>
                       <div className="flex-1">
                         <p className="font-medium text-sm text-foreground line-clamp-2">
                           {item.name}

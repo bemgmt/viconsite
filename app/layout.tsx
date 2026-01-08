@@ -7,8 +7,19 @@ import { CartProvider } from "@/contexts/cart-context"
 import CartSidebar from "@/components/cart-sidebar"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+// Optimize font loading with display swap to prevent FOIT
+const geist = Geist({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true,
+  variable: '--font-geist',
+})
+const geistMono = Geist_Mono({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: false, // Only preload primary font
+  variable: '--font-geist-mono',
+})
 
 export const metadata: Metadata = {
   title: "VICON - AI-Powered Fire Protection System",
@@ -23,8 +34,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
+    <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+      <body className={`${geist.className} antialiased`}>
         <CartProvider>
           {children}
           <Chatbot />

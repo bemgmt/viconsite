@@ -4,6 +4,7 @@ import { useState } from "react"
 import type { Product } from "@/lib/products"
 import { ShoppingCart, ChevronDown } from "lucide-react"
 import { useCart } from "@/contexts/cart-context"
+import Image from "next/image"
 
 interface ProductCardProps {
   product: Product
@@ -27,10 +28,14 @@ export default function ProductCard({ product, price, isAgent = false }: Product
   return (
     <div className="group bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-2 border border-border/60 hover:border-accent/60 perspective-1000">
       <div className="relative overflow-hidden bg-muted h-64 group-hover:h-72 transition-all duration-500">
-        <img
+        <Image
           src={product.image || "/placeholder.svg"}
           alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          fill
+          quality={80}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className="object-cover group-hover:scale-110 transition-transform duration-700"
+          loading="lazy"
         />
         {/* Gradient overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

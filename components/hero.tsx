@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Hero() {
   const [current, setCurrent] = useState(0)
@@ -68,10 +69,14 @@ export default function Hero() {
             }`}
           >
             {/* Image with subtle zoom effect */}
-            <img
+            <Image
               src={slide.image || "/placeholder.svg"}
               alt={slide.title}
-              className={`w-full h-full object-cover transition-transform duration-[7000ms] ${
+              fill
+              priority={index === 0} // Prioritize first image for LCP
+              quality={85}
+              sizes="100vw"
+              className={`object-cover transition-transform duration-[7000ms] ${
                 isActive ? "scale-110" : "scale-100"
               }`}
             />
