@@ -3,8 +3,8 @@ import Footer from "@/components/footer"
 import ProductsContent from "@/components/products-content"
 
 export const metadata = {
-  title: "VICON Products - Fire Protection Systems",
-  description: "Browse VICON intelligent fire protection systems and backup battery solutions",
+  title: "VICON Products - Residential Fire Sprinkler Systems",
+  description: "Browse VICON residential fire sprinkler systems, outdoor fire sprinkler systems, and exterior fire sprinkler systems. Professional installation included.",
 }
 
 export default function ProductsPage() {

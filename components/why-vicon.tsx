@@ -56,8 +56,8 @@ export default function WhyVicon() {
         >
           <p className="text-lg text-white leading-relaxed">
             <span className="font-bold text-white">Fires move fast — but VICON moves faster.</span> Our intelligent
-            sprinkler system detects smoke and heat within seconds, pinpoints the source, and activates a high-pressure
-            water cannon with surgical precision. It's always alert, always learning, and always protecting what matters
+            residential fire sprinkler system detects smoke and heat within seconds, pinpoints the source, and activates a high-pressure
+            water cannon with surgical precision. Perfect for outdoor fire protection, it's always alert, always learning, and always protecting what matters
             most.
           </p>
         </div>

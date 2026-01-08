@@ -33,7 +33,7 @@ export default function ViconSystem() {
       title: "Water Tank",
       description: "Provides immediate water access — no external supply delay.",
       details:
-        "The integrated 13.5 kWh backup battery system ensures your water pumps stay operational even during power outages. Independent water supply means suppression happens instantly without relying on municipal water pressure.",
+        "The integrated 13.5 kWh backup battery system ensures your water pumps stay operational even during power outages. Our fire irrigation system provides independent water supply, meaning suppression happens instantly without relying on municipal water pressure. Perfect for roof sprinkler system installations.",
       image: "/watertank.jpg",
     },
     {

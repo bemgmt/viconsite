@@ -16,7 +16,7 @@ export default function ProductsContent() {
         <div className="text-center mb-16 animate-fade-up">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">VICON Products</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Professional fire protection systems engineered for Southern California homes and businesses. All products
+            Professional fire suppression systems and exterior fire sprinklers engineered for Southern California homes and businesses. All products
             include professional installation and comprehensive support.
           </p>
           <div className="w-24 h-1 bg-accent mx-auto mt-6" />

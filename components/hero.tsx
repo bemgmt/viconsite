@@ -13,7 +13,7 @@ export default function Hero() {
     {
       title: "Smart Fire Protection — VICON Takes the Lead",
       subtitle:
-        "AI-powered detection, precision targeting, and instant response — protecting your home before flames can spread.",
+        "AI-powered wildfire sprinkler system with precision targeting and instant response — protecting your home before flames can spread.",
       cta: "Protect Your Home for $200/month",
       ctaLink: "/contact",
       image: "/_cgi-bin_mmwebwx-bin_webwxgetmsgimg__&MsgID=1469509501869408920&skey=@crypt_7d72f99b_825157939b6d97f492346c55821f42a0&mmweb_appid=wx_webfilehelper.jpeg",

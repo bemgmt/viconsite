@@ -6,6 +6,7 @@ import Footer from "@/components/footer"
 import { useCart } from "@/contexts/cart-context"
 import { ShoppingCart } from "lucide-react"
 import Link from "next/link"
+import Script from "next/script"
 
 export default function IntelligentSprinklerSystemPage() {
   const { addToCart } = useCart()
@@ -29,9 +30,37 @@ export default function IntelligentSprinklerSystemPage() {
     addToCart(product)
   }
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "VICON Intelligent Sprinkler System",
+    "description": "Complete intelligent fire suppression system with smart cannon nozzle, jet rod kit, control host, and wireless remote-control. Roof fire sprinkler system with 82-98ft spray distance.",
+    "brand": {
+      "@type": "Brand",
+      "name": "VICON"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "18600",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "reviewCount": "1"
+    }
+  }
+
   return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
+    <>
+      <Script
+        id="product-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <main className="min-h-screen bg-background">
+        <Navigation />
       
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-gradient-to-br from-primary/10 to-accent/10">
@@ -253,6 +282,7 @@ export default function IntelligentSprinklerSystemPage() {
 
       <Footer />
     </main>
+    </>
   )
 }
 

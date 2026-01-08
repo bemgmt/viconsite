@@ -5,8 +5,8 @@ import Footer from "@/components/footer"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "VICON System Components - Smart Control, AI Cannon & More",
-  description: "Explore VICON's system components: Smart Control Unit, AI Water Cannon, Localization Module, Water Tanks, and mobile app. Industrial-grade reliability for homeowners.",
+  title: "VICON Fire Irrigation System - Exterior Fire Sprinkler Systems",
+  description: "Explore VICON's fire irrigation system and exterior fire sprinkler systems. Smart Control Unit, AI Water Cannon, outdoor fire suppression system. Industrial-grade reliability.",
 }
 
 export default function TheSystemPage() {
