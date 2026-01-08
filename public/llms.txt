@@ -1,0 +1,86 @@
+# VICON Technologies - AI-Powered Fire Protection System
+
+## About
+VICON is an advanced AI-powered fire detection and suppression system designed to protect homes and businesses in Southern California. Our intelligent system uses AI monitoring, precision targeting, and instant response to detect and suppress fires before they can spread.
+
+## Key Information
+- **Company**: VICON Technologies
+- **Website**: https://vicontech.group
+- **Contact**: info@vicontech.group
+- **Phone**: (904) 945-3280
+- **Location**: 22515 Aspan Street, Suite F-G, Lake Forest, CA 92630
+
+## Products & Services
+
+### VICON Intelligent Sprinkler System
+- AI-powered fire detection and suppression
+- Precision targeting with high-pressure water cannon
+- 24/7 monitoring with thermal imaging
+- Remote app control with live video feed
+- Coverage: Up to 4,000 sq ft per unit
+- Price: $18,600 (Agent: $14,880)
+
+### Water Storage Tanks
+- 5-Ton Tank (1,453 gallons): $3,600
+- 16-Ton Tank (4,386 gallons): $6,250
+
+### Sanctuary Battery System
+- 16 kWh base system: $12,800
+- Scalable up to 60 kWh
+- Lithium Iron Phosphate (LiFePO4) technology
+- Grid-interactive capability
+- Powers fire protection systems during outages
+
+### Swimming Pool System
+- VICON Intelligent Sprinkler Swimming Pool System: $4,200
+- Uses pool as water source for fire protection
+
+## Key Pages
+
+### Main Pages
+- Home: https://vicontech.group
+- About: https://vicontech.group/about
+- Products: https://vicontech.group/products
+- Battery: https://vicontech.group/battery
+- Agent Pricing: https://vicontech.group/agent-pricing
+
+### Information Pages
+- How It Works: https://vicontech.group/how-it-works
+- The System: https://vicontech.group/the-system
+- Learn More: https://vicontech.group/learn-more
+
+### Product Pages
+- Intelligent Sprinkler System: https://vicontech.group/products/intelligent-sprinkler-system
+- Model 2: https://vicontech.group/products/model-2
+- Model 3: https://vicontech.group/products/model-3
+- VK-240: https://vicontech.group/products/vk-240
+
+### Contact & Support
+- Contact: https://vicontech.group/contact
+- Careers: https://vicontech.group/careers
+
+## System Features
+- AI-powered fire detection with thermal imaging
+- Automatic high-pressure water suppression (12 L/s)
+- Solar-powered operation
+- Water-efficient design
+- Remote monitoring and control via mobile app
+- Real-time alerts and notifications
+- UL & FCC certified components
+
+## Target Market
+- Residential homeowners in Southern California
+- Commercial properties
+- Properties in wildfire-prone areas
+- Homes requiring advanced fire protection
+
+## Financing
+- $200/month financing available
+- Agent pricing: 20% discount on all products
+
+## Technology Stack
+- Next.js 16 (App Router)
+- React 19
+- AI-powered chatbot (OpenAI GPT-4o-mini)
+- Stripe payment processing
+- Vercel deployment
