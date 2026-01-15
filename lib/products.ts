@@ -80,6 +80,23 @@ export const products: Product[] = [
     specs: "Dimensions: 59.1\" × 25.2\" × 50.6\" | Power: 10 HP | Flow: 35.2 gpm | Head: 361 ft | Pressure: 174 psi | Voltage: 220 V",
   },
   {
+    id: "purily-robotic-pool-cleaner",
+    name: "Purily Intelligent Robotic Pool & Water Cleaning System",
+    description: "Autonomous, app-controlled robotic cleaner for pool floors, walls, and waterlines",
+    image: "/watertank.jpg",
+    price: 0,
+    agentPrice: 0,
+    features: [
+      "Fully autonomous cleaning with intelligent path planning",
+      "Cleans pool floors, walls, and waterlines",
+      "Dual modes: automatic and manual via app or remote",
+      "High-efficiency suction with 4L internal filter box",
+      "Bluetooth + Wi-Fi with OTA software updates",
+      "IPX8 waterproof rating for full submersion",
+    ],
+    specs: "Size: 20\" × 17\" × 10\" | Weight: 32 lbs | Pumping: 21,000 L/hr | Runtime: 2-3.5 hrs | Battery: 9,000 mAh | IPX8",
+  },
+  {
     id: "backup-battery",
     name: "Sanctuary Battery",
     description: "Scalable lithium iron phosphate battery system with integrated 12kW inverter for whole-home backup power",

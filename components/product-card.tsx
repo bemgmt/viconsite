@@ -5,6 +5,7 @@ import type { Product } from "@/lib/products"
 import { ShoppingCart, ChevronDown } from "lucide-react"
 import { useCart } from "@/contexts/cart-context"
 import Image from "next/image"
+import Link from "next/link"
 
 interface ProductCardProps {
   product: Product
@@ -15,6 +16,7 @@ interface ProductCardProps {
 export default function ProductCard({ product, price, isAgent = false }: ProductCardProps) {
   const [isExpanded, setIsExpanded] = useState(false)
   const { addToCart } = useCart()
+  const isPriceTbd = price <= 0
 
   const handleAddToCart = () => {
     addToCart({
@@ -95,7 +97,7 @@ export default function ProductCard({ product, price, isAgent = false }: Product
           <div>
             <p className="text-xs text-muted-foreground mb-1">Price</p>
             <p className="text-3xl font-bold text-primary group-hover:scale-110 transition-transform inline-block">
-              ${price.toLocaleString()}
+              {isPriceTbd ? "Contact for pricing" : `$${price.toLocaleString()}`}
             </p>
           </div>
           {isAgent && product.agentPrice < product.price && (
@@ -106,13 +108,22 @@ export default function ProductCard({ product, price, isAgent = false }: Product
           )}
         </div>
 
-        <button
-          onClick={handleAddToCart}
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 group/btn"
-        >
-          <ShoppingCart size={20} className="group-hover/btn:animate-bounce" />
-          <span className="group-hover/btn:translate-x-1 transition-transform inline-block">Add to Cart</span>
-        </button>
+        {isPriceTbd ? (
+          <Link
+            href="/contact"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 group/btn"
+          >
+            <span className="group-hover/btn:translate-x-1 transition-transform inline-block">Request Pricing</span>
+          </Link>
+        ) : (
+          <button
+            onClick={handleAddToCart}
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 group/btn"
+          >
+            <ShoppingCart size={20} className="group-hover/btn:animate-bounce" />
+            <span className="group-hover/btn:translate-x-1 transition-transform inline-block">Add to Cart</span>
+          </button>
+        )}
       </div>
     </div>
   )

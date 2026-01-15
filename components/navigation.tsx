@@ -39,6 +39,7 @@ export default function Navigation() {
     { label: "All Products", href: "/products" },
     { label: "VICON Intelligent Sprinkler System", href: "/products/intelligent-sprinkler-system" },
     { label: "Sanctuary Battery", href: "/battery" },
+    { label: "Purily Robotic Pool Cleaner", href: "/products/purily-robotic-pool-cleaner" },
   ]
 
   return (

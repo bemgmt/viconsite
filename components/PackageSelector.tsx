@@ -10,6 +10,7 @@ type PackageConfig = {
   waterTank5Ton: boolean
   waterTank16Ton: boolean
   additionalUnits: number
+  purilyCleaner: boolean
   hasSolar: boolean
   hasEVehicle: boolean
   squareFootage: number
@@ -22,6 +23,7 @@ export default function PackageSelector() {
   const [customSquareFootage, setCustomSquareFootage] = useState("")
   const [hasPool, setHasPool] = useState<boolean | null>(null)
   const [usePool, setUsePool] = useState<boolean | null>(null)
+  const [wantsPurily, setWantsPurily] = useState<boolean | null>(null)
   const [hasSolar, setHasSolar] = useState<boolean | null>(null)
   const [hasEVehicle, setHasEVehicle] = useState<boolean | null>(null)
   const [packageConfig, setPackageConfig] = useState<PackageConfig | null>(null)
@@ -32,6 +34,7 @@ export default function PackageSelector() {
     setCustomSquareFootage("")
     setHasPool(null)
     setUsePool(null)
+    setWantsPurily(null)
     setHasSolar(null)
     setHasEVehicle(null)
     setPackageConfig(null)
@@ -59,24 +62,29 @@ export default function PackageSelector() {
     if (answer) {
       setStep(3) // Ask if they want to use pool
     } else {
-      setStep(4) // Skip to solar question
+      setStep(5) // Skip to solar question
     }
   }
 
   const handleUsePoolAnswer = (answer: boolean) => {
     setUsePool(answer)
-    setStep(4) // Go to solar question
+    setStep(4) // Go to Purily question
+  }
+
+  const handlePurilyAnswer = (answer: boolean) => {
+    setWantsPurily(answer)
+    setStep(5) // Go to solar question
   }
 
   const handleSolarAnswer = (answer: boolean) => {
     setHasSolar(answer)
-    setStep(5) // Go to E-vehicle question
+    setStep(6) // Go to E-vehicle question
   }
 
   const handleEVehicleAnswer = (answer: boolean) => {
     setHasEVehicle(answer)
     calculatePackage()
-    setStep(6) // Show results
+    setStep(7) // Show results
   }
 
   const calculatePackage = () => {
@@ -91,6 +99,7 @@ export default function PackageSelector() {
       waterTank5Ton: hasPool === false || usePool === false,
       waterTank16Ton: false,
       additionalUnits,
+      purilyCleaner: hasPool === true && wantsPurily === true,
       hasSolar: hasSolar === true,
       hasEVehicle: hasEVehicle === true,
       squareFootage: squareFootage,
@@ -167,7 +176,7 @@ export default function PackageSelector() {
 
         {/* Progress Indicator */}
         <div className="flex items-center justify-center mb-12">
-          {[1, 2, 3, 4, 5].map((s) => (
+          {[1, 2, 3, 4, 5, 6].map((s) => (
             <div key={s} className="flex items-center">
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold transition-all ${
@@ -180,7 +189,7 @@ export default function PackageSelector() {
               >
                 {s < step ? "✓" : s}
               </div>
-              {s < 5 && (
+              {s < 6 && (
                 <div
                   className={`w-12 h-1 mx-2 transition-all ${
                     s < step ? "bg-primary" : "bg-muted"
@@ -312,8 +321,41 @@ export default function PackageSelector() {
           </div>
         )}
 
-        {/* Step 4: Solar Question */}
-        {step === 4 && (
+        {/* Step 4: Purily Add-On */}
+        {step === 4 && hasPool && (
+          <div className="space-y-8">
+            <h3 className="text-2xl font-semibold text-foreground text-center">
+              Would you like to add autonomous pool cleaning with Purily?
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <button
+                onClick={() => handlePurilyAnswer(true)}
+                className="p-8 border-2 border-border rounded-lg hover:border-accent hover:bg-accent/5 transition-all group"
+              >
+                <div className="text-xl font-semibold text-foreground group-hover:text-accent">
+                  Yes
+                </div>
+                <div className="text-sm text-muted-foreground mt-2">
+                  Add year-round robotic pool maintenance
+                </div>
+              </button>
+              <button
+                onClick={() => handlePurilyAnswer(false)}
+                className="p-8 border-2 border-border rounded-lg hover:border-accent hover:bg-accent/5 transition-all group"
+              >
+                <div className="text-xl font-semibold text-foreground group-hover:text-accent">
+                  No
+                </div>
+                <div className="text-sm text-muted-foreground mt-2">
+                  Skip pool maintenance add-on
+                </div>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Step 5: Solar Question */}
+        {step === 5 && (
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold text-foreground text-center">
               Do you have solar installed?
@@ -345,8 +387,8 @@ export default function PackageSelector() {
           </div>
         )}
 
-        {/* Step 5: E-Vehicle Question */}
-        {step === 5 && (
+        {/* Step 6: E-Vehicle Question */}
+        {step === 6 && (
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold text-foreground text-center">
               Do you have E-Vehicles?
@@ -378,8 +420,8 @@ export default function PackageSelector() {
           </div>
         )}
 
-        {/* Step 6: Results */}
-        {step === 6 && packageConfig && (
+        {/* Step 7: Results */}
+        {step === 7 && packageConfig && (
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold text-foreground text-center">
               Your Customized Package
@@ -439,6 +481,13 @@ export default function PackageSelector() {
                       <span className="font-semibold text-foreground">$6,250</span>
                     </div>
                   )}
+
+                  {packageConfig.purilyCleaner && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-foreground">Purily Robotic Pool Cleaner</span>
+                      <span className="font-semibold text-foreground">Contact for pricing</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="pt-4 border-t border-border">
@@ -455,10 +504,12 @@ export default function PackageSelector() {
               </div>
             </div>
 
-            {(packageConfig.hasSolar || packageConfig.hasEVehicle) && (
+            {(packageConfig.hasSolar || packageConfig.hasEVehicle || packageConfig.purilyCleaner) && (
               <div className="bg-accent/10 border border-accent/20 rounded-lg p-4">
                 <div className="text-sm text-foreground">
                   <strong>Note:</strong> Additional recommendations for your{" "}
+                  {packageConfig.purilyCleaner && "Purily maintenance add-on"}
+                  {packageConfig.purilyCleaner && (packageConfig.hasSolar || packageConfig.hasEVehicle) && ", "}
                   {packageConfig.hasSolar && "solar system"}
                   {packageConfig.hasSolar && packageConfig.hasEVehicle && " and "}
                   {packageConfig.hasEVehicle && "electric vehicle"}

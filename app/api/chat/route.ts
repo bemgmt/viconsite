@@ -31,6 +31,18 @@ FIRE PROTECTION SYSTEMS:
   * Max flow: 35.2 gpm, Head: 361 ft, Pressure: 174 psi
   * 220 V, 21.3 A, 3480 RPM
 
+WATER MAINTENANCE:
+- Purily Intelligent Robotic Pool & Water Cleaning System: Contact for pricing
+  * Autonomous robotic cleaner for pool floors, walls, and waterlines
+  * Intelligent path-planning adapts to pool shape and layout
+  * Dual modes: Automatic hands-free and Manual via app/remote
+  * High-efficiency suction with 4L internal filter box
+  * Pumping rate: 21,000 L/hour (≈ 5,545 gal/hour)
+  * Battery: 9,000 mAh, runtime 2-3.5 hours, charge time ~3.5 hours
+  * Bluetooth + Wi-Fi control with OTA updates, IPX8 waterproof
+  * Designed for residential pools, HOA facilities, hospitality, municipal water features
+  * Complements VICON by providing year-round water hygiene and maintenance
+
 SANCTUARY BATTERY:
 - Base System (16 kWh): $12,800 (Agent: $10,240)
   * Lithium Iron Phosphate (LiFePO4) battery technology
@@ -88,6 +100,9 @@ When a user asks for a quote, pricing, or wants to know what they need for their
 4. ELECTRIC VEHICLE (Optional - for future features):
    - Ask: "Do you have an electric vehicle?"
    - Note this for future battery recommendations
+
+PURILY ADD-ON (Optional - for pool owners):
+If a customer has a pool and wants ongoing maintenance, offer Purily as an add-on for autonomous cleaning and water hygiene.
 
 QUOTE CALCULATION:
 Base Package = VICON Intelligent Sprinkler System ($18,600) × number of units needed
