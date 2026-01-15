@@ -74,12 +74,18 @@ export default function PurilyRoboticPoolCleanerPage() {
                 </Link>
               </div>
             </div>
-            <div className="relative overflow-hidden rounded-lg cursor-pointer group/img">
-              <img
-                src="/watertank.jpg"
-                alt="Purily Intelligent Robotic Pool Cleaner"
-                className="w-full h-auto rounded-lg shadow-2xl transition-transform duration-500 group-hover/img:scale-150"
-              />
+            <div className="relative overflow-hidden rounded-lg shadow-2xl border border-border bg-black/5">
+              <div className="aspect-video w-full">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/vgKGQ-ywmco"
+                  title="Purily Intelligent Robotic Pool Cleaner video"
+                  className="h-full w-full rounded-lg"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                />
+              </div>
             </div>
           </div>
         </div>
