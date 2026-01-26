@@ -42,7 +42,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2 font-bold text-xl mb-6">
               <div className="relative w-8 h-8">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cgi-bin_mmwebwx-bin_webwxgetmsgimg__MsgID5202958901379986031skey%40crypt_7d72f99b_bc487fcb6d9402a8598d026bb42e3fdemmweb_appidwx_webfilehelper-e1747815718414-100x100-noihZZciHXU6DZ0iqg6u7Prmw5Vgvz.jpeg"
+                  src="/viconlogo.png"
                   alt="VICON"
                   fill
                   quality={90}

@@ -60,7 +60,7 @@ export default function Navigation() {
             <Link href="/" className="flex items-center gap-2 font-bold text-2xl group">
               <div className="relative w-10 h-10 group-hover:scale-110 transition-transform">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/cgi-bin_mmwebwx-bin_webwxgetmsgimg__MsgID5202958901379986031skey%40crypt_7d72f99b_bc487fcb6d9402a8598d026bb42e3fdemmweb_appidwx_webfilehelper-e1747815718414-100x100-noihZZciHXU6DZ0iqg6u7Prmw5Vgvz.jpeg"
+                  src="/viconlogo.png"
                   alt="VICON Logo"
                   fill
                   quality={90}
