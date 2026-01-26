@@ -38,7 +38,7 @@ export default function BatterySpecs() {
     {
       icon: Zap,
       title: "Integrated Inverter",
-      value: "18 kW / 13.2 kW peak",
+      value: "12 kW / 13.2 kW peak",
       description: "Grid-interactive capability",
     },
     {
@@ -156,7 +156,7 @@ export default function BatterySpecs() {
               <dl className="space-y-3">
                 <div className="flex justify-between border-b border-border pb-2">
                   <dt className="text-muted-foreground">Continuous Power</dt>
-                  <dd className="font-semibold text-foreground">18 kW</dd>
+                  <dd className="font-semibold text-foreground">12 kW</dd>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <dt className="text-muted-foreground">Peak Power</dt>

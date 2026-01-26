@@ -99,13 +99,13 @@ export const products: Product[] = [
   {
     id: "backup-battery",
     name: "Sanctuary Battery",
-    description: "Scalable lithium iron phosphate battery system with integrated 18kW inverter for whole-home backup power",
+    description: "Scalable lithium iron phosphate battery system with integrated 12kW inverter for whole-home backup power",
     image: "/batteryblack1.jpg",
     price: 12800,
     agentPrice: 10240, // 20% discount
     features: [
       "14.3kWh capacity (expandable to 60kWh)",
-      "Integrated 18kW inverter with grid-interactive capability",
+      "Integrated 12kW inverter with grid-interactive capability",
       "Lithium Iron Phosphate (LiFePO4) battery technology",
       "Wide operating temperature: -4°F to 131°F",
       "Flood and dust resistant design",
@@ -113,6 +113,6 @@ export const products: Product[] = [
       "Meets North American safety and EMI standards",
       "96.5% max efficiency",
     ],
-    specs: "Capacity: 14.3kWh (expandable to 60kWh) | Inverter: 18kW continuous, 13.2kW peak | Battery: LiFePO4 51.2V | Dimensions: 45\" x 18.5\" x 10.45\" | Weight: 290 lbs | Temp Range: -4°F to 131°F",
+    specs: "Capacity: 14.3kWh (expandable to 60kWh) | Inverter: 12kW continuous, 13.2kW peak | Battery: LiFePO4 51.2V | Dimensions: 45\" x 18.5\" x 10.45\" | Weight: 290 lbs | Temp Range: -4°F to 131°F",
   },
 ]

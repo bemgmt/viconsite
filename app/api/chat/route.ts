@@ -46,7 +46,7 @@ WATER MAINTENANCE:
 SANCTUARY BATTERY:
 - Base System (14.3 kWh): $12,800 (Agent: $10,240)
   * Lithium Iron Phosphate (LiFePO4) battery technology
-  * Integrated 18 kW inverter (13.2 kW peak), 96.5% efficiency
+  * Integrated 12 kW inverter (13.2 kW peak), 96.5% efficiency
   * Grid-interactive capability, seamless power switching
   * Operating temperature: -4°F to 131°F
   * Dimensions: 45" x 18.5" x 10.45", Weight: 290 lbs
