@@ -42,7 +42,7 @@ export default function Home() {
     },
     "offers": {
       "@type": "Offer",
-      "price": "18600",
+      "price": "19600",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock"
     }

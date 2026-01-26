@@ -38,11 +38,11 @@ export default function BatteryPage() {
               <div className="flex flex-wrap gap-4 mb-8">
                 <div className="bg-card p-4 rounded-lg border border-border">
                   <p className="text-sm text-muted-foreground mb-1">Starting Capacity</p>
-                  <p className="text-3xl font-bold text-accent">16 kWh</p>
+                  <p className="text-3xl font-bold text-accent">14.3 kWh</p>
                 </div>
                 <div className="bg-card p-4 rounded-lg border border-border">
                   <p className="text-sm text-muted-foreground mb-1">Inverter Power</p>
-                  <p className="text-3xl font-bold text-accent">12 kW</p>
+                  <p className="text-3xl font-bold text-accent">18 kW</p>
                 </div>
                 <div className="bg-card p-4 rounded-lg border border-border">
                   <p className="text-sm text-muted-foreground mb-1">Starting Price</p>
@@ -84,14 +84,14 @@ export default function BatteryPage() {
               <div className="text-5xl mb-4">🔋</div>
               <h3 className="text-2xl font-bold mb-4 text-foreground">Scalable Design</h3>
               <p className="text-muted-foreground">
-                Start with 16 kWh and expand up to 60 kWh as your needs grow. Add capacity anytime without replacing your existing system.
+                Start with 14.3 kWh and expand up to 60 kWh as your needs grow. Add capacity anytime without replacing your existing system.
               </p>
             </div>
             <div className="bg-card p-8 rounded-lg border border-border hover:border-accent transition-all">
               <div className="text-5xl mb-4">⚡</div>
               <h3 className="text-2xl font-bold mb-4 text-foreground">Integrated Inverter</h3>
               <p className="text-muted-foreground">
-                Built-in 12 kW grid-interactive inverter with 96.5% efficiency. Seamlessly switches between grid and battery power.
+                Built-in 18 kW grid-interactive inverter with 96.5% efficiency. Seamlessly switches between grid and battery power.
               </p>
             </div>
             <div className="bg-card p-8 rounded-lg border border-border hover:border-accent transition-all">

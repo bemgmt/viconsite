@@ -4,7 +4,7 @@ export default function BatterySpecs() {
   const expansionOptions = [
     {
       name: "Base System",
-      capacity: "16 kWh",
+      capacity: "14.3 kWh",
       price: "$12,800",
       description: "Includes accessories and installation",
     },
@@ -38,7 +38,7 @@ export default function BatterySpecs() {
     {
       icon: Zap,
       title: "Integrated Inverter",
-      value: "12 kW / 13.2 kW peak",
+      value: "18 kW / 13.2 kW peak",
       description: "Grid-interactive capability",
     },
     {
@@ -133,7 +133,7 @@ export default function BatterySpecs() {
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <dt className="text-muted-foreground">Capacity</dt>
-                  <dd className="font-semibold text-foreground">16 kWh</dd>
+                  <dd className="font-semibold text-foreground">14.3 kWh</dd>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <dt className="text-muted-foreground">Voltage Range</dt>
@@ -156,7 +156,7 @@ export default function BatterySpecs() {
               <dl className="space-y-3">
                 <div className="flex justify-between border-b border-border pb-2">
                   <dt className="text-muted-foreground">Continuous Power</dt>
-                  <dd className="font-semibold text-foreground">12 kW</dd>
+                  <dd className="font-semibold text-foreground">18 kW</dd>
                 </div>
                 <div className="flex justify-between border-b border-border pb-2">
                   <dt className="text-muted-foreground">Peak Power</dt>

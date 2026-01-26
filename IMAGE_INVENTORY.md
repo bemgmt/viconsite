@@ -26,7 +26,7 @@
 | `nozzle2.jpg` | 83 KB | 100-150 KB | VK-240 Product Page | VK-240-25-3000 Single-Column Jet Rod Kit |
 | `inground3.jpg` | 95 KB | 100-150 KB | Model 2 Product Page | VICON Fire Protection System - Model 2 |
 | `dualconsole1.jpg` | 126 KB | 100-150 KB | Model 3 Product Page | VICON Fire Protection System - Model 3 |
-| `batterysystem.jpg` | 186 KB | 150-200 KB | Battery Product Page | Sanctuary Battery System - 16kWh |
+| `batterysystem.jpg` | 186 KB | 150-200 KB | Battery Product Page | Sanctuary Battery System - 14.3kWh |
 | `watertank1.jpg` | 521 KB | 200-300 KB | Products Page | Water Storage Tank - 4,386 gallons capacity |
 | `watertank2.jpg` | 877 KB | 200-300 KB | Products Page | Water Storage Tank - 1,453 gallons capacity |
 

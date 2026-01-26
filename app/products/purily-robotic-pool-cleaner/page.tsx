@@ -11,9 +11,9 @@ export default function PurilyRoboticPoolCleanerPage() {
 
   const product = {
     id: "purily-robotic-pool-cleaner",
-    name: "Purily Intelligent Robotic Pool & Water Cleaning System",
-    price: 0,
-    image: "/watertank.jpg",
+    name: "VICON Intelligent Robotic Pool & Water Cleaning System",
+    price: 1498,
+    image: "/purilyrobotcleaner.png",
   }
 
   const hasPricing = product.price > 0
@@ -32,10 +32,10 @@ export default function PurilyRoboticPoolCleanerPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 text-foreground">
-                Purily Intelligent Robotic Pool & Water Cleaning System
+                VICON Intelligent Robotic Pool & Water Cleaning System
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Autonomous water maintenance for modern properties. Purily delivers hands-free pool and water-surface
+                Autonomous water maintenance for modern properties. VICON delivers hands-free pool and water-surface
                 cleaning with intelligent path-planning, smart app control, and high-efficiency filtration.
               </p>
               <div className="flex flex-wrap gap-4 mb-8">
@@ -49,7 +49,7 @@ export default function PurilyRoboticPoolCleanerPage() {
                 </div>
                 <div className="bg-card p-4 rounded-lg border border-border">
                   <p className="text-sm text-muted-foreground mb-1">Pricing</p>
-                  <p className="text-3xl font-bold text-primary">Contact for pricing</p>
+                  <p className="text-3xl font-bold text-primary">$1,498</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-4">
@@ -78,7 +78,7 @@ export default function PurilyRoboticPoolCleanerPage() {
               <div className="aspect-video w-full">
                 <iframe
                   src="https://www.youtube-nocookie.com/embed/vgKGQ-ywmco"
-                  title="Purily Intelligent Robotic Pool Cleaner video"
+                  title="VICON Intelligent Robotic Pool Cleaner video"
                   className="h-full w-full rounded-lg"
                   loading="lazy"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -95,7 +95,7 @@ export default function PurilyRoboticPoolCleanerPage() {
       <section className="py-20 px-4 bg-background">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 text-foreground">
-            Why Choose Purily?
+            Why Choose VICON?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-card p-8 rounded-lg border border-border hover:border-accent transition-all">
@@ -232,7 +232,7 @@ export default function PurilyRoboticPoolCleanerPage() {
             <div className="bg-card p-8 rounded-lg border border-border hover:border-accent transition-all md:col-span-2">
               <h3 className="text-2xl font-bold mb-4 text-foreground">Complete Exterior Safety & Maintenance</h3>
               <p className="text-muted-foreground">
-                Purily extends VICON’s wildfire defense with daily water hygiene and automated maintenance, creating a unified
+                The VICON Robotic Pool Cleaner extends VICON’s wildfire defense with daily water hygiene and automated maintenance, creating a unified
                 protection story across fire defense, energy resilience, and water cleanliness.
               </p>
             </div>
@@ -245,7 +245,7 @@ export default function PurilyRoboticPoolCleanerPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Automate Water Maintenance?</h2>
           <p className="text-xl mb-8 opacity-90">
-            Get a custom quote for Purily and bundle it with your VICON fire protection system for a complete exterior solution.
+            Get a custom quote for VICON and bundle it with your VICON fire protection system for a complete exterior solution.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105" href="/contact">

@@ -111,7 +111,8 @@ export default function PackageSelector() {
   const calculateTotalPrice = (): number => {
     if (!packageConfig) return 0
 
-    let total = 18600 // Base VICON Intelligent Sprinkler System
+    let total = 19600 // Base VICON Intelligent Sprinkler System
+    const poolCleanerPrice = 1498
 
     if (packageConfig.poolSystem) {
       total += 4200 // Swimming Pool System
@@ -125,8 +126,12 @@ export default function PackageSelector() {
       total += 6250 // 16-Ton Water Tank
     }
 
+    if (packageConfig.purilyCleaner) {
+      total += poolCleanerPrice // VICON Robotic Pool Cleaner
+    }
+
     // Additional units (each additional unit is a full system)
-    total += packageConfig.additionalUnits * 18600
+    total += packageConfig.additionalUnits * 19600
 
     // TODO: Add solar and E-vehicle pricing logic later
 
@@ -321,11 +326,11 @@ export default function PackageSelector() {
           </div>
         )}
 
-        {/* Step 4: Purily Add-On */}
+        {/* Step 4: VICON Add-On */}
         {step === 4 && hasPool && (
           <div className="space-y-8">
             <h3 className="text-2xl font-semibold text-foreground text-center">
-              Would you like to add autonomous pool cleaning with Purily?
+              Would you like to add autonomous pool cleaning with VICON?
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button
@@ -447,7 +452,7 @@ export default function PackageSelector() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-foreground">VICON Intelligent Sprinkler System</span>
-                    <span className="font-semibold text-foreground">$18,600</span>
+                    <span className="font-semibold text-foreground">$19,600</span>
                   </div>
 
                   {packageConfig.additionalUnits > 0 && (
@@ -456,7 +461,7 @@ export default function PackageSelector() {
                         Additional Units × {packageConfig.additionalUnits}
                       </span>
                       <span className="font-semibold text-foreground">
-                        ${(packageConfig.additionalUnits * 18600).toLocaleString()}
+                        ${(packageConfig.additionalUnits * 19600).toLocaleString()}
                       </span>
                     </div>
                   )}
@@ -484,8 +489,8 @@ export default function PackageSelector() {
 
                   {packageConfig.purilyCleaner && (
                     <div className="flex items-center justify-between">
-                      <span className="text-foreground">Purily Robotic Pool Cleaner</span>
-                      <span className="font-semibold text-foreground">Contact for pricing</span>
+                      <span className="text-foreground">VICON Robotic Pool Cleaner</span>
+                      <span className="font-semibold text-foreground">$1,498</span>
                     </div>
                   )}
                 </div>
@@ -508,7 +513,7 @@ export default function PackageSelector() {
               <div className="bg-accent/10 border border-accent/20 rounded-lg p-4">
                 <div className="text-sm text-foreground">
                   <strong>Note:</strong> Additional recommendations for your{" "}
-                  {packageConfig.purilyCleaner && "Purily maintenance add-on"}
+                  {packageConfig.purilyCleaner && "VICON maintenance add-on"}
                   {packageConfig.purilyCleaner && (packageConfig.hasSolar || packageConfig.hasEVehicle) && ", "}
                   {packageConfig.hasSolar && "solar system"}
                   {packageConfig.hasSolar && packageConfig.hasEVehicle && " and "}

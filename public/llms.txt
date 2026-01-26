@@ -18,14 +18,14 @@ VICON is an advanced AI-powered fire detection and suppression system designed t
 - 24/7 monitoring with thermal imaging
 - Remote app control with live video feed
 - Coverage: Up to 4,000 sq ft per unit
-- Price: $18,600 (Agent: $14,880)
+- Price: $19,600 (Agent: $15,680)
 
 ### Water Storage Tanks
 - 5-Ton Tank (1,453 gallons): $3,600
 - 16-Ton Tank (4,386 gallons): $6,250
 
 ### Sanctuary Battery System
-- 16 kWh base system: $12,800
+- 14.3 kWh base system: $12,800
 - Scalable up to 60 kWh
 - Lithium Iron Phosphate (LiFePO4) technology
 - Grid-interactive capability

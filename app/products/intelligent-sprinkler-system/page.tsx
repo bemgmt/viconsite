@@ -15,7 +15,7 @@ export default function IntelligentSprinklerSystemPage() {
   const product = {
     id: "intelligent-sprinkler-system",
     name: "VICON Intelligent Sprinkler System",
-    price: 18600,
+    price: 19600,
     image: "/nozzle2 (2).jpg",
   }
 
@@ -41,7 +41,7 @@ export default function IntelligentSprinklerSystemPage() {
     },
     "offers": {
       "@type": "Offer",
-      "price": "18600",
+      "price": "19600",
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock"
     },
@@ -84,7 +84,7 @@ export default function IntelligentSprinklerSystemPage() {
                 </div>
                 <div className="bg-card p-4 rounded-lg border border-border">
                   <p className="text-sm text-muted-foreground mb-1">Price</p>
-                  <p className="text-3xl font-bold text-primary">$18,600</p>
+                  <p className="text-3xl font-bold text-primary">$19,600</p>
                 </div>
               </div>
               <div className="flex flex-wrap gap-4">
@@ -271,7 +271,7 @@ export default function IntelligentSprinklerSystemPage() {
               className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 flex items-center gap-2"
             >
               <ShoppingCart size={20} />
-              Add to Cart - $18,600
+              Add to Cart - $19,600
             </button>
             <Link href="/contact" className="bg-primary-foreground hover:bg-primary-foreground/90 text-primary px-8 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105">
               Schedule Free Consultation
