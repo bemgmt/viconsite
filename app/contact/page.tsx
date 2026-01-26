@@ -81,7 +81,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-foreground mb-1">Phone</h3>
-                  <p className="text-muted-foreground">(555) 123-4567</p>
+                  <p className="text-muted-foreground">(904) 945-3280</p>
                   <p className="text-sm text-muted-foreground">Mon-Fri 8am-6pm PST</p>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default function ContactPage() {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent"
-                    placeholder="(555) 123-4567"
+                    placeholder="(904) 945-3280"
                   />
                 </div>
               </div>

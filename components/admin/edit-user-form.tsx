@@ -194,7 +194,7 @@ export function EditUserForm({ user }: EditUserFormProps) {
             <FormItem>
               <FormLabel>Phone (Optional)</FormLabel>
               <FormControl>
-                <Input placeholder="+1 (555) 123-4567" {...field} />
+                <Input placeholder="+1 (904) 945-3280" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

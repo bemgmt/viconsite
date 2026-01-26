@@ -140,7 +140,7 @@ export default function CheckoutForm() {
                   value={customerInfo.phone}
                   onChange={(e) => setCustomerInfo({ ...customerInfo, phone: e.target.value })}
                   className="w-full pl-10 pr-4 py-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="(555) 123-4567"
+                  placeholder="(904) 945-3280"
                 />
               </div>
             </div>

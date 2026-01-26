@@ -44,7 +44,7 @@ async function main() {
       passwordHash: await bcrypt.hash("Password123!", 10),
       role: UserRole.USER,
       userType: UserType.SALES_PERSON,
-      phone: "+1 (555) 123-4567",
+      phone: "+1 (904) 945-3280",
       commissionRate: 0.15,
       isActive: true,
     },

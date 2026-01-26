@@ -207,7 +207,7 @@ export default function CareersPage() {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:ring-2 focus:ring-accent focus:border-transparent"
-                  placeholder="(555) 123-4567"
+                  placeholder="(904) 945-3280"
                 />
               </div>
 
