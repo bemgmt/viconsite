@@ -15,12 +15,30 @@ export default function ContactPage() {
     preferredContact: "email",
   })
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Contact form submitted:", formData)
-    setSubmitted(true)
+
+    try {
+      setIsSubmitting(true)
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) {
+        throw new Error("Contact submission failed")
+      }
+
+      setSubmitted(true)
+    } catch (error) {
+      console.error("Contact submission error:", error)
+      alert("There was an error submitting your request. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -240,9 +258,10 @@ export default function ContactPage() {
 
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-4 rounded-lg font-bold text-lg transition-all hover:scale-105 shadow-lg"
               >
-                Schedule Free Consultation
+                {isSubmitting ? "Submitting..." : "Schedule Free Consultation"}
               </button>
             </form>
           </div>
