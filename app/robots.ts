@@ -1,8 +1,7 @@
 import { MetadataRoute } from 'next'
+import { sitemapUrl } from '@/lib/seo/site'
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://vicontech.group'
-
   const disallowedPaths = [
     '/admin/',
     '/api/',
@@ -40,6 +39,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: disallowedPaths,
       })),
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: sitemapUrl,
   }
 }

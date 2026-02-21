@@ -4,6 +4,7 @@ import Script from "next/script"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import DeferredGA from "@/components/deferred-ga"
+import { siteUrl, siteUrlObject } from "@/lib/seo/site"
 import "./globals.css"
 
 // Optimize font loading with display swap to prevent FOIT
@@ -21,7 +22,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vicontech.group'),
+  metadataBase: siteUrlObject,
   title: {
     default: "VICON - AI-Powered Fire Protection System",
     template: "%s | VICON Technologies",
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     siteName: 'VICON Technologies',
     title: 'VICON - AI-Powered Fire Protection System',
     description: 'Advanced AI-powered fire detection and suppression system protecting homes and businesses in Southern California. 24/7 monitoring, precision targeting, instant response.',
-    url: 'https://vicontech.group',
+    url: siteUrl,
     images: [
       {
         url: '/optimized/viconbanner-1920.webp',
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     images: ['/optimized/viconbanner-1920.webp'],
   },
   alternates: {
-    canonical: 'https://vicontech.group',
+    canonical: siteUrl,
   },
   robots: {
     index: true,
@@ -77,13 +78,13 @@ export const metadata: Metadata = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  "@id": "https://vicontech.group/#website",
+  "@id": `${siteUrl}/#website`,
   "name": "VICON Technologies",
-  "url": "https://vicontech.group",
+  "url": siteUrl,
   "description": "AI-powered fire detection and suppression systems protecting homes and businesses in Southern California",
   "publisher": {
     "@type": "Organization",
-    "@id": "https://vicontech.group/#organization",
+    "@id": `${siteUrl}/#organization`,
     "name": "VICON Technologies"
   },
   "inLanguage": "en-US"
