@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { Mail, Shield, CheckCircle2 } from "lucide-react"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
+import CommerceShell from "@/components/commerce-shell"
 
 export default function AgentPricingLayout({ children }: { children: React.ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -226,13 +227,13 @@ export default function AgentPricingLayout({ children }: { children: React.React
   }
 
   return (
-    <div>
+    <CommerceShell>
       <div className="fixed top-4 right-4 bg-green-600 text-white px-4 py-2 rounded-lg flex items-center gap-2 z-50 shadow-lg animate-fade-in">
         <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
         <CheckCircle2 size={16} />
         Verified Agent Access
       </div>
       {children}
-    </div>
+    </CommerceShell>
   )
 }

@@ -1,13 +1,23 @@
 "use client"
 
 import { useState } from "react"
-import ProductShowcase from "@/components/product-showcase"
-import PackageSelector from "@/components/PackageSelector"
+import dynamic from "next/dynamic"
 import { products } from "@/lib/products"
 import Link from "next/link"
 import { ChevronDown, ChevronUp } from "lucide-react"
 
+const PackageSelector = dynamic(() => import("@/components/PackageSelector"), {
+  ssr: false,
+  loading: () => <div className="text-center text-muted-foreground">Loading package builder...</div>,
+})
+
+const ProductShowcase = dynamic(() => import("@/components/product-showcase"), {
+  ssr: false,
+  loading: () => <div className="text-center text-muted-foreground">Loading products...</div>,
+})
+
 export default function ProductsContent() {
+  const [showPackageSelector, setShowPackageSelector] = useState(false)
   const [showAllProducts, setShowAllProducts] = useState(false)
 
   return (
@@ -22,9 +32,24 @@ export default function ProductsContent() {
           <div className="w-24 h-1 bg-accent mx-auto mt-6" />
         </div>
 
-        {/* Package Selector - Main Focus */}
+        {/* Package Selector - Lazy Loaded */}
         <div className="mb-16 animate-fade-up">
-          <PackageSelector />
+          {!showPackageSelector ? (
+            <div className="bg-card border border-border rounded-lg p-8 md:p-12 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">Find Your Perfect Package</h2>
+              <p className="text-muted-foreground mb-8">
+                Launch the interactive package builder to configure your system based on square footage, pool, and utilities.
+              </p>
+              <button
+                onClick={() => setShowPackageSelector(true)}
+                className="bg-accent hover:bg-accent/90 text-accent-foreground px-10 py-4 rounded-lg font-bold text-lg transition-all hover:scale-105"
+              >
+                Start Package Builder
+              </button>
+            </div>
+          ) : (
+            <PackageSelector />
+          )}
         </div>
 
         {/* All Products Toggle Button */}

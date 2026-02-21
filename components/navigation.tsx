@@ -1,30 +1,36 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import dynamic from "next/dynamic"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, User, ShoppingCart, ChevronDown } from "lucide-react"
+import { Menu, X, User } from "lucide-react"
 import Image from "next/image"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { useCart } from "@/contexts/cart-context"
+
+const NavCartButton = dynamic(() => import("@/components/nav-cart-button"), { ssr: false })
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false)
   const pathname = usePathname()
-  const { totalItems, setIsCartOpen } = useCart()
+  const isCommerceRoute =
+    pathname.startsWith("/products") ||
+    pathname.startsWith("/checkout") ||
+    pathname === "/battery" ||
+    pathname === "/agent-pricing"
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20)
+      if (ticking) return
+      ticking = true
+      window.requestAnimationFrame(() => {
+        const shouldBeScrolled = window.scrollY > 20
+        setIsScrolled((prev) => (prev === shouldBeScrolled ? prev : shouldBeScrolled))
+        ticking = false
+      })
     }
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -33,13 +39,6 @@ export default function Navigation() {
     { label: "The System", href: "/the-system" },
     { label: "Learn More", href: "/learn-more" },
     { label: "Agent Pricing", href: "/agent-pricing" },
-  ]
-
-  const productItems = [
-    { label: "All Products", href: "/products" },
-    { label: "VICON Intelligent Sprinkler System", href: "/products/intelligent-sprinkler-system" },
-    { label: "Sanctuary Battery", href: "/battery" },
-    { label: "VICON Robotic Pool Cleaner", href: "/products/purily-robotic-pool-cleaner" },
   ]
 
   return (
@@ -60,10 +59,10 @@ export default function Navigation() {
             <Link href="/" className="flex items-center gap-2 font-bold text-2xl group">
               <div className="relative w-10 h-10 group-hover:scale-110 transition-transform">
                 <Image
-                  src="/viconlogo.png"
+                  src="/optimized/viconlogo-160.webp"
                   alt="VICON Logo"
                   fill
-                  quality={90}
+                  quality={78}
                   sizes="40px"
                   className="object-contain"
                   priority
@@ -93,54 +92,26 @@ export default function Navigation() {
                 )
               })}
 
-              {/* Products Dropdown */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Link
-                    href="/products"
-                    className={`relative text-sm font-medium transition-colors group flex items-center gap-1 ${
-                      pathname.startsWith("/products") || pathname === "/battery" ? "text-accent" : "hover:text-accent"
-                    }`}
-                  >
-                    Products
-                    <ChevronDown size={16} className="transition-transform group-data-[state=open]:rotate-180" />
-                    <span
-                      className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ${
-                        pathname.startsWith("/products") || pathname === "/battery" ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
-                    />
-                  </Link>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-primary text-primary-foreground border-primary-foreground/20">
-                  {productItems.map((product) => (
-                    <DropdownMenuItem key={product.href} asChild>
-                      <Link
-                        href={product.href}
-                        className="cursor-pointer hover:bg-primary-foreground/10 focus:bg-primary-foreground/10"
-                      >
-                        {product.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Link
+                href="/products"
+                className={`relative text-sm font-medium transition-colors group ${
+                  pathname.startsWith("/products") || pathname === "/battery" ? "text-accent" : "hover:text-accent"
+                }`}
+              >
+                Products
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-300 ${
+                    pathname.startsWith("/products") || pathname === "/battery" ? "w-full" : "w-0 group-hover:w-full"
+                  }`}
+                />
+              </Link>
             </div>
 
             <div className="flex items-center gap-4">
               <Link href="/login" className="hidden sm:flex hover:text-accent transition-all hover:scale-110">
                 <User size={20} />
               </Link>
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative hover:text-accent transition-all hover:scale-110 group"
-              >
-                <ShoppingCart size={20} />
-                {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-accent text-primary w-5 h-5 rounded-full text-xs flex items-center justify-center font-bold group-hover:animate-bounce">
-                    {totalItems}
-                  </span>
-                )}
-              </button>
+              {isCommerceRoute && <NavCartButton />}
 
               <button
                 className="md:hidden ml-4 hover:scale-110 transition-transform"
@@ -164,36 +135,13 @@ export default function Navigation() {
                 </Link>
               ))}
 
-              {/* Mobile Products Menu */}
-              <div>
-                <button
-                  onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
-                  className="w-full flex items-center justify-between py-2 px-2 rounded hover:bg-primary-foreground/10 transition-colors"
-                >
-                  <span>Products</span>
-                  <ChevronDown
-                    size={16}
-                    className={`transition-transform ${isMobileProductsOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {isMobileProductsOpen && (
-                  <div className="ml-4 mt-2 space-y-2">
-                    {productItems.map((product) => (
-                      <Link
-                        key={product.href}
-                        href={product.href}
-                        className="block py-2 px-2 rounded hover:bg-primary-foreground/10 transition-colors text-sm"
-                        onClick={() => {
-                          setIsOpen(false)
-                          setIsMobileProductsOpen(false)
-                        }}
-                      >
-                        {product.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <Link
+                href="/products"
+                className="block py-2 px-2 rounded hover:bg-primary-foreground/10 transition-colors"
+                onClick={() => setIsOpen(false)}
+              >
+                Products
+              </Link>
             </div>
           )}
         </div>

@@ -2,10 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
-import Script from "next/script"
-import { Chatbot } from "@/components/chatbot"
-import { CartProvider } from "@/contexts/cart-context"
-import CartSidebar from "@/components/cart-sidebar"
+import DeferredGA from "@/components/deferred-ga"
 import "./globals.css"
 
 // Optimize font loading with display swap to prevent FOIT
@@ -21,8 +18,6 @@ const geistMono = Geist_Mono({
   preload: false, // Only preload primary font
   variable: '--font-geist-mono',
 })
-
-const GA_MEASUREMENT_ID = "G-QZD2YDXD4P"
 
 export const metadata: Metadata = {
   title: "VICON - AI-Powered Fire Protection System",
@@ -45,23 +40,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable} ${geistMono.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </head>
       <body className={`${geist.className} antialiased`}>
-        {/* Google tag (gtag.js) */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`}
-        </Script>
-        <CartProvider>
-          {children}
-          <Chatbot />
-          <CartSidebar />
-        </CartProvider>
+        <DeferredGA />
+        {children}
         <Analytics />
       </body>
     </html>

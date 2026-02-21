@@ -3,6 +3,7 @@ import Footer from "@/components/footer"
 import { Shield, Zap, Users, Award } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import Image from "next/image"
 
 export const metadata: Metadata = {
   title: "About VICON - Pioneering AI Fire Protection Technology",
@@ -28,10 +29,14 @@ export default function AboutPage() {
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="prose prose-lg max-w-none">
-            <img
-              src="/aboutvicon.jpg"
+            <Image
+              src="/optimized/aboutvicon-1400.webp"
               alt="About VICON"
+              width={1400}
+              height={788}
               className="w-full h-auto rounded-lg shadow-lg mb-8"
+              sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1200px"
+              quality={74}
             />
             
             {/* Placeholder content - to be replaced with actual text from the image */}

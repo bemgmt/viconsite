@@ -22,7 +22,24 @@ interface CartContextType {
   setIsCartOpen: (open: boolean) => void
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined)
+const noopAddToCart = (_item: Omit<CartItem, "quantity">) => {}
+const noopRemoveFromCart = (_id: string) => {}
+const noopUpdateQuantity = (_id: string, _quantity: number) => {}
+const noopSetIsCartOpen = (_open: boolean) => {}
+const noopClearCart = () => {}
+const defaultCartContext: CartContextType = {
+  items: [],
+  addToCart: noopAddToCart,
+  removeFromCart: noopRemoveFromCart,
+  updateQuantity: noopUpdateQuantity,
+  clearCart: noopClearCart,
+  totalItems: 0,
+  totalPrice: 0,
+  isCartOpen: false,
+  setIsCartOpen: noopSetIsCartOpen,
+}
+
+const CartContext = createContext<CartContextType>(defaultCartContext)
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
@@ -105,10 +122,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useCart() {
-  const context = useContext(CartContext)
-  if (context === undefined) {
-    throw new Error("useCart must be used within a CartProvider")
-  }
-  return context
+  return useContext(CartContext)
 }
 

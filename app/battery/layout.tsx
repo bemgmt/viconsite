@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import CommerceShell from "@/components/commerce-shell"
 
 export const metadata: Metadata = {
   title: "Sanctuary Battery System - 14.3kWh Backup Power | VICON",
@@ -10,5 +11,5 @@ export default function BatteryLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return <CommerceShell>{children}</CommerceShell>
 }
