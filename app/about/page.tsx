@@ -1,5 +1,6 @@
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import BreadcrumbJsonLd from "@/components/breadcrumb-jsonld"
 import { Shield, Zap, Users, Award } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -8,12 +9,27 @@ import Image from "next/image"
 export const metadata: Metadata = {
   title: "About VICON - Pioneering AI Fire Protection Technology",
   description: "Learn about VICON Technologies, pioneering AI-powered fire protection systems for homes and businesses across Southern California. Advanced technology, UL certified, solar-powered.",
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About VICON - Pioneering AI Fire Protection Technology',
+    description: 'Learn about VICON Technologies, pioneering AI-powered fire protection systems for homes and businesses across Southern California.',
+    url: '/about',
+  },
+  twitter: {
+    title: 'About VICON - Pioneering AI Fire Protection Technology',
+    description: 'Learn about VICON Technologies, pioneering AI-powered fire protection systems for homes and businesses across Southern California.',
+  },
 }
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
+    <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: 'https://vicontech.group' },
+        { name: 'About', url: 'https://vicontech.group/about' },
+      ]} />
+      <main className="min-h-screen bg-background">
+        <Navigation />
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 bg-gradient-to-br from-primary/10 to-accent/10">
@@ -142,6 +158,7 @@ export default function AboutPage() {
 
       <Footer />
     </main>
+    </>
   )
 }
 

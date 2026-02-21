@@ -53,9 +53,9 @@ export default function ViconSystem() {
     <section className="py-20 bg-background px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Engineering Built for Safety, Designed for Simplicity
-          </h2>
+          </h1>
           <p className="text-lg text-muted-foreground mb-2">
             Each VICON unit combines industrial-grade reliability with homeowner ease.
           </p>

@@ -6,6 +6,12 @@ export const metadata: Metadata = {
   title: "Privacy Policy | Vicon Technology, Inc.",
   description:
     "Learn how Vicon Technology, Inc. collects, uses, secures, and protects your personal information.",
+  alternates: { canonical: '/privacy-policy' },
+  openGraph: {
+    title: 'Privacy Policy | VICON Technologies',
+    description: 'Learn how Vicon Technology, Inc. collects, uses, secures, and protects your personal information.',
+    url: '/privacy-policy',
+  },
 }
 
 export default function PrivacyPolicyPage() {

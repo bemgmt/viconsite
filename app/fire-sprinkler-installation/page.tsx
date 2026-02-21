@@ -1,4 +1,5 @@
 import Navigation from "@/components/navigation"
+import BreadcrumbJsonLd from "@/components/breadcrumb-jsonld"
 import Footer from "@/components/footer"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -8,6 +9,16 @@ import Script from "next/script"
 export const metadata: Metadata = {
   title: "Fire Sprinkler System Installation Guide | Professional Installation",
   description: "Complete guide to fire sprinkler system installation. Learn about installation of fire sprinkler systems, professional install fire sprinkler system services, and what to expect.",
+  alternates: { canonical: '/fire-sprinkler-installation' },
+  openGraph: {
+    title: 'Fire Sprinkler System Installation Guide',
+    description: 'Professional fire sprinkler installation: site assessment, system design, installation, and calibration. Most residential installs completed in 1-2 days.',
+    url: '/fire-sprinkler-installation',
+  },
+  twitter: {
+    title: 'Fire Sprinkler System Installation Guide',
+    description: 'Professional fire sprinkler installation: site assessment, system design, installation, and calibration.',
+  },
 }
 
 export default function FireSprinklerInstallationPage() {
@@ -47,6 +58,10 @@ export default function FireSprinklerInstallationPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: 'https://vicontech.group' },
+        { name: 'Fire Sprinkler Installation', url: 'https://vicontech.group/fire-sprinkler-installation' },
+      ]} />
       <main className="min-h-screen bg-background">
         <Navigation />
 

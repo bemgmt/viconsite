@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import DeferredGA from "@/components/deferred-ga"
@@ -20,7 +21,11 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "VICON - AI-Powered Fire Protection System",
+  metadataBase: new URL('https://vicontech.group'),
+  title: {
+    default: "VICON - AI-Powered Fire Protection System",
+    template: "%s | VICON Technologies",
+  },
   description:
     "Advanced AI-powered fire detection and suppression system. Detect threats, suppress precisely, and protect your home with cutting-edge technology.",
   generator: "v0.app",
@@ -31,6 +36,57 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'VICON Technologies',
+    title: 'VICON - AI-Powered Fire Protection System',
+    description: 'Advanced AI-powered fire detection and suppression system protecting homes and businesses in Southern California. 24/7 monitoring, precision targeting, instant response.',
+    url: 'https://vicontech.group',
+    images: [
+      {
+        url: '/optimized/viconbanner-1920.webp',
+        width: 1920,
+        height: 1080,
+        alt: 'VICON AI-Powered Fire Protection System',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VICON - AI-Powered Fire Protection System',
+    description: 'Advanced AI-powered fire detection and suppression system protecting homes and businesses in Southern California.',
+    images: ['/optimized/viconbanner-1920.webp'],
+  },
+  alternates: {
+    canonical: 'https://vicontech.group',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+}
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://vicontech.group/#website",
+  "name": "VICON Technologies",
+  "url": "https://vicontech.group",
+  "description": "AI-powered fire detection and suppression systems protecting homes and businesses in Southern California",
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://vicontech.group/#organization",
+    "name": "VICON Technologies"
+  },
+  "inLanguage": "en-US"
 }
 
 export default function RootLayout({
@@ -43,6 +99,12 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+        />
       </head>
       <body className={`${geist.className} antialiased`}>
         <DeferredGA />

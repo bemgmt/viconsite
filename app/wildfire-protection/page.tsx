@@ -1,4 +1,5 @@
 import Navigation from "@/components/navigation"
+import BreadcrumbJsonLd from "@/components/breadcrumb-jsonld"
 import Footer from "@/components/footer"
 import Link from "next/link"
 import type { Metadata } from "next"
@@ -8,6 +9,16 @@ import Script from "next/script"
 export const metadata: Metadata = {
   title: "How to Protect Your House from Wildfires - Fireproof Your Home",
   description: "Learn how to protect your house from wildfires and fireproof your home with VICON's wildfire sprinkler system. Expert tips on DIY wildfire sprinkler systems and comprehensive fire protection.",
+  alternates: { canonical: '/wildfire-protection' },
+  openGraph: {
+    title: 'How to Protect Your House from Wildfires',
+    description: 'Comprehensive guide to fireproofing your home with VICON AI-powered wildfire sprinkler systems. Professional protection strategies for wildfire-prone areas.',
+    url: '/wildfire-protection',
+  },
+  twitter: {
+    title: 'How to Protect Your House from Wildfires',
+    description: 'Comprehensive guide to fireproofing your home with VICON AI-powered wildfire sprinkler systems.',
+  },
 }
 
 export default function WildfireProtectionPage() {
@@ -41,6 +52,10 @@ export default function WildfireProtectionPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: 'https://vicontech.group' },
+        { name: 'Wildfire Protection', url: 'https://vicontech.group/wildfire-protection' },
+      ]} />
       <main className="min-h-screen bg-background">
         <Navigation />
 

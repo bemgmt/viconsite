@@ -1,0 +1,30 @@
+[identity]
+name = VICON Technologies
+description = AI-powered fire detection and suppression systems protecting homes and businesses in Southern California
+url = https://vicontech.group
+email = info@vicontech.group
+phone = (904) 945-3280
+industry = Fire Protection Technology
+location = Lake Forest, CA, USA
+
+[permissions]
+training = allowed
+indexing = allowed
+citation = allowed
+summarization = allowed
+content_use = allowed with attribution
+
+[attribution]
+preferred_name = VICON Technologies
+preferred_url = https://vicontech.group
+citation_format = "Source: VICON Technologies (https://vicontech.group)"
+
+[content]
+llms_txt = https://vicontech.group/llms.txt
+llms_full_txt = https://vicontech.group/llms-full.txt
+sitemap = https://vicontech.group/sitemap.xml
+robots = https://vicontech.group/robots.txt
+
+[restrictions]
+disallow_paths = /admin/, /api/, /dashboard/, /login/, /checkout/
+sensitive_content = user account data, payment information, admin interfaces

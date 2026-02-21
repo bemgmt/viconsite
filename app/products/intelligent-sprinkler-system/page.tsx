@@ -33,18 +33,37 @@ export default function IntelligentSprinklerSystemPage() {
   const productSchema = {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": "https://vicontech.group/products/intelligent-sprinkler-system#product",
     "name": "VICON Intelligent Sprinkler System",
-    "description": "Complete intelligent fire suppression system with smart cannon nozzle, jet rod kit, control host, and wireless remote-control. Roof fire sprinkler system with 82-98ft spray distance.",
+    "description": "Complete intelligent fire suppression system with smart cannon nozzle, jet rod kit, control host, and wireless remote-control. AI-powered fire detection with thermal imaging, 82-98ft spray distance, 35.2 gpm flow rate, 10 HP motor.",
+    "url": "https://vicontech.group/products/intelligent-sprinkler-system",
+    "image": "https://vicontech.group/nozzle2 (2).jpg",
     "brand": {
       "@type": "Brand",
       "name": "VICON"
     },
+    "manufacturer": {
+      "@type": "Organization",
+      "name": "VICON Technologies",
+      "@id": "https://vicontech.group/#organization"
+    },
+    "category": "Fire Protection Equipment",
     "offers": {
       "@type": "Offer",
       "price": "19600",
       "priceCurrency": "USD",
-      "availability": "https://schema.org/InStock"
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "VICON Technologies" },
+      "priceValidUntil": "2027-12-31"
     },
+    "additionalProperty": [
+      { "@type": "PropertyValue", "name": "Spray Distance", "value": "82-98 ft" },
+      { "@type": "PropertyValue", "name": "Flow Rate", "value": "35.2 gpm" },
+      { "@type": "PropertyValue", "name": "Power", "value": "10 HP" },
+      { "@type": "PropertyValue", "name": "Voltage", "value": "220 V" },
+      { "@type": "PropertyValue", "name": "Pressure", "value": "145 psi" },
+      { "@type": "PropertyValue", "name": "Coverage", "value": "Up to 4,000 sq ft" }
+    ],
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",

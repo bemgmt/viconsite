@@ -1,0 +1,82 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://vicontech.group/#organization",
+  "name": "VICON Technologies",
+  "legalName": "VICON Technologies",
+  "url": "https://vicontech.group",
+  "description": "AI-powered fire detection and suppression systems protecting homes and businesses in Southern California",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Lake Forest, California"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "22515 Aspan Street, Suite F-G",
+    "addressLocality": "Lake Forest",
+    "addressRegion": "CA",
+    "postalCode": "92630",
+    "addressCountry": "US"
+  },
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "telephone": "+1-904-945-3280",
+      "contactType": "Customer Service",
+      "availableLanguage": "English",
+      "hoursAvailable": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:00",
+        "closes": "18:00"
+      }
+    },
+    {
+      "@type": "ContactPoint",
+      "email": "info@vicontech.group",
+      "contactType": "General Inquiry"
+    }
+  ],
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "California",
+      "containedInPlace": {
+        "@type": "Country",
+        "name": "United States"
+      }
+    }
+  ],
+  "knowsAbout": [
+    "Fire Detection",
+    "Fire Suppression",
+    "AI Fire Protection",
+    "Wildfire Protection",
+    "Residential Fire Sprinklers",
+    "Thermal Imaging",
+    "Smart Home Fire Safety",
+    "Battery Backup Systems"
+  ],
+  "makesOffer": [
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "VICON Intelligent Sprinkler System",
+        "description": "AI-powered fire detection and suppression system with thermal imaging and precision targeting"
+      },
+      "price": "19600",
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Product",
+        "name": "Sanctuary Battery System",
+        "description": "14.3 kWh LiFePO4 battery system scalable to 60 kWh for backup power"
+      },
+      "price": "12800",
+      "priceCurrency": "USD"
+    }
+  ]
+}

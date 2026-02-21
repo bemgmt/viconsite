@@ -1,16 +1,33 @@
 import Navigation from "@/components/navigation"
+import BreadcrumbJsonLd from "@/components/breadcrumb-jsonld"
 import Footer from "@/components/footer"
 import ProductCard from "@/components/product-card"
 import { products } from "@/lib/products"
+import type { Metadata } from "next"
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "VICON Agent Pricing",
-  description: "Exclusive agent pricing for VICON fire protection systems",
+  description: "Exclusive agent pricing for VICON fire protection systems. Save 20% on all products with professional installation and comprehensive support.",
+  alternates: { canonical: '/agent-pricing' },
+  openGraph: {
+    title: 'VICON Agent Pricing - 20% Off All Products',
+    description: 'Exclusive agent pricing for VICON fire protection systems. Save 20% on all products with professional installation and support.',
+    url: '/agent-pricing',
+  },
+  twitter: {
+    title: 'VICON Agent Pricing - 20% Off All Products',
+    description: 'Exclusive agent pricing for VICON fire protection systems. Save 20% on all products.',
+  },
 }
 
 export default function AgentPricingPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: 'https://vicontech.group' },
+        { name: 'Agent Pricing', url: 'https://vicontech.group/agent-pricing' },
+      ]} />
+      <main className="min-h-screen bg-background">
       <Navigation />
 
       <section className="py-20 px-4">
@@ -70,5 +87,6 @@ export default function AgentPricingPage() {
 
       <Footer />
     </main>
+    </>
   )
 }
