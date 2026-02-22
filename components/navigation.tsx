@@ -12,9 +12,6 @@ const NavCartButton = dynamic(() => import("@/components/nav-cart-button"), { ss
 const productDropdownItems = [
   { label: "All Products", href: "/products" },
   { label: "Intelligent Sprinkler System", href: "/products/intelligent-sprinkler-system" },
-  { label: "VK-240 Jet Rod Kit", href: "/products/vk-240" },
-  { label: "Model 2 System", href: "/products/model-2" },
-  { label: "Model 3 System", href: "/products/model-3" },
   { label: "Robotic Pool Cleaner", href: "/products/purily-robotic-pool-cleaner" },
   { label: "Sanctuary Battery", href: "/battery" },
 ]
