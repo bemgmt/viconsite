@@ -29,29 +29,53 @@ export default function ProductCard({ product, price, isAgent = false }: Product
 
   return (
     <div className="group bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] transition-all duration-500 hover:-translate-y-2 border border-border/60 hover:border-accent/60 perspective-1000">
-      <div className="relative overflow-hidden bg-muted h-64 group-hover:h-72 transition-all duration-500">
-        <Image
-          src={product.image || "/placeholder.svg"}
-          alt={product.name}
-          fill
-          quality={80}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover group-hover:scale-110 transition-transform duration-700"
-          loading="lazy"
-        />
-        {/* Gradient overlay on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-        {isAgent && (
-          <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg animate-pulse">
-            Agent Pricing
-          </div>
-        )}
-      </div>
+      {product.href ? (
+        <Link href={product.href} className="block relative overflow-hidden bg-muted h-64 group-hover:h-72 transition-all duration-500">
+          <Image
+            src={product.image || "/placeholder.svg"}
+            alt={product.name}
+            fill
+            quality={80}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {isAgent && (
+            <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg animate-pulse">
+              Agent Pricing
+            </div>
+          )}
+        </Link>
+      ) : (
+        <div className="relative overflow-hidden bg-muted h-64 group-hover:h-72 transition-all duration-500">
+          <Image
+            src={product.image || "/placeholder.svg"}
+            alt={product.name}
+            fill
+            quality={80}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover group-hover:scale-110 transition-transform duration-700"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          {isAgent && (
+            <div className="absolute top-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg animate-pulse">
+              Agent Pricing
+            </div>
+          )}
+        </div>
+      )}
 
       <div className="p-6">
         <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-accent transition-colors">
-          {product.name}
+          {product.href ? (
+            <Link href={product.href} className="hover:underline">
+              {product.name}
+            </Link>
+          ) : (
+            product.name
+          )}
         </h3>
         <p className="text-muted-foreground text-sm mb-4">{product.description}</p>
 

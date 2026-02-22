@@ -8,6 +8,7 @@ export interface Product {
   agentPrice: number
   features: string[]
   specs: string
+  href?: string
 }
 
 export const products: Product[] = [
@@ -16,6 +17,7 @@ export const products: Product[] = [
     name: "VICON Intelligent Sprinkler System",
     description: "Complete intelligent fire suppression system with smart cannon nozzle, jet rod kit, control host, and wireless remote",
     image: "/mmexport1764830820597.jpg",
+    href: "/products/intelligent-sprinkler-system",
     price: 19600,
     agentPrice: 14880, // 20% discount
     features: [
@@ -84,6 +86,7 @@ export const products: Product[] = [
     name: "VICON Intelligent Robotic Pool & Water Cleaning System",
     description: "Autonomous, app-controlled robotic cleaner for pool floors, walls, and waterlines",
     image: "/purilyrobotcleaner.png",
+    href: "/products/purily-robotic-pool-cleaner",
     price: 1498,
     agentPrice: 1198,
     features: [
@@ -101,6 +104,7 @@ export const products: Product[] = [
     name: "Sanctuary Battery",
     description: "Scalable lithium iron phosphate battery system with integrated 12kW inverter for whole-home backup power",
     image: "/batteryblack1.jpg",
+    href: "/battery",
     price: 12800,
     agentPrice: 10240, // 20% discount
     features: [
