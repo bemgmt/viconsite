@@ -134,10 +134,12 @@ export default function ProductCard({ product, price, isAgent = false }: Product
 
         {isPriceTbd ? (
           <Link
-            href="/contact"
+            href={product.href || "/contact"}
             className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-3 rounded-lg font-bold transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 group/btn"
           >
-            <span className="group-hover/btn:translate-x-1 transition-transform inline-block">Request Pricing</span>
+            <span className="group-hover/btn:translate-x-1 transition-transform inline-block">
+              {product.href ? "Request Quote" : "Request Pricing"}
+            </span>
           </Link>
         ) : (
           <button

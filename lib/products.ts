@@ -100,6 +100,23 @@ export const products: Product[] = [
     specs: "Size: 20\" × 17\" × 10\" | Weight: 32 lbs | Pumping: 21,000 L/hr | Runtime: 2-3.5 hrs | Battery: 9,000 mAh | IPX8",
   },
   {
+    id: "trgfs-sprinkler-systems",
+    name: "TRGFS Sprinkler Systems (Partner)",
+    description: "Code-aligned fire sprinkler & standpipe systems. Design, engineering, installation, and Title 19 / Reg 4 testing support.",
+    image: "/mmexport1764830820597.jpg",
+    href: "/products/trgfs-sprinkler-systems",
+    price: 0,
+    agentPrice: 0,
+    features: [
+      "Standpipe Class I/II/III systems",
+      "Pre-action & deluge systems",
+      "Commercial, residential & industrial",
+      "Title 19 / Reg 4 testing",
+      "40+ years Southern California",
+    ],
+    specs: "Partner service | Design, install, test, maintain | Commercial, residential, industrial",
+  },
+  {
     id: "backup-battery",
     name: "Sanctuary Battery",
     description: "Scalable lithium iron phosphate battery system with integrated 12kW inverter for whole-home backup power",

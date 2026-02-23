@@ -8,11 +8,12 @@ interface ContactData {
   address?: string
   message?: string
   preferredContact?: string
+  source?: string
 }
 
 export async function POST(request: Request) {
   try {
-    const { name, email, phone, address, message, preferredContact }: ContactData = await request.json()
+    const { name, email, phone, address, message, preferredContact, source }: ContactData = await request.json()
 
     if (!name || !email || !phone) {
       return Response.json({ error: "Missing required fields" }, { status: 400 })
@@ -31,12 +32,12 @@ export async function POST(request: Request) {
           ]
             .filter(Boolean)
             .join("\n"),
-          source: "contact",
+          source: source || "contact",
         },
       }),
       sendGmailEmail({
         to: "info@vicontech.group",
-        subject: `New Contact Form Inquiry: ${name}`,
+        subject: source === "trgfs-sprinkler-quote" ? `TRGFS Sprinkler Quote Request: ${name}` : `New Contact Form Inquiry: ${name}`,
         replyTo: email,
         html: `
           <h2>New Contact Form Submission</h2>
