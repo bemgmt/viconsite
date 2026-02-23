@@ -2,8 +2,24 @@ import { auth } from "@/lib/auth"
 import { redirect } from "next/navigation"
 import { prisma } from "@/lib/prisma"
 import { UserRole } from "@prisma/client"
-import { User, Mail, Phone, DollarSign, Share2 } from "lucide-react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import Link from "next/link"
+import {
+  User,
+  Mail,
+  Phone,
+  DollarSign,
+  Share2,
+  Users,
+  CreditCard,
+  ArrowRight,
+} from "lucide-react"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
 import { SignOutButton } from "@/components/sign-out-button"
 
 export default async function DashboardPage() {
@@ -13,12 +29,10 @@ export default async function DashboardPage() {
     redirect("/login")
   }
 
-  // Redirect admins to admin dashboard
   if (session.user.role === UserRole.ADMIN) {
     redirect("/admin")
   }
 
-  // Get user details
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
   })
@@ -27,9 +41,19 @@ export default async function DashboardPage() {
     redirect("/login")
   }
 
+  const [prospectCount, depositStats] = await Promise.all([
+    prisma.prospect.count({ where: { referredById: user.id } }),
+    prisma.deposit.aggregate({
+      where: { referredById: user.id, status: "COMPLETED" },
+      _sum: { amount: true },
+      _count: true,
+    }),
+  ])
+
+  const totalDeposits = (depositStats._sum.amount || 0) / 100
+
   return (
     <main className="min-h-screen bg-background">
-      {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -47,24 +71,83 @@ export default async function DashboardPage() {
         </div>
       </header>
 
-      {/* Main Content */}
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-foreground mb-2">Welcome back!</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-2">
+            Welcome back!
+          </h2>
           <p className="text-muted-foreground">
-            Here's your partner dashboard overview
+            Here&apos;s your partner dashboard overview
           </p>
         </div>
 
-        {/* User Info Cards */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mb-8">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-8">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">
+                My Prospects
+              </CardTitle>
+              <Users className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{prospectCount}</div>
+              <p className="text-xs text-muted-foreground">total referred</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">
+                Deposits Collected
+              </CardTitle>
+              <CreditCard className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{depositStats._count}</div>
+              <p className="text-xs text-muted-foreground">completed</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">
+                Total Deposit Value
+              </CardTitle>
+              <DollarSign className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">
+                ${totalDeposits.toLocaleString()}
+              </div>
+              <p className="text-xs text-muted-foreground">collected</p>
+            </CardContent>
+          </Card>
+
+          {(user.userType === "SALES_PERSON" || user.userType === "DISTRIBUTOR") && user.commissionRate && (
+            <Card>
+              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">
+                  Commission Rate
+                </CardTitle>
+                <DollarSign className="h-4 w-4 text-muted-foreground" />
+              </CardHeader>
+              <CardContent>
+                <div className="text-2xl font-bold">
+                  {user.commissionRate}%
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Email</CardTitle>
               <Mail className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{user.email}</div>
+              <div className="text-lg font-bold">{user.email}</div>
             </CardContent>
           </Card>
 
@@ -75,19 +158,7 @@ export default async function DashboardPage() {
                 <Phone className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
-                <div className="text-2xl font-bold">{user.phone}</div>
-              </CardContent>
-            </Card>
-          )}
-
-          {user.userType === "SALES_PERSON" && user.commissionRate && (
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Commission Rate</CardTitle>
-                <DollarSign className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">{user.commissionRate}%</div>
+                <div className="text-lg font-bold">{user.phone}</div>
               </CardContent>
             </Card>
           )}
@@ -95,14 +166,21 @@ export default async function DashboardPage() {
           {user.userType === "INFLUENCER" && user.socialMedia && (
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">Social Media</CardTitle>
+                <CardTitle className="text-sm font-medium">
+                  Social Media
+                </CardTitle>
                 <Share2 className="h-4 w-4 text-muted-foreground" />
               </CardHeader>
               <CardContent>
                 <div className="text-sm">
-                  {Object.entries(user.socialMedia as Record<string, string>).map(([platform, handle]) => (
+                  {Object.entries(
+                    user.socialMedia as Record<string, string>
+                  ).map(([platform, handle]) => (
                     <div key={platform} className="mb-1">
-                      <span className="font-medium capitalize">{platform}:</span> {handle}
+                      <span className="font-medium capitalize">
+                        {platform}:
+                      </span>{" "}
+                      {handle}
                     </div>
                   ))}
                 </div>
@@ -111,28 +189,29 @@ export default async function DashboardPage() {
           )}
         </div>
 
-        {/* Welcome Message */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Getting Started</CardTitle>
-            <CardDescription>
-              Welcome to your VICON partner dashboard
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground mb-4">
-              Your account is active and ready to go. More features will be available soon!
-            </p>
-            {user.notes && (
+        <Link
+          href="/dashboard/prospects"
+          className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-bold transition-all hover:scale-105 shadow-lg"
+        >
+          <Users className="h-5 w-5" />
+          Manage Prospects & Deposits
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+
+        {user.notes && (
+          <Card className="mt-8">
+            <CardHeader>
+              <CardTitle>Notes</CardTitle>
+              <CardDescription>From your VICON account manager</CardDescription>
+            </CardHeader>
+            <CardContent>
               <div className="bg-muted p-4 rounded-lg">
-                <p className="text-sm font-medium mb-1">Notes:</p>
                 <p className="text-sm text-muted-foreground">{user.notes}</p>
               </div>
-            )}
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </main>
   )
 }
-

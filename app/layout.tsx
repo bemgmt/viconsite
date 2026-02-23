@@ -4,6 +4,7 @@ import Script from "next/script"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import DeferredGA from "@/components/deferred-ga"
+import PWARegister from "@/components/pwa-register"
 import { siteUrl, siteUrlObject } from "@/lib/seo/site"
 import "./globals.css"
 
@@ -109,6 +110,7 @@ export default function RootLayout({
       </head>
       <body className={`${geist.className} antialiased`}>
         <DeferredGA />
+        <PWARegister />
         {children}
         <Analytics />
       </body>

@@ -17,23 +17,42 @@ enum UserRole {
 
 enum UserType {
   SALES_PERSON
+  DISTRIBUTOR
   INFLUENCER
 }
 
+enum ProspectStatus {
+  NEW
+  CONTACTED
+  QUALIFIED
+  CONVERTED
+  LOST
+}
+
+enum DepositStatus {
+  PENDING
+  COMPLETED
+  REFUNDED
+  FAILED
+}
+
 model User {
-  id            String    @id @default(cuid())
-  email         String    @unique
-  name          String
-  passwordHash  String
-  role          UserRole  @default(USER)
-  userType      UserType?
-  isActive      Boolean   @default(true)
-  phone         String?
+  id             String    @id @default(cuid())
+  email          String    @unique
+  name           String
+  passwordHash   String
+  role           UserRole  @default(USER)
+  userType       UserType?
+  isActive       Boolean   @default(true)
+  phone          String?
   commissionRate Float?
-  socialMedia   Json?
-  notes         String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  socialMedia    Json?
+  notes          String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  prospects Prospect[] @relation("ReferredProspects")
+  deposits  Deposit[]  @relation("ReferredDeposits")
 
   @@index([email])
   @@index([role])
@@ -41,3 +60,49 @@ model User {
   @@map("users")
 }
 
+model Prospect {
+  id           String         @id @default(cuid())
+  name         String
+  email        String
+  phone        String?
+  address      String?
+  message      String?
+  source       String
+  status       ProspectStatus @default(NEW)
+  referredById String?
+  referredBy   User?          @relation("ReferredProspects", fields: [referredById], references: [id])
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  deposits Deposit[]
+
+  @@index([email])
+  @@index([referredById])
+  @@index([status])
+  @@index([source])
+  @@map("prospects")
+}
+
+model Deposit {
+  id                    String        @id @default(cuid())
+  amount                Int
+  currency              String        @default("usd")
+  stripePaymentIntentId String?       @unique
+  status                DepositStatus @default(PENDING)
+  prospectId            String?
+  prospect              Prospect?     @relation(fields: [prospectId], references: [id])
+  referredById          String?
+  referredBy            User?         @relation("ReferredDeposits", fields: [referredById], references: [id])
+  customerName          String?
+  customerEmail         String?
+  customerPhone         String?
+  notes                 String?
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  @@index([stripePaymentIntentId])
+  @@index([prospectId])
+  @@index([referredById])
+  @@index([status])
+  @@map("deposits")
+}

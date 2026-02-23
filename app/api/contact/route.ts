@@ -1,4 +1,5 @@
 import { sendGmailEmail } from "@/lib/gmail"
+import { prisma } from "@/lib/prisma"
 
 interface ContactData {
   name: string
@@ -17,21 +18,38 @@ export async function POST(request: Request) {
       return Response.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    await sendGmailEmail({
-      to: "info@vicontech.group",
-      subject: `New Contact Form Inquiry: ${name}`,
-      replyTo: email,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-        <p><strong>Preferred contact method:</strong> ${escapeHtml(preferredContact || "Not specified")}</p>
-        <p><strong>Property address:</strong> ${escapeHtml(address || "Not provided")}</p>
-        <p><strong>Message:</strong><br/>${escapeHtml(message || "No message provided").replace(/\n/g, "<br/>")}</p>
-        <p><strong>Submitted:</strong> ${escapeHtml(new Date().toISOString())}</p>
-      `,
-    })
+    await Promise.all([
+      prisma.prospect.create({
+        data: {
+          name,
+          email,
+          phone,
+          address: address || null,
+          message: [
+            message || "",
+            preferredContact ? `Preferred contact: ${preferredContact}` : "",
+          ]
+            .filter(Boolean)
+            .join("\n"),
+          source: "contact",
+        },
+      }),
+      sendGmailEmail({
+        to: "info@vicontech.group",
+        subject: `New Contact Form Inquiry: ${name}`,
+        replyTo: email,
+        html: `
+          <h2>New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+          <p><strong>Preferred contact method:</strong> ${escapeHtml(preferredContact || "Not specified")}</p>
+          <p><strong>Property address:</strong> ${escapeHtml(address || "Not provided")}</p>
+          <p><strong>Message:</strong><br/>${escapeHtml(message || "No message provided").replace(/\n/g, "<br/>")}</p>
+          <p><strong>Submitted:</strong> ${escapeHtml(new Date().toISOString())}</p>
+        `,
+      }),
+    ])
 
     return Response.json({ success: true })
   } catch (error) {

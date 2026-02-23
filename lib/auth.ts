@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import { prisma } from "@/lib/prisma"
 import bcrypt from "bcryptjs"
-import { UserRole } from "@prisma/client"
+import { UserRole, UserType } from "@prisma/client"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -38,31 +38,37 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           email: user.email,
           name: user.name,
           role: user.role,
+          userType: user.userType,
         }
       },
     }),
   ],
   pages: {
-    signIn: "/admin/login",
+    signIn: "/login",
   },
   callbacks: {
     authorized: async ({ auth, request: { nextUrl } }) => {
       const isLoggedIn = !!auth?.user
       const isAdminPage = nextUrl.pathname.startsWith("/admin")
-      const isLoginPage = nextUrl.pathname === "/admin/login"
+      const isAdminLogin = nextUrl.pathname === "/admin/login"
+      const isDashboard = nextUrl.pathname.startsWith("/dashboard")
+      const isPartnerLogin = nextUrl.pathname === "/login"
 
-      if (isAdminPage && !isLoginPage) {
-        if (!isLoggedIn) {
-          return false // Redirect to login
-        }
-        // Check if user is admin
-        if (auth?.user?.role !== UserRole.ADMIN) {
-          return false // Redirect to login
-        }
+      if (isAdminPage && !isAdminLogin) {
+        if (!isLoggedIn) return false
+        if (auth?.user?.role !== UserRole.ADMIN) return false
       }
 
-      if (isLoginPage && isLoggedIn) {
+      if (isAdminLogin && isLoggedIn && auth?.user?.role === UserRole.ADMIN) {
         return Response.redirect(new URL("/admin", nextUrl))
+      }
+
+      if (isDashboard && !isLoggedIn) {
+        return Response.redirect(new URL("/login", nextUrl))
+      }
+
+      if (isPartnerLogin && isLoggedIn && auth?.user?.role === UserRole.USER) {
+        return Response.redirect(new URL("/dashboard", nextUrl))
       }
 
       return true
@@ -71,6 +77,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         token.id = user.id
         token.role = user.role
+        token.userType = user.userType ?? null
       }
       return token
     },
@@ -78,6 +85,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token && session.user) {
         session.user.id = token.id as string
         session.user.role = token.role as UserRole
+        session.user.userType = (token.userType as UserType) ?? null
       }
       return session
     },
@@ -88,10 +96,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
 })
 
-// Extend NextAuth types
 declare module "next-auth" {
   interface User {
     role: UserRole
+    userType: UserType | null
   }
   interface Session {
     user: {
@@ -99,6 +107,7 @@ declare module "next-auth" {
       email: string
       name: string
       role: UserRole
+      userType: UserType | null
     }
   }
 }
@@ -107,6 +116,6 @@ declare module "next-auth/jwt" {
   interface JWT {
     id: string
     role: UserRole
+    userType: UserType | null
   }
 }
-

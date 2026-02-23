@@ -71,8 +71,8 @@ export default async function UserDetailsPage({ params }: { params: { id: string
                   <Badge variant={user.isActive ? "default" : "outline"} className="text-sm">
                     {user.isActive ? "Active" : "Inactive"}
                   </Badge>
-                  <Badge variant={user.userType === "SALES_PERSON" ? "default" : "secondary"} className="text-sm">
-                    {user.userType === "SALES_PERSON" ? "Sales Person" : "Influencer"}
+                  <Badge variant={user.userType === "SALES_PERSON" ? "default" : user.userType === "DISTRIBUTOR" ? "default" : "secondary"} className="text-sm">
+                    {user.userType === "SALES_PERSON" ? "Sales Person" : user.userType === "DISTRIBUTOR" ? "Distributor" : "Influencer"}
                   </Badge>
                 </div>
               </div>
@@ -128,7 +128,7 @@ export default async function UserDetailsPage({ params }: { params: { id: string
           </Card>
 
           {/* Sales Person Specific Info */}
-          {user.userType === "SALES_PERSON" && (
+          {(user.userType === "SALES_PERSON" || user.userType === "DISTRIBUTOR") && (
             <Card>
               <CardHeader>
                 <CardTitle>Sales Information</CardTitle>

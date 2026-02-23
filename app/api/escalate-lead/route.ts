@@ -1,4 +1,5 @@
 import { sendGmailEmail } from "@/lib/gmail"
+import { prisma } from "@/lib/prisma"
 
 interface LeadData {
   name: string
@@ -14,18 +15,28 @@ export async function POST(request: Request) {
       return Response.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    await sendGmailEmail({
-      to: "info@vicontech.group",
-      subject: `New Lead from VICON Chatbot: ${name}`,
-      replyTo: email,
-      html: `
-        <h2>New Lead Inquiry</h2>
-        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-        <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-        <p><em>This lead came from the VICON website chatbot.</em></p>
-      `,
-    })
+    await Promise.all([
+      prisma.prospect.create({
+        data: {
+          name,
+          email,
+          phone,
+          source: "chatbot",
+        },
+      }),
+      sendGmailEmail({
+        to: "info@vicontech.group",
+        subject: `New Lead from VICON Chatbot: ${name}`,
+        replyTo: email,
+        html: `
+          <h2>New Lead Inquiry</h2>
+          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+          <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
+          <p><em>This lead came from the VICON website chatbot.</em></p>
+        `,
+      }),
+    ])
 
     return Response.json({ success: true })
   } catch (error) {

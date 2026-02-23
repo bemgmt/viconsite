@@ -31,7 +31,7 @@ const userFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
   password: z.string().min(8, "Password must be at least 8 characters"),
-  userType: z.enum(["SALES_PERSON", "INFLUENCER"], {
+  userType: z.enum(["SALES_PERSON", "DISTRIBUTOR", "INFLUENCER"], {
     required_error: "Please select a user type",
   }),
   phone: z.string().optional(),
@@ -147,6 +147,7 @@ export function UserForm() {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="SALES_PERSON">Sales Person</SelectItem>
+                  <SelectItem value="DISTRIBUTOR">Distributor</SelectItem>
                   <SelectItem value="INFLUENCER">Influencer</SelectItem>
                 </SelectContent>
               </Select>
@@ -169,7 +170,7 @@ export function UserForm() {
           )}
         />
 
-        {userType === "SALES_PERSON" && (
+        {(userType === "SALES_PERSON" || userType === "DISTRIBUTOR") && (
           <FormField
             control={form.control}
             name="commissionRate"

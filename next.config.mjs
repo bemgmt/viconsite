@@ -1,5 +1,11 @@
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  turbopack: {
+    root: dirname(fileURLToPath(import.meta.url)),
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -16,9 +22,16 @@ const nextConfig = {
     ],
   },
   compress: true,
-  swcMinify: true,
   async headers() {
     return [
+      {
+        source: '/sw.js',
+        headers: [
+          { key: 'Content-Type', value: 'application/javascript; charset=utf-8' },
+          { key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' },
+          { key: 'Content-Security-Policy', value: "default-src 'self'; script-src 'self'" },
+        ],
+      },
       {
         source: '/((?!admin|api|dashboard|login|checkout).*)',
         headers: [

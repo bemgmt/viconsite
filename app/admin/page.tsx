@@ -1,7 +1,7 @@
 import { auth } from "@/lib/auth"
 import { redirect } from "next/navigation"
 import { prisma } from "@/lib/prisma"
-import { Shield, Users, TrendingUp, Activity } from "lucide-react"
+import { Shield, Users, TrendingUp, Activity, Package } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,26 +14,19 @@ export default async function AdminDashboard() {
     redirect("/admin/login")
   }
 
-  // Fetch user statistics
-  const totalUsers = await prisma.user.count({
-    where: { role: "USER" },
-  })
-
-  const activeSales = await prisma.user.count({
-    where: {
-      role: "USER",
-      userType: "SALES_PERSON",
-      isActive: true,
-    },
-  })
-
-  const activeInfluencers = await prisma.user.count({
-    where: {
-      role: "USER",
-      userType: "INFLUENCER",
-      isActive: true,
-    },
-  })
+  const [totalUsers, activeSales, activeDistributors, activeInfluencers] =
+    await Promise.all([
+      prisma.user.count({ where: { role: "USER" } }),
+      prisma.user.count({
+        where: { role: "USER", userType: "SALES_PERSON", isActive: true },
+      }),
+      prisma.user.count({
+        where: { role: "USER", userType: "DISTRIBUTOR", isActive: true },
+      }),
+      prisma.user.count({
+        where: { role: "USER", userType: "INFLUENCER", isActive: true },
+      }),
+    ])
 
   return (
     <main className="min-h-screen bg-background">
@@ -57,7 +50,7 @@ export default async function AdminDashboard() {
         </div>
 
         {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Users</CardTitle>
@@ -65,18 +58,29 @@ export default async function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{totalUsers}</div>
-              <p className="text-xs text-muted-foreground">Sales people & influencers</p>
+              <p className="text-xs text-muted-foreground">All partners</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Sales</CardTitle>
+              <CardTitle className="text-sm font-medium">Active Agents</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{activeSales}</div>
-              <p className="text-xs text-muted-foreground">Active sales people</p>
+              <p className="text-xs text-muted-foreground">Sales people</p>
+            </CardContent>
+          </Card>
+
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Distributors</CardTitle>
+              <Package className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{activeDistributors}</div>
+              <p className="text-xs text-muted-foreground">Active distributors</p>
             </CardContent>
           </Card>
 

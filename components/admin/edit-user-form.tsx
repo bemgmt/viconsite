@@ -42,7 +42,7 @@ import {
 const editUserFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Invalid email address"),
-  userType: z.enum(["SALES_PERSON", "INFLUENCER"]),
+  userType: z.enum(["SALES_PERSON", "DISTRIBUTOR", "INFLUENCER"]),
   phone: z.string().optional(),
   commissionRate: z.string().optional(),
   socialMedia: z.string().optional(),
@@ -76,7 +76,7 @@ export function EditUserForm({ user }: EditUserFormProps) {
     defaultValues: {
       name: user.name,
       email: user.email,
-      userType: (user.userType as "SALES_PERSON" | "INFLUENCER") || "SALES_PERSON",
+      userType: (user.userType as "SALES_PERSON" | "DISTRIBUTOR" | "INFLUENCER") || "SALES_PERSON",
       phone: user.phone || "",
       commissionRate: user.commissionRate?.toString() || "",
       socialMedia: user.socialMedia ? JSON.stringify(user.socialMedia, null, 2) : "",
@@ -179,6 +179,7 @@ export function EditUserForm({ user }: EditUserFormProps) {
                 </FormControl>
                 <SelectContent>
                   <SelectItem value="SALES_PERSON">Sales Person</SelectItem>
+                  <SelectItem value="DISTRIBUTOR">Distributor</SelectItem>
                   <SelectItem value="INFLUENCER">Influencer</SelectItem>
                 </SelectContent>
               </Select>
@@ -201,7 +202,7 @@ export function EditUserForm({ user }: EditUserFormProps) {
           )}
         />
 
-        {userType === "SALES_PERSON" && (
+        {(userType === "SALES_PERSON" || userType === "DISTRIBUTOR") && (
           <FormField
             control={form.control}
             name="commissionRate"

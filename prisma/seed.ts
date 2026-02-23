@@ -71,6 +71,22 @@ async function main() {
   })
 
   console.log("✅ Created example influencer:", influencer.email)
+
+  // Create example distributor
+  const distributor = await prisma.user.create({
+    data: {
+      email: "distributor@example.com",
+      name: "Mike Distributor",
+      passwordHash: await bcrypt.hash("Password123!", 10),
+      role: UserRole.USER,
+      userType: UserType.DISTRIBUTOR,
+      phone: "+1 (555) 555-1234",
+      commissionRate: 0.20,
+      isActive: true,
+    },
+  })
+
+  console.log("✅ Created example distributor:", distributor.email)
   console.log("🎉 Seed completed!")
 }
 
