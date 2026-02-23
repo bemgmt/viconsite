@@ -2,7 +2,7 @@
 
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
-import TrgfsQuoteForm from "@/components/trgfs-quote-form"
+import ContactFormClient from "@/components/contact-form-client"
 import Link from "next/link"
 import {
   Droplets,
@@ -299,9 +299,7 @@ export default function TrgfsSprinklerSystemsPage() {
             specialist, align on jurisdictional requirements (Title 19 / Reg 4 where applicable), and map a
             compliant path from design to testing and maintenance.
           </p>
-          <div className="bg-card rounded-lg p-8 border border-border">
-            <TrgfsQuoteForm />
-          </div>
+          <ContactFormClient defaultService="trgfs-sprinkler" />
           <p className="text-center mt-6 text-sm opacity-80">
             Or{" "}
             <Link href="/contact" className="text-accent hover:underline font-medium">
