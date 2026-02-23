@@ -14,7 +14,7 @@ const productDropdownItems = [
   { label: "Intelligent Sprinkler System", href: "/products/intelligent-sprinkler-system" },
   { label: "Robotic Pool Cleaner", href: "/products/purily-robotic-pool-cleaner" },
   { label: "Sanctuary Battery", href: "/battery" },
-  { label: "TRGFS Sprinkler Systems", href: "/products/trgfs-sprinkler-systems" },
+  { label: "VICON Sprinkler Systems", href: "/products/vicon-sprinkler-systems" },
 ]
 
 export default function Navigation() {

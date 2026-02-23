@@ -100,11 +100,11 @@ export const products: Product[] = [
     specs: "Size: 20\" × 17\" × 10\" | Weight: 32 lbs | Pumping: 21,000 L/hr | Runtime: 2-3.5 hrs | Battery: 9,000 mAh | IPX8",
   },
   {
-    id: "trgfs-sprinkler-systems",
-    name: "TRGFS Sprinkler Systems (Partner)",
+    id: "vicon-sprinkler-systems",
+    name: "VICON Sprinkler Systems (Partner)",
     description: "Code-aligned fire sprinkler & standpipe systems. Design, engineering, installation, and Title 19 / Reg 4 testing support.",
     image: "/mmexport1764830820597.jpg",
-    href: "/products/trgfs-sprinkler-systems",
+    href: "/products/vicon-sprinkler-systems",
     price: 0,
     agentPrice: 0,
     features: [

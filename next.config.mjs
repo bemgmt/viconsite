@@ -22,6 +22,11 @@ const nextConfig = {
     ],
   },
   compress: true,
+  async redirects() {
+    return [
+      { source: '/products/trgfs-sprinkler-systems', destination: '/products/vicon-sprinkler-systems', permanent: true },
+    ]
+  },
   async headers() {
     return [
       {

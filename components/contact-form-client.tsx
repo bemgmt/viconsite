@@ -6,7 +6,7 @@ import { Calendar } from "lucide-react"
 const SERVICE_OPTIONS = [
   { value: "", label: "Select a service..." },
   { value: "vicon-sprinkler", label: "VICON Intelligent Sprinkler / Exterior Protection" },
-  { value: "trgfs-sprinkler", label: "TRGFS Sprinkler Systems (Interior)" },
+  { value: "vicon-sprinkler", label: "VICON Sprinkler Systems (Interior)" },
   { value: "battery", label: "Sanctuary Battery" },
   { value: "other", label: "Other" },
 ] as const
@@ -19,7 +19,7 @@ export default function ContactFormClient({ defaultService = "" }: ContactFormCl
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [service, setService] = useState(defaultService)
-  const showSprinklerFields = service === "trgfs-sprinkler"
+  const showSprinklerFields = service === "vicon-sprinkler"
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -56,7 +56,7 @@ export default function ContactFormClient({ defaultService = "" }: ContactFormCl
       address: String(formData.get("address") || ""),
       message: fullMessage,
       preferredContact: String(formData.get("preferredContact") || "email"),
-      source: showSprinklerFields ? "trgfs-sprinkler-quote" : "contact",
+      source: showSprinklerFields ? "vicon-sprinkler-quote" : "contact",
     }
 
     try {

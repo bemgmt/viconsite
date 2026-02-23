@@ -20,7 +20,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
-export default function TrgfsSprinklerSystemsPage() {
+export default function ViconSprinklerSystemsPage() {
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
@@ -32,7 +32,7 @@ export default function TrgfsSprinklerSystemsPage() {
             Built to Code. Maintained for Real Life.
           </h1>
           <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-            TRGFS designs, engineers, installs, and maintains fire sprinkler and standpipe systems across
+            VICON designs, engineers, installs, and maintains fire sprinkler and standpipe systems across
             commercial, industrial, and residential buildings—supporting code compliance and long-term reliability.
           </p>
           <p className="text-sm text-muted-foreground mb-8">
@@ -59,11 +59,11 @@ export default function TrgfsSprinklerSystemsPage() {
       <section className="py-20 px-4 bg-background">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 text-foreground">
-            TRGFS Sprinkler Systems (Partner)
+            VICON Sprinkler Systems (Partner)
           </h2>
           <div className="space-y-6">
             <p className="text-lg leading-relaxed text-foreground">
-              TRGFS delivers end-to-end sprinkler system delivery: design and engineering, installation, and
+              VICON delivers end-to-end sprinkler system delivery: design and engineering, installation, and
               ongoing maintenance—so systems remain aligned with local safety standards and the needs of the
               facility.
             </p>
@@ -125,7 +125,7 @@ export default function TrgfsSprinklerSystemsPage() {
           </h2>
           <div className="space-y-6">
             <p className="text-lg leading-relaxed text-foreground">
-              TRGFS offers alarm and sprinkler testing aligned to Title 19 and Regulation 4, with quarterly
+              VICON offers alarm and sprinkler testing aligned to Title 19 and Regulation 4, with quarterly
               and annual inspections to verify system function and maintain compliance.
             </p>
             <p className="text-lg leading-relaxed text-muted-foreground">
@@ -146,7 +146,7 @@ export default function TrgfsSprinklerSystemsPage() {
           </h2>
           <p className="text-lg text-center text-muted-foreground mb-12">
             A sprinkler project succeeds twice: once at installation, and again every year it stays ready.
-            TRGFS&apos;s scope spans new construction, tenant improvements, upgrades, inspections, and emergency
+            VICON&apos;s scope spans new construction, tenant improvements, upgrades, inspections, and emergency
             repairs.
           </p>
           <div className="flex flex-wrap justify-center gap-4 md:gap-6">
@@ -213,7 +213,7 @@ export default function TrgfsSprinklerSystemsPage() {
             Partner Ecosystem
           </h2>
           <p className="text-lg text-muted-foreground mb-8">
-            TRGFS works with leading fire protection manufacturers and distributors to deliver quality
+            VICON works with leading fire protection manufacturers and distributors to deliver quality
             systems. VICON customers gain a trusted partner for interior code-based fire protection that
             complements our exterior AI-powered wildfire systems.
           </p>
@@ -235,7 +235,7 @@ export default function TrgfsSprinklerSystemsPage() {
               <AccordionTrigger className="text-left">What is Title 19 testing?</AccordionTrigger>
               <AccordionContent>
                 California Title 19 references NFPA 25-based frequencies for water-based fire protection
-                systems. TRGFS offers testing aligned to these requirements; local authorities may require
+                systems. VICON offers testing aligned to these requirements; local authorities may require
                 additional procedures or more frequent work.
               </AccordionContent>
             </AccordionItem>
@@ -248,9 +248,9 @@ export default function TrgfsSprinklerSystemsPage() {
               </AccordionContent>
             </AccordionItem>
             <AccordionItem value="faq-3">
-              <AccordionTrigger className="text-left">What system types does TRGFS support?</AccordionTrigger>
+              <AccordionTrigger className="text-left">What system types does VICON support?</AccordionTrigger>
               <AccordionContent>
-                TRGFS supports Class I/II/III standpipe systems, pre-action and deluge systems, underground
+                VICON supports Class I/II/III standpipe systems, pre-action and deluge systems, underground
                 and overhead piping, special hazard protection, and wet/dry chemical suppression for
                 restaurants and industrial applications.
               </AccordionContent>
@@ -299,7 +299,7 @@ export default function TrgfsSprinklerSystemsPage() {
             specialist, align on jurisdictional requirements (Title 19 / Reg 4 where applicable), and map a
             compliant path from design to testing and maintenance.
           </p>
-          <ContactFormClient defaultService="trgfs-sprinkler" />
+          <ContactFormClient defaultService="vicon-sprinkler" />
           <p className="text-center mt-6 text-sm opacity-80">
             Or{" "}
             <Link href="/contact" className="text-accent hover:underline font-medium">

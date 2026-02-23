@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       }),
       sendGmailEmail({
         to: "info@vicontech.group",
-        subject: source === "trgfs-sprinkler-quote" ? `TRGFS Sprinkler Quote Request: ${name}` : `New Contact Form Inquiry: ${name}`,
+        subject: source === "vicon-sprinkler-quote" ? `VICON Sprinkler Quote Request: ${name}` : `New Contact Form Inquiry: ${name}`,
         replyTo: email,
         html: `
           <h2>New Contact Form Submission</h2>
