@@ -5,6 +5,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import DeferredGA from "@/components/deferred-ga"
 import PWARegister from "@/components/pwa-register"
+import AddToHomeScreen from "@/components/add-to-home-screen"
 import { siteUrl, siteUrlObject } from "@/lib/seo/site"
 import "./globals.css"
 
@@ -112,6 +113,7 @@ export default function RootLayout({
         <DeferredGA />
         <PWARegister />
         {children}
+        <AddToHomeScreen />
         <Analytics />
       </body>
     </html>
